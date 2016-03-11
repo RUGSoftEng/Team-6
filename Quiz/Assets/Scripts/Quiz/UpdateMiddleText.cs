@@ -17,15 +17,31 @@ public class UpdateMiddleText : MonoBehaviour {
         if (correct == 0)
         {
             l.UpdateText(trans);
-            l.SetPressedColor(correctCol);
+            l.SetDisabledColor(correctCol);
             r.UpdateText(wrongTrans);
-            r.SetPressedColor(wrongCol);
+            r.SetDisabledColor(wrongCol);
         } else
         {
             l.UpdateText(wrongTrans);
-            l.SetPressedColor(wrongCol);
+            l.SetDisabledColor(wrongCol);
             r.UpdateText(trans);
-            r.SetPressedColor(correctCol);
+            r.SetDisabledColor(correctCol);
         }
+    }
+
+    public void DisableButtons()
+    {
+        UpdateButton r = right.GetComponent<UpdateButton>();
+        UpdateButton l = left.GetComponent<UpdateButton>();
+        r.Disable();
+        l.Disable();
+    }
+
+    public void EnableButtons()
+    {
+        UpdateButton r = right.GetComponent<UpdateButton>();
+        UpdateButton l = left.GetComponent<UpdateButton>();
+        r.Enable();
+        l.Enable();
     }
 }

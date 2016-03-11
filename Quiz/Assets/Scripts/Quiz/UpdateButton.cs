@@ -10,10 +10,22 @@ public class UpdateButton : MonoBehaviour {
         textContainer.text = text;
     }
 
-    public void SetPressedColor(Color col)
+    public void SetDisabledColor(Color col)
     {
         var c = GetComponent<Button>().colors;
-        c.pressedColor = col;
+        c.disabledColor = col;
         GetComponent<Button>().colors = c;
+    }
+
+    public void Disable()
+    {
+        var d = GetComponent<Button>();
+        d.interactable = false;
+    }
+
+    public void Enable()
+    {
+        var d = GetComponent<Button>();
+        d.interactable = true;
     }
 }

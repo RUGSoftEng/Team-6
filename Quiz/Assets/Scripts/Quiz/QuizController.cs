@@ -2,10 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Threading;
 
 public class QuizController : MonoBehaviour {
 
     public Text middleText;
+    public float correctWaitTime;
+    public float wrongWaitTime;
     private List<WordData> totalWordList;
     private List<WordData> toDoList;
     private WordData currentWord;
@@ -14,7 +17,7 @@ public class QuizController : MonoBehaviour {
     void Start()
     {
         totalWordList = new List<WordData>();
-        
+
         totalWordList.Add(new WordData("Lion", "Leeuw", "A Lion Roars"));
         totalWordList.Add(new WordData("Shout", "Schreeuw", "Harry Shouts to mary"));
         totalWordList.Add(new WordData("Surf", "Surfen", "Harold loves surfing"));
@@ -51,6 +54,12 @@ public class QuizController : MonoBehaviour {
     private void CorrectAnswer()
     {
         toDoList.Remove(currentWord);
+        StartCoroutine(DisableButtons(correctWaitTime));
+    }
+
+    private void WrongAnswer()
+    {
+        StartCoroutine(DisableButtons(wrongWaitTime));
     }
 
     public void RightPressed()
@@ -58,8 +67,10 @@ public class QuizController : MonoBehaviour {
         if (correct == 1)
         {
             CorrectAnswer();
+        } else
+        {
+            WrongAnswer();
         }
-        UpdateGame();
     }
 
     public void LeftPressed()
@@ -67,7 +78,17 @@ public class QuizController : MonoBehaviour {
         if (correct == 0)
         {
             CorrectAnswer();
+        } else
+        {
+            WrongAnswer();
         }
+    }
+
+    IEnumerator DisableButtons(float time)
+    {
+        middleText.GetComponent<UpdateMiddleText>().DisableButtons();
+        yield return new WaitForSeconds(time);
+        middleText.GetComponent<UpdateMiddleText>().EnableButtons();
         UpdateGame();
     }
 }
