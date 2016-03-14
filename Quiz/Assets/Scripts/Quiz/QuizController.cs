@@ -9,8 +9,8 @@ public class QuizController : MonoBehaviour {
     public Text middleText;
     public float correctWaitTime;
     public float wrongWaitTime;
-    private List<WordData> totalWordList;
-    private List<WordData> toDoList;
+    public List<WordData> totalWordList;
+    public List<WordData> toDoList;
     private WordData currentWord;
     private int correct; //0 is left   1 is right
 
@@ -19,8 +19,8 @@ public class QuizController : MonoBehaviour {
         totalWordList = new List<WordData>();
 
         totalWordList.Add(new WordData("Lion", "Leeuw", "A Lion Roars"));
-        totalWordList.Add(new WordData("Shout", "Schreeuw", "Harry Shouts to mary"));
-        totalWordList.Add(new WordData("Surf", "Surfen", "Harold loves surfing"));
+        totalWordList.Add(new WordData("Shout", "Schreeuw", "Harry Shouts to Mary"));
+        totalWordList.Add(new WordData("Surf", "Surfen", "Harold loves to surf"));
         totalWordList.Add(new WordData("Couch", "Bank", "You can sit on a couch"));
         totalWordList.Add(new WordData("Lighter", "Aansteker", "Light the fire with a lighter"));
         totalWordList.Add(new WordData("Joke", "Grap", "Julie makes a funny joke"));
