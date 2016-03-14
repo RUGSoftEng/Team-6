@@ -31,7 +31,7 @@ public class ProgressBar : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		texR = new Texture2D(1,1);
-		texR.SetPixel(0,0,Color.red);
+		texR.SetPixel(0,0,Color.grey);
 		texR.wrapMode = TextureWrapMode.Repeat;
 		texR.Apply();
 		
