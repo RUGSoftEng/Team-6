@@ -1052,9 +1052,9 @@ MonoBehaviour:
   username: 
   userWords: []
   userLanguage: 
-  usernameText: {fileID: 470133236}
-  passwordText: {fileID: 1809745796}
-  serverText: {fileID: 925912853}
+  usernameText: {fileID: 718698576}
+  passwordText: {fileID: 1365393216}
+  serverText: {fileID: 421170594}
   serverURL: 
   something: {fileID: 0}
 --- !u!4 &857729872
