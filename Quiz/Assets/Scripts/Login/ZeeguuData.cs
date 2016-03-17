@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ZeeguuData : MonoBehaviour {
-    public static string DEFAULT_SERVER = "https://www.zeeguu.unibe.ch/"
+    public static string DEFAULT_SERVER = "https://www.zeeguu.unibe.ch/";
     //public static string DEFAULT_SERVER = "http://217.120.38.26:8128";
     public string sessionID;
 
