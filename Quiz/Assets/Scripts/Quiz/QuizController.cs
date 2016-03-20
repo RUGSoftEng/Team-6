@@ -25,8 +25,27 @@ public class QuizController : MonoBehaviour {
         totalWordList.Add(new WordData("Lighter", "Aansteker", "Light the fire with a lighter"));
         totalWordList.Add(new WordData("Joke", "Grap", "Julie makes a funny joke"));
         toDoList = new List<WordData>(totalWordList);
+		Shuffle();
         UpdateGame();
+		
+		
     }
+
+	public void Shuffle()
+	{
+		System.Random rng = new System.Random();
+		int n = toDoList.Count;
+		while (n > 1) {
+			n--;
+			int k = rng.Next(0,n-1);
+			WordData value = totalWordList[k];
+			totalWordList[k] = totalWordList[n];
+			totalWordList[n] = value;
+			value = toDoList[k];
+			toDoList[k] = toDoList[n];
+			toDoList[n] = value;
+		}
+	}
 
     private void UpdateGame()
     {
@@ -36,7 +55,7 @@ public class QuizController : MonoBehaviour {
             return;
         }
 
-        currentWord = SelectRandomWord(toDoList);
+        currentWord = toDoList[0];
         string wrongTrans;
         do
         {
@@ -59,7 +78,9 @@ public class QuizController : MonoBehaviour {
 
     private void WrongAnswer()
     {
-        StartCoroutine(DisableButtons(wrongWaitTime));
+        toDoList.Remove(currentWord);
+		toDoList.Add(currentWord);
+		StartCoroutine(DisableButtons(wrongWaitTime));
     }
 
     public void RightPressed()
