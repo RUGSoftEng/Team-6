@@ -17,16 +17,16 @@ public class QuizController : MonoBehaviour {
 
     void Start()
     {
-		numberOfClicks = 0;
-		
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+        numberOfClicks = 0;
         totalWordList = new List<WordData>();
-
         totalWordList.Add(new WordData("Lion", "Leeuw", "A Lion Roars"));
         totalWordList.Add(new WordData("Shout", "Schreeuw", "Harry Shouts to Mary"));
         totalWordList.Add(new WordData("Surf", "Surfen", "Harold loves to surf"));
         totalWordList.Add(new WordData("Couch", "Bank", "You can sit on a couch"));
         totalWordList.Add(new WordData("Lighter", "Aansteker", "Light the fire with a lighter"));
         totalWordList.Add(new WordData("Joke", "Grap", "Julie makes a funny joke"));
+        totalWordList.Add(new WordData("Shark", "Haai", "It bites"));
         toDoList = new List<WordData>(totalWordList);
 		Shuffle();
         UpdateGame();
@@ -53,6 +53,7 @@ public class QuizController : MonoBehaviour {
         if (toDoList.Count < 1)
         {
             Debug.Log("Finished, You did it!!!");
+            Exit();
             return;
         }
 
@@ -73,6 +74,7 @@ public class QuizController : MonoBehaviour {
 
     private void CorrectAnswer()
     {
+        currentWord.Solved();
         toDoList.Remove(currentWord);
         StartCoroutine(DisableButtons(correctWaitTime));
     }
@@ -106,6 +108,12 @@ public class QuizController : MonoBehaviour {
         {
             WrongAnswer();
         }
+    }
+
+    /* this function should always be called if the quiz game is exitted */
+    public void Exit()
+    {
+        Screen.orientation = ScreenOrientation.AutoRotation;
     }
 
     IEnumerator DisableButtons(float time)

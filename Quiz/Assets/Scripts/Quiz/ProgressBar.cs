@@ -8,6 +8,7 @@ public class ProgressBar : MonoBehaviour {
     private Texture2D tex;
 	public Color colorCorrect,colorToDo,colorBack,colorWrong;
 	private GUIStyle style;
+  
 	
 	void OnGUI() {
 		GameObject c = GameObject.Find("Controller");
@@ -44,10 +45,5 @@ public class ProgressBar : MonoBehaviour {
 		tex.SetPixel(0,0,colorToDo);
 		tex.wrapMode = TextureWrapMode.Repeat;
 		tex.Apply();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }
