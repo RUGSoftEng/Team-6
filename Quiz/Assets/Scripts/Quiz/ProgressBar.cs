@@ -19,7 +19,7 @@ public class ProgressBar : MonoBehaviour {
 		tex.SetPixel(0,0,this.colorBack);
 		tex.Apply();
 		GUI.skin.box.normal.background = tex;
-		GUI.Box(new Rect(25,500,Screen.width-47,Screen.height-505), GUIContent.none);
+		GUI.Box(new Rect(25,550,Screen.width-47,Screen.height-555), GUIContent.none);
 		int w = (Screen.width-50)/count;
 		for (int i=0;i<count;i++) {
 			if (controller.toDoList.Contains(controller.totalWordList[i])) {
@@ -33,7 +33,7 @@ public class ProgressBar : MonoBehaviour {
 			}
 			tex.Apply();
 			GUI.skin.box.normal.background = tex;
-			GUI.Box(new Rect(30+w*i,505,w-5,Screen.height-515), GUIContent.none);
+			GUI.Box(new Rect(30+w*i,555,w-5,Screen.height-565), GUIContent.none);
 		}
     }
 
