@@ -557,7 +557,7 @@ GameObject:
   - 114: {fileID: 1062907880}
   - 114: {fileID: 1062907879}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -591,13 +591,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666efd3e18c807342a148ca1edfb98d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorCorrect: {r: 0, g: 0.83823526, b: 0.2485801, a: 1}
+  colorToDo: {r: 0.46323532, g: 0.46323532, b: 0.46323532, a: 1}
+  colorBack: {r: 0.7058823, g: 0.7058823, b: 0.7058823, a: 1}
+  colorWrong: {r: 0.6911765, g: 0.121972315, b: 0.121972315, a: 1}
 --- !u!114 &1062907880
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1062907877}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -1263,6 +1267,7 @@ MonoBehaviour:
   middleText: {fileID: 1618838149}
   correctWaitTime: 0.5
   wrongWaitTime: 1.5
+  numberOfClicks: 0
 --- !u!1 &1737424542
 GameObject:
   m_ObjectHideFlags: 0

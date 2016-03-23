@@ -13,9 +13,12 @@ public class QuizController : MonoBehaviour {
     public List<WordData> toDoList;
     private WordData currentWord;
     private int correct; //0 is left   1 is right
+	public int numberOfClicks;
 
     void Start()
     {
+		numberOfClicks = 0;
+		
         totalWordList = new List<WordData>();
 
         totalWordList.Add(new WordData("Lion", "Leeuw", "A Lion Roars"));
@@ -27,8 +30,6 @@ public class QuizController : MonoBehaviour {
         toDoList = new List<WordData>(totalWordList);
 		Shuffle();
         UpdateGame();
-		
-		
     }
 
 	public void Shuffle()
@@ -85,6 +86,7 @@ public class QuizController : MonoBehaviour {
 
     public void RightPressed()
     {
+		numberOfClicks++;
         if (correct == 1)
         {
             CorrectAnswer();
@@ -96,6 +98,7 @@ public class QuizController : MonoBehaviour {
 
     public void LeftPressed()
     {
+		numberOfClicks++;
         if (correct == 0)
         {
             CorrectAnswer();

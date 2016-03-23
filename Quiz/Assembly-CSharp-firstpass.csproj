@@ -6,10 +6,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{6760E601-D167-8717-8AFD-AB332D1BE65C}</ProjectGuid>
+    <ProjectGuid>{CF2D68FF-C471-AB13-CED4-7E3885961EAA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>Assets</BaseDirectory>
@@ -45,17 +45,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Login\DebugPhant.cs" />
-     <Compile Include="Assets\Scripts\Login\DontDestroy.cs" />
-     <Compile Include="Assets\Scripts\Login\ZeeguuData.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\FillInUsername.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\LoadNewLevel.cs" />
-     <Compile Include="Assets\Scripts\Quiz\CastCameraSwitch.cs" />
-     <Compile Include="Assets\Scripts\Quiz\ProgressBar.cs" />
-     <Compile Include="Assets\Scripts\Quiz\QuizController.cs" />
-     <Compile Include="Assets\Scripts\Quiz\UpdateButton.cs" />
-     <Compile Include="Assets\Scripts\Quiz\UpdateMiddleText.cs" />
-     <Compile Include="Assets\Scripts\Quiz\WordData.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\CastRemoteDisplayManager.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Deprecated\CastRemoteDisplayAudioListener.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\Android\CastRemoteDisplayAndroidExtension.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\CastRemoteDisplayAudioInterceptor.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\CastRemoteDisplayExtensionManager.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\CastRemoteDisplayManagerEditor.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\ICastRemoteDisplayExtension.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\UnitySimulator\CastRemoteDisplaySimulator.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\UnitySimulator\CastRemoteDisplaySimulatorEditor.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\UnitySimulator\CastRemoteDisplayUnityExtension.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\iOS\CastRemoteDisplayiOSExtension.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\iOS\CastRemoteDisplayiOSUnityBridge.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastButtonFrame.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastDefaultUI.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastDefaultUIEditor.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastDisconnectDialog.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastErrorDialog.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastListButton.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastListDialog.cs" />
+     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\FirstTimeCastDialog.cs" />
      <None Include="Assets\Plugins\Android\appcompat\res\color\switch_thumb_material_light.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\drawable\abc_item_background_holo_light.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\layout\abc_alert_dialog_button_bar_material.xml" />
@@ -752,10 +761,6 @@
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{CF2D68FF-C471-AB13-CED4-7E3885961EAA}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
