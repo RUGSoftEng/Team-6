@@ -69,6 +69,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Logout.cs" />
     <Compile Include="Assets\Scripts\Boomlagoon\JSON\JSONObject.cs" />
     <Compile Include="Assets\Scripts\Login\DebugPhant.cs" />
     <Compile Include="Assets\Scripts\Login\DontDestroy.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\Scripts\MainMenu\FillInUsername.cs" />
     <Compile Include="Assets\Scripts\MainMenu\LoadNewLevel.cs" />
     <Compile Include="Assets\Scripts\Menus\Bookmark.cs" />
+    <Compile Include="Assets\Scripts\Menus\OpenCloseSettings.cs" />
     <Compile Include="Assets\Scripts\Quiz\CastCameraSwitch.cs" />
     <Compile Include="Assets\Scripts\Quiz\ProgressBar.cs" />
     <Compile Include="Assets\Scripts\Quiz\ProgressBarOnCanvas.cs" />

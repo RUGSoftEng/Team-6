@@ -9,8 +9,5 @@ public class DebugPhant : MonoBehaviour {
     public void DebugLogin() {
         ZeeguuData zdata = data.GetComponent<ZeeguuData>();
         //zdata.Login("deliberatelywrong ;P", "Notgivingyoumypassword <3", "");
-
-        //SceneManager.LoadScene(1);
-
     }
 }
