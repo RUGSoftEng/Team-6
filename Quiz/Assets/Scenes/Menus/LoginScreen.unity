@@ -1048,15 +1048,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8919d0a1047d3c4b9c430b13cd79fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sessionID: 
+  sessionID: 0
   username: 
-  userWords: []
-  userLanguage: 
+  userNativeLanguage: 
+  userLearnedLanguage: 
   usernameText: {fileID: 718698576}
   passwordText: {fileID: 1365393216}
   serverText: {fileID: 421170594}
+  loginButton: {fileID: 1224673774}
   serverURL: 
-  something: {fileID: 0}
 --- !u!4 &857729872
 Transform:
   m_ObjectHideFlags: 0
@@ -1237,6 +1237,7 @@ GameObject:
   - 222: {fileID: 1224673778}
   - 114: {fileID: 1224673777}
   - 114: {fileID: 1224673776}
+  - 95: {fileID: 1224673779}
   m_Layer: 10
   m_Name: LoginButton
   m_TagString: Untagged
@@ -1279,7 +1280,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 0.6039216, g: 0.80392164, b: 0.19607845, a: 1}
     m_HighlightedColor: {r: 0.86274517, g: 0.909804, b: 0.15686275, a: 1}
@@ -1326,7 +1327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6039216, g: 0.80392164, b: 0.19607845, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1347,6 +1348,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1224673774}
+--- !u!95 &1224673779
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1224673774}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 213676c41c46ed44e9a9fbdfc716342b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1226711357
 GameObject:
   m_ObjectHideFlags: 0
