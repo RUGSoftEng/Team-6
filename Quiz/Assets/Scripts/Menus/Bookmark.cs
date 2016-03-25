@@ -26,7 +26,6 @@ public class Bookmark {
         JSONArray dates = JSONArray.Parse(json);
 
         foreach (JSONValue date in dates) {
-            Debug.Log(date.Obj.GetString("date"));
             foreach (JSONValue dateBookmark in date.Obj.GetArray("bookmarks")) {
                 bm = dateBookmark.Obj;
                 foreach(JSONValue translation in bm.GetArray("to")) {

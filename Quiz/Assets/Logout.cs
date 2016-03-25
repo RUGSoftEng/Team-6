@@ -8,6 +8,8 @@ public class Logout : MonoBehaviour {
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ZeeguuData")){
             Destroy(obj);
         }
+
+        ZeeguuData.destroySession();
         SceneManager.LoadScene(0);
     }
 }
