@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/*
+ * This class is the main controller of the quiz game. It decides what words are displayed.
+ *
+ *
+ */
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -48,6 +54,10 @@ public class QuizController : MonoBehaviour {
 		}
 	}
 
+	/*
+	 * The UpdateGame method makes sure everything in the game is correct at any point in time.
+	 * It sets the right words for the buttons and selects new ones if needed.
+	 */
     private void UpdateGame()
     {
         if (toDoList.Count < 1)
@@ -72,6 +82,10 @@ public class QuizController : MonoBehaviour {
         return list[Random.Range(0, list.Count)];
     }
 
+	/*
+	 * This method decides what happens when the button with the correct answer is clicked
+	 * It removes the current word from the todolist and disables the buttons for a small while.
+	 */
     private void CorrectAnswer()
     {
         currentWord.Solved();
@@ -79,8 +93,14 @@ public class QuizController : MonoBehaviour {
         StartCoroutine(DisableButtons(correctWaitTime));
     }
 
+	/*
+	 * This method decides what happens when the button with the wrong answer is clicked.
+	 * It removes the current word from the todolist and inserts it again at the end of the list.
+	 * The method then disables the buttons for a while.
+	 */
     private void WrongAnswer()
     {
+		currentWord.Wrong();
         toDoList.Remove(currentWord);
 		toDoList.Add(currentWord);
 		StartCoroutine(DisableButtons(wrongWaitTime));
@@ -110,7 +130,7 @@ public class QuizController : MonoBehaviour {
         }
     }
 
-    /* this function should always be called if the quiz game is exitted */
+    /* this method should always be called if the quiz game is exitted */
     public void Exit()
     {
         Screen.orientation = ScreenOrientation.AutoRotation;

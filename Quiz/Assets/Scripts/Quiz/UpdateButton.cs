@@ -4,12 +4,18 @@ using System.Collections;
 
 public class UpdateButton : MonoBehaviour {
 
+	/*
+	 * update the word that is displayed on this button
+	 */
     public void UpdateText(string text)
     {
         Text textContainer = GetComponent<Transform>().GetComponentInChildren<Text>();
         textContainer.text = text;
     }
 
+	/*
+	 * set the color of this button, when it is disabled.
+	 */
     public void SetDisabledColor(Color col)
     {
         var c = GetComponent<Button>().colors;

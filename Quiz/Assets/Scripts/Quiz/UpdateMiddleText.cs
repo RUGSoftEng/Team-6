@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿/*
+ * This class handles the words that are displayed in the quiz game.
+ */
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -9,6 +13,9 @@ public class UpdateMiddleText : MonoBehaviour {
     public Color correctCol;
     public Color wrongCol;
 
+	/*
+	 * Update the word that is displayed in the middle of the screen and on the answer buttons.
+	 */
     public void UpdateText(string ownStr, string trans, string wrongTrans, int correct)
     {
         this.GetComponent<Text>().text = ownStr;
@@ -29,6 +36,9 @@ public class UpdateMiddleText : MonoBehaviour {
         }
     }
 
+	/*
+	 * disables the buttons after an answer has been clicked
+	 */
     public void DisableButtons()
     {
         UpdateButton r = right.GetComponent<UpdateButton>();
@@ -37,6 +47,9 @@ public class UpdateMiddleText : MonoBehaviour {
         l.Disable();
     }
 
+	/*
+	 * enables the buttons again so that the answer to the new word can be clicked.
+	 */
     public void EnableButtons()
     {
         UpdateButton r = right.GetComponent<UpdateButton>();
