@@ -5,16 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{088CF4A2-31E6-256F-0527-BA0D9D91AF8B}</ProjectGuid>
+    <ProjectGuid>{61A0FC3C-F1D4-A235-68DE-F8B997375CC1}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.3.2f1</UnityVersion>
     <RootNamespace></RootNamespace>
@@ -75,25 +75,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Quiz.CSharp.Plugins.csproj">
-      <Project>{61A0FC3C-F1D4-A235-68DE-F8B997375CC1}</Project>
-      <Name>Quiz.CSharp.Plugins</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets\Scripts\Login\DebugPhant.cs" />
-    <Compile Include="Assets\Scripts\Login\DontDestroy.cs" />
-    <Compile Include="Assets\Scripts\Login\ZeeguuData.cs" />
-    <Compile Include="Assets\Scripts\MainMenu\FillInUsername.cs" />
-    <Compile Include="Assets\Scripts\MainMenu\LoadNewLevel.cs" />
-    <Compile Include="Assets\Scripts\Quiz\CastCameraSwitch.cs" />
-    <Compile Include="Assets\Scripts\Quiz\ProgressBar.cs" />
-    <Compile Include="Assets\Scripts\Quiz\ProgressBarOnCanvas.cs" />
-    <Compile Include="Assets\Scripts\Quiz\QuizController.cs" />
-    <Compile Include="Assets\Scripts\Quiz\SwitchColor.cs" />
-    <Compile Include="Assets\Scripts\Quiz\UpdateButton.cs" />
-    <Compile Include="Assets\Scripts\Quiz\UpdateMiddleText.cs" />
-    <Compile Include="Assets\Scripts\Quiz\WordData.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\CastRemoteDisplayManager.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Deprecated\CastRemoteDisplayAudioListener.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\Android\CastRemoteDisplayAndroidExtension.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\CastRemoteDisplayAudioInterceptor.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\CastRemoteDisplayExtensionManager.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\CastRemoteDisplayManagerEditor.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\ICastRemoteDisplayExtension.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\UnitySimulator\CastRemoteDisplaySimulator.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\UnitySimulator\CastRemoteDisplaySimulatorEditor.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\UnitySimulator\CastRemoteDisplayUnityExtension.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\iOS\CastRemoteDisplayiOSExtension.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\iOS\CastRemoteDisplayiOSUnityBridge.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastButtonFrame.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastDefaultUI.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastDefaultUIEditor.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastDisconnectDialog.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastErrorDialog.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastListButton.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\CastListDialog.cs" />
+    <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\UI\Scripts\FirstTimeCastDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\Apache License.txt" />
