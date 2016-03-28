@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/*
+ * This class creates a progressbar based on the current totalwordlist and todolist.
+ * It uses disabled buttons that are colored green if the corresponding word has been answered correct,
+ * red if it was answered wrong and grey if they haven't been answered yet.
+ */
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -9,10 +15,13 @@ public class ProgressBarOnCanvas : MonoBehaviour {
     public GameObject c;
     public GameObject self;
     public GameObject leftDistance;
-    public Color colorCorrect, colorToDo;
+    public Color colorCorrect, colorToDo, colorWrong;
     public float height;
     private float count = -1;
 
+	/*
+	 * The ongui method creates the buttons of the progress bar in their todo color in the right place.
+	 */
     void OnGUI()
     {
         if (count == -1)
@@ -23,7 +32,7 @@ public class ProgressBarOnCanvas : MonoBehaviour {
             {
                 Button newButton = Instantiate(button) as Button;
                 SwitchColor butCol = newButton.GetComponent<SwitchColor>();
-                butCol.SetColors(colorCorrect, colorToDo);
+                butCol.SetColors(colorCorrect, colorToDo, colorWrong);
                 controller.totalWordList[i].setObserver(butCol);
                 newButton.transform.SetParent(canvas.transform, false);
                 RectTransform buttonTrans = newButton.GetComponent<RectTransform>();

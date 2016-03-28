@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class DebugPhant : MonoBehaviour {
 
@@ -7,12 +8,6 @@ public class DebugPhant : MonoBehaviour {
 
     public void DebugLogin() {
         ZeeguuData zdata = data.GetComponent<ZeeguuData>();
-
-        zdata.username = "debug@example.com";
-        zdata.userLanguage = "de";
-        zdata.sessionID = "debug";
-
-        Application.LoadLevel(1);
-
+        //zdata.Login("deliberatelywrong ;P", "Notgivingyoumypassword <3", "");
     }
 }

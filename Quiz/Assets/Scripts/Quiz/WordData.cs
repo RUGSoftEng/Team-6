@@ -41,4 +41,9 @@ public class WordData
         solved = true;
         observer.Solved();
     }
+	
+	public void Wrong()
+    {
+        observer.Wrong();
+    }
 }

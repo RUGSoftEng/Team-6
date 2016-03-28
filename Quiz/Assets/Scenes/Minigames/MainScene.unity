@@ -271,8 +271,8 @@ RectTransform:
   - {fileID: 1618838148}
   - {fileID: 971100089}
   - {fileID: 1262536787}
-  - {fileID: 1062907878}
   - {fileID: 862734850}
+  - {fileID: 1469033899}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
@@ -484,7 +484,7 @@ GameObject:
   - 4: {fileID: 862734850}
   - 114: {fileID: 862734851}
   m_Layer: 0
-  m_Name: ProgrssBar2
+  m_Name: ProgressBarOnCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -502,7 +502,7 @@ Transform:
   m_Children:
   - {fileID: 1182061102}
   m_Father: {fileID: 338176186}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!114 &862734851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,6 +521,7 @@ MonoBehaviour:
   leftDistance: {fileID: 1182061101}
   colorCorrect: {r: 0.017241359, g: 0.5, b: 0, a: 1}
   colorToDo: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
+  colorWrong: {r: 0.875, g: 0, b: 0, a: 1}
   height: 40
 --- !u!1 &925935882
 GameObject:
@@ -594,61 +595,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1338113039}
   m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
---- !u!1 &1062907877
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1062907878}
-  - 222: {fileID: 1062907881}
-  - 114: {fileID: 1062907879}
-  m_Layer: 9
-  m_Name: ProgressBar
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1062907878
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1062907877}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 338176186}
-  m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -247.5}
-  m_SizeDelta: {x: -50, y: -505}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1062907879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1062907877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 666efd3e18c807342a148ca1edfb98d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorCorrect: {r: 0, g: 0.83823526, b: 0.2485801, a: 1}
-  colorToDo: {r: 0.46323532, g: 0.46323532, b: 0.46323532, a: 1}
-  colorBack: {r: 0.7058823, g: 0.7058823, b: 0.7058823, a: 1}
-  colorWrong: {r: 0.6911765, g: 0.121972315, b: 0.121972315, a: 1}
---- !u!222 &1062907881
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1062907877}
 --- !u!1 &1147881743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,6 +1088,92 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1469033898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1469033899}
+  - 222: {fileID: 1469033901}
+  - 114: {fileID: 1469033900}
+  - 114: {fileID: 1469033902}
+  m_Layer: 5
+  m_Name: DescriptionShower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1469033899
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1469033898}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 338176186}
+  m_RootOrder: 4
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1, y: -171}
+  m_SizeDelta: {x: 400, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1469033900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1469033898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 32
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Dit is een test beschrijving zodat we kunnen zien hoe het eruit ziet als
+    er een lange zin staat.
+--- !u!222 &1469033901
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1469033898}
+--- !u!114 &1469033902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1469033898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9934ceb658f784bbdbd32c945c1d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1618838147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,7 +1207,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1, y: 0}
-  m_SizeDelta: {x: 256, y: 176}
+  m_SizeDelta: {x: 450, y: 176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1618838149
 MonoBehaviour:
@@ -1282,6 +1314,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1735378282}
   - 114: {fileID: 1735378283}
+  - 114: {fileID: 1735378284}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -1313,9 +1346,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   middleText: {fileID: 1618838149}
+  DescriptionShower: {fileID: 1469033900}
+  maxAmountOfWords: 15
   correctWaitTime: 0.5
-  wrongWaitTime: 1.5
+  wrongWaitTime: 5
   numberOfClicks: 0
+--- !u!114 &1735378284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1735378281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e73e0c4157c50cf4e963c3e50d888d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelIndex: 1
 --- !u!1 &1737424542
 GameObject:
   m_ObjectHideFlags: 0
