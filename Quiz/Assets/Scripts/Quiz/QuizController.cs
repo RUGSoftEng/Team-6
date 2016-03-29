@@ -29,10 +29,12 @@ public class QuizController : MonoBehaviour {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         numberOfClicks = 0;
         LoadData();
-        Shuffle();
         UpdateGame();
     }
 
+	/*
+	 * The loadData method selects the words to be used in the game.
+	 */
     private void LoadData()
     {
         totalWordList = new List<WordData>();
@@ -65,22 +67,6 @@ public class QuizController : MonoBehaviour {
         toDoList = new List<WordData>(totalWordList);
     }
 
-	public void Shuffle()
-	{
-		System.Random rng = new System.Random();
-		int n = toDoList.Count;
-		while (n > 1) {
-			n--;
-			int k = rng.Next(0,n-1);
-			WordData value = totalWordList[k];
-			totalWordList[k] = totalWordList[n];
-			totalWordList[n] = value;
-			value = toDoList[k];
-			toDoList[k] = toDoList[n];
-			toDoList[n] = value;
-		}
-	}
-
 	/*
 	 * The UpdateGame method makes sure everything in the game is correct at any point in time.
 	 * It sets the right words for the buttons and selects new ones if needed.
@@ -104,7 +90,10 @@ public class QuizController : MonoBehaviour {
         correct = Random.Range(0, 2);
         middleText.GetComponent<UpdateMiddleText>().UpdateText(currentWord.GetWord(), currentWord.GetTrans(), wrongTrans, correct);
     }
-
+	
+	/*
+	 * returns a random word from a wordlist.
+	 */
     private WordData SelectRandomWord(List<WordData> list)
     {
         return list[Random.Range(0, list.Count)];
@@ -118,7 +107,7 @@ public class QuizController : MonoBehaviour {
     {
         currentWord.Solved();
         toDoList.Remove(currentWord);
-        StartCoroutine(DisableButtons(correctWaitTime));
+        StartCoroutine(DisableButtons(correctWaitTime,1));
     }
 
 	/*
@@ -132,7 +121,7 @@ public class QuizController : MonoBehaviour {
         toDoList.Remove(currentWord);
 		toDoList.Add(currentWord);
         DescriptionShower.GetComponent<EditText>().setText(currentWord.GetDesc());
-        StartCoroutine(DisableButtons(wrongWaitTime));
+        StartCoroutine(DisableButtons(wrongWaitTime,0));
     }
 
     public void RightPressed()
@@ -176,9 +165,9 @@ public class QuizController : MonoBehaviour {
         this.GetComponent<LoadNewLevel>().LoadLevel();
     }
 
-    IEnumerator DisableButtons(float time)
+    IEnumerator DisableButtons(float time, int correct)
     {
-        middleText.GetComponent<UpdateMiddleText>().DisableButtons();
+        middleText.GetComponent<UpdateMiddleText>().DisableButtons(correct);
         yield return new WaitForSeconds(time);
         middleText.GetComponent<UpdateMiddleText>().EnableButtons();
         fastClickFixer = true;

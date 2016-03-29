@@ -12,6 +12,7 @@ public class UpdateMiddleText : MonoBehaviour {
     public Button left;
     public Color correctCol;
     public Color wrongCol;
+	private int correct;
 
 	/*
 	 * Update the word that is displayed in the middle of the screen and on the answer buttons.
@@ -21,6 +22,7 @@ public class UpdateMiddleText : MonoBehaviour {
         this.GetComponent<Text>().text = ownStr;
         UpdateButton r = right.GetComponent<UpdateButton>();
         UpdateButton l = left.GetComponent<UpdateButton>();
+		this.correct = correct;
         if (correct == 0)
         {
             l.UpdateText(trans);
@@ -39,12 +41,17 @@ public class UpdateMiddleText : MonoBehaviour {
 	/*
 	 * disables the buttons after an answer has been clicked
 	 */
-    public void DisableButtons()
+    public void DisableButtons(int correct)
     {
         UpdateButton r = right.GetComponent<UpdateButton>();
         UpdateButton l = left.GetComponent<UpdateButton>();
-        r.Disable();
-        l.Disable();
+        if (this.correct==0) {
+			r.Disable(correct);
+			l.Disable(0);
+		} else {
+			r.Disable(0);
+			l.Disable(correct);
+		}
     }
 
 	/*

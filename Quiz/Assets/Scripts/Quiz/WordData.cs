@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*
+ * A WordData object represents a single word, as used in the game.
+ * It is observed by one of the fields of the progress bar.
+ */
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
