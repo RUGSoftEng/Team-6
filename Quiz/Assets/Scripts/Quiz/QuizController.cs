@@ -23,6 +23,7 @@ public class QuizController : MonoBehaviour {
     private int correct; //0 is left   1 is right
 	public int numberOfClicks;
     private bool fastClickFixer = true; //To fix the delay of disabeling buttons 
+	public GameObject end;
 
     void Start()
     {
@@ -40,16 +41,12 @@ public class QuizController : MonoBehaviour {
         totalWordList = new List<WordData>();
         GameObject[] zeeguuList = GameObject.FindGameObjectsWithTag("ZeeguuData");
 
-        if (zeeguuList == null)
+        if (true || zeeguuList == null)
         {
             Debug.Log("No zeeguuData Available, using hardcoded Set");
             totalWordList.Add(new WordData("Lion", "Leeuw", "A Lion Roars"));
             totalWordList.Add(new WordData("Shout", "Schreeuw", "Harry Shouts to Mary"));
             totalWordList.Add(new WordData("Surf", "Surfen", "Harold loves to surf"));
-            totalWordList.Add(new WordData("Couch", "Bank", "You can sit on a couch"));
-            totalWordList.Add(new WordData("Lighter", "Aansteker", "Light the fire with a lighter"));
-            totalWordList.Add(new WordData("Joke", "Grap", "Julie makes a funny joke"));
-            totalWordList.Add(new WordData("Shark", "Haai", "It bites"));
         } else
         {
             List<Bookmark> localBookmarkList = new List<Bookmark>(zeeguuList[0].GetComponent<ZeeguuData>().userBookmarks);
@@ -75,7 +72,7 @@ public class QuizController : MonoBehaviour {
     {
         if (toDoList.Count < 1)
         {
-            Exit();
+            StartCoroutine(Exit());
             return;
         }
 
@@ -158,8 +155,17 @@ public class QuizController : MonoBehaviour {
     }
 
     /* this method should always be called if the quiz game is exitted */
-    public void Exit()
+    IEnumerator Exit()
     {
+		GameObject canvas = GameObject.FindGameObjectsWithTag("canvas")[0];
+		GameObject endscreen = Instantiate(end);
+		endscreen.transform.SetParent(canvas.transform);
+		endscreen.transform.position = new Vector3(0,0,0);
+		endscreen.transform.localScale = new Vector3(1,1,1);
+		RectTransform rt = endscreen.GetComponent<RectTransform>();
+		rt.sizeDelta = new Vector2(Screen.width,Screen.height);
+		StartCoroutine(DisableButtons(1000,1));
+		yield return new WaitForSeconds(500);
         Screen.orientation = ScreenOrientation.Portrait;
         this.GetComponent<LoadNewLevel>().LoadLevel();
     }
