@@ -75,7 +75,6 @@ public class QuizController : MonoBehaviour {
     {
         if (toDoList.Count < 1)
         {
-            Debug.Log("Finished, You did it!!!");
             Exit();
             return;
         }
@@ -161,7 +160,7 @@ public class QuizController : MonoBehaviour {
     /* this method should always be called if the quiz game is exitted */
     public void Exit()
     {
-        Screen.orientation = ScreenOrientation.AutoRotation;
+        Screen.orientation = ScreenOrientation.Portrait;
         this.GetComponent<LoadNewLevel>().LoadLevel();
     }
 
