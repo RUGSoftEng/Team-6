@@ -23,9 +23,12 @@ public class UpdateButton : MonoBehaviour {
         GetComponent<Button>().colors = c;
     }
 
-    public void Disable()
+    public void Disable(int correct)
     {
         var d = GetComponent<Button>();
+		if (correct==1) {
+			SetDisabledColor(d.colors.normalColor);
+		}
         d.interactable = false;
     }
 

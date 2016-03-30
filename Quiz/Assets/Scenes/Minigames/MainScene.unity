@@ -198,7 +198,7 @@ GameObject:
   - 114: {fileID: 338176183}
   m_Layer: 5
   m_Name: MainCanvas
-  m_TagString: Untagged
+  m_TagString: canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -483,7 +483,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 862734850}
   - 114: {fileID: 862734851}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ProgressBarOnCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1182061102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftDistance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1350,6 +1350,7 @@ MonoBehaviour:
   correctWaitTime: 0.5
   wrongWaitTime: 5
   numberOfClicks: 0
+  end: {fileID: 135040, guid: 1dac0dbfe1877294fb1beb88665825c0, type: 2}
 --- !u!114 &1735378284
 MonoBehaviour:
   m_ObjectHideFlags: 0
