@@ -164,8 +164,8 @@ public class QuizController : MonoBehaviour {
 		endscreen.transform.localScale = new Vector3(1,1,1);
 		RectTransform rt = endscreen.GetComponent<RectTransform>();
 		rt.sizeDelta = new Vector2(Screen.width,Screen.height);
-		StartCoroutine(DisableButtons(1000,1));
-		yield return new WaitForSeconds(500);
+		StartCoroutine(DisableButtons(8,1));
+		yield return new WaitForSeconds(5);
         Screen.orientation = ScreenOrientation.Portrait;
         this.GetComponent<LoadNewLevel>().LoadLevel();
     }
