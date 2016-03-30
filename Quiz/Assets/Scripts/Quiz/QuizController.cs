@@ -39,13 +39,14 @@ public class QuizController : MonoBehaviour {
     {
         totalWordList = new List<WordData>();
         GameObject[] zeeguuList = GameObject.FindGameObjectsWithTag("ZeeguuData");
-
-        if (true || zeeguuList == null)
+        Debug.Log(zeeguuList.Length);
+        if (zeeguuList.Length<1)
         {
             Debug.Log("No zeeguuData Available, using hardcoded Set");
             totalWordList.Add(new WordData("Lion", "Leeuw", "A Lion Roars"));
             totalWordList.Add(new WordData("Shout", "Schreeuw", "Harry Shouts to Mary"));
             totalWordList.Add(new WordData("Surf", "Surfen", "Harold loves to surf"));
+            totalWordList.Add(new WordData("Moan", "Zeuren", "Jimmy moans a lot"));
         } else
         {
             List<Bookmark> localBookmarkList = new List<Bookmark>(zeeguuList[0].GetComponent<ZeeguuData>().userBookmarks);

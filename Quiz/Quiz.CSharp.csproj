@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\Menus\Bookmark.cs" />
     <Compile Include="Assets\Scripts\Menus\OpenCloseSettings.cs" />
     <Compile Include="Assets\Scripts\Quiz\CastCameraSwitch.cs" />
+    <Compile Include="Assets\Scripts\Quiz\CastCanvasSwitch.cs" />
     <Compile Include="Assets\Scripts\Quiz\EditText.cs" />
     <Compile Include="Assets\Scripts\Quiz\ProgressBarOnCanvas.cs" />
     <Compile Include="Assets\Scripts\Quiz\QuizController.cs" />

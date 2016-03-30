@@ -85,12 +85,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &98468362 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11467948, guid: dc8f90af760314e868c4d6f32515226c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1352616962}
-  m_Script: {fileID: 11500000, guid: aa6c6eecf107243a0bfde155b32cfd81, type: 3}
 --- !u!1001 &124237126
 Prefab:
   m_ObjectHideFlags: 0
@@ -181,6 +175,10 @@ Prefab:
     - target: {fileID: 11458358, guid: 8e47539078c65704f829e242a766bab4, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LeftPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488620, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e47539078c65704f829e242a766bab4, type: 2}
@@ -857,6 +855,10 @@ Prefab:
       propertyPath: m_Colors.m_NormalColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11488620, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e47539078c65704f829e242a766bab4, type: 2}
   m_IsPrefabParent: 0
@@ -902,7 +904,7 @@ Prefab:
     - target: {fileID: 11467948, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
       propertyPath: remoteDisplayCamera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1451707457}
     - target: {fileID: 11467948, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
       propertyPath: castAppId
       value: 5864F981
@@ -923,7 +925,7 @@ GameObject:
   - 92: {fileID: 1451707455}
   - 81: {fileID: 1451707454}
   m_Layer: 0
-  m_Name: PhoneWhenCastCamera
+  m_Name: ChromecastCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -959,7 +961,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_BackGroundColor: {r: 0.2901961, g: 0.2901961, b: 0.2901961, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1120,8 +1122,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: -171}
-  m_SizeDelta: {x: 400, y: 200}
+  m_AnchoredPosition: {x: 1, y: -150}
+  m_SizeDelta: {x: 400, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469033900
 MonoBehaviour:
@@ -1153,7 +1155,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!222 &1469033901
@@ -1205,8 +1207,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 0}
-  m_SizeDelta: {x: 450, y: 176}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 450, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1618838149
 MonoBehaviour:
@@ -1234,11 +1236,11 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 64
-    m_Alignment: 4
+    m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Lion
 --- !u!222 &1618838150
@@ -1689,9 +1691,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2041822157}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a134b88a3b5e554eb28ff56d7bf3122, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dc416b68c3148f41bb659c7d2f97378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chromeCast: {fileID: 98468362}
-  mainCamera: {fileID: 2041822161}
-  phoneCamera: {fileID: 1451707457}
+  chromeCast: {fileID: 2132567268}
+  phoneCamera: {fileID: 2041822161}
+  chromecastCamera: {fileID: 1451707457}
+  mainCanvas: {fileID: 338176185}
+  phoneCanvas: {fileID: 1466864928}
+--- !u!114 &2132567268 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11467948, guid: dc8f90af760314e868c4d6f32515226c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1352616962}
+  m_Script: {fileID: 11500000, guid: aa6c6eecf107243a0bfde155b32cfd81, type: 3}

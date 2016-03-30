@@ -4,34 +4,34 @@ using System.Collections;
 
 public class CastCameraSwitch : MonoBehaviour {
 
-    public CastRemoteDisplayManager chromeCast;
-    public Camera mainCamera;
-    public Camera phoneCamera;
+    //public CastRemoteDisplayManager chromeCast;
+    //public Camera phoneCamera;
+    //public Camera chromecastCamera;
+    //public Canvas mainCanvas;
+    //public Canvas phoneCanvas;
 
-    public void Start()
+    /*public void Start()
     {
-        chromeCast.RemoteDisplaySessionStartEvent.AddListener(startCasting);
-        chromeCast.RemoteDisplaySessionEndEvent.AddListener(stopCasting);
-        chromeCast.RemoteDisplayErrorEvent.AddListener(errorCasting);
-        phoneCamera.enabled = false;
+        //chromeCast.RemoteDisplaySessionStartEvent.AddListener(startCasting);
+        //chromeCast.RemoteDisplaySessionEndEvent.AddListener(stopCasting);
+        //chromeCast.RemoteDisplayErrorEvent.AddListener(errorCasting);
     }
 
     public void startCasting(CastRemoteDisplayManager c)
     {
-        chromeCast.RemoteDisplayCamera = mainCamera;
-        phoneCamera.enabled = true;
+        //mainCanvas.worldCamera = chromecastCamera;
+        //phoneCanvas.worldCamera = phoneCamera;
     }
 
     public void stopCasting(CastRemoteDisplayManager c)
     {
-        chromeCast.RemoteDisplayCamera = null;
-        phoneCamera.enabled = false;
-        mainCamera.enabled = true;
+        //mainCanvas.worldCamera = phoneCamera;
+        //phoneCanvas.worldCamera = null;
     }
 
     public void errorCasting(CastRemoteDisplayManager c)
     {
-        phoneCamera.enabled = false;
-        mainCamera.enabled = true;
-    }
+        //mainCanvas.worldCamera = phoneCamera;
+        //phoneCanvas.worldCamera = null;
+    }*/
 }
