@@ -39,7 +39,6 @@ public class QuizController : MonoBehaviour {
     {
         totalWordList = new List<WordData>();
         GameObject[] zeeguuList = GameObject.FindGameObjectsWithTag("ZeeguuData");
-        Debug.Log(zeeguuList.Length);
         if (zeeguuList.Length<1)
         {
             Debug.Log("No zeeguuData Available, using hardcoded Set");
@@ -122,6 +121,7 @@ public class QuizController : MonoBehaviour {
 
     public void RightPressed()
     {
+        Debug.Log("Rechts");
         if (fastClickFixer)
         {
             fastClickFixer = false;
@@ -139,6 +139,8 @@ public class QuizController : MonoBehaviour {
 
     public void LeftPressed()
     {
+        Debug.Log("Links");
+        Debug.Log("Badoooeeeba");
         if (fastClickFixer)
         {
             fastClickFixer = false;

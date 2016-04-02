@@ -11,12 +11,9 @@ using System.Collections.Generic;
 
 public class ProgressBarOnCanvas : MonoBehaviour {
     public Canvas canvas;
-    public Button button;
+    public Button progressElement;
     public GameObject c;
-    public GameObject self;
-    public GameObject leftDistance;
     public Color colorCorrect, colorToDo, colorWrong;
-    public float height;
     private float count = -1;
 
 	/*
@@ -27,22 +24,23 @@ public class ProgressBarOnCanvas : MonoBehaviour {
         if (count == -1)
         {
             QuizController controller = c.GetComponent<QuizController>();
+            RectTransform canvasTrans = canvas.GetComponent<RectTransform>();
+
             count = controller.totalWordList.Count;
+            float width = canvasTrans.sizeDelta.x / count;
+            float spaceBetween = width*canvasTrans.localScale.x;
             for (int i = 0; i < count; i++)
             {
-                Button newButton = Instantiate(button) as Button;
-                SwitchColor butCol = newButton.GetComponent<SwitchColor>();
-                butCol.SetColors(colorCorrect, colorToDo, colorWrong);
-                controller.totalWordList[i].setObserver(butCol);
-                newButton.transform.SetParent(canvas.transform, false);
-                RectTransform buttonTrans = newButton.GetComponent<RectTransform>();
-                Transform parantTrans = self.GetComponent<Transform>();
-                Transform leftTrans = leftDistance.GetComponent<Transform>();
-                float distanceBetween = leftTrans.position.x * -2 / count;
-                buttonTrans.position = new Vector3(distanceBetween*(i-(count-1)/2f), parantTrans.position.y, 0);
-                buttonTrans.sizeDelta = new Vector2((Screen.width / count), height);
+                Button newProgressElement = Instantiate(progressElement) as Button;
+                SwitchColor sC = newProgressElement.GetComponent<SwitchColor>();
+                sC.SetColors(colorCorrect, colorToDo, colorWrong);
+                controller.totalWordList[i].setObserver(sC);
+
+                newProgressElement.transform.SetParent(this.transform, false);
+                RectTransform newTrans = newProgressElement.GetComponent<RectTransform>();
+                newTrans.position = new Vector3(spaceBetween*((float)(i-count/2))+0.5f*spaceBetween, newTrans.position.y);//(float)(0.5 * spaceBetween + i * spaceBetween), newTrans.position.y);
+                newTrans.sizeDelta = new Vector2(width, newTrans.sizeDelta.y);
             }
         }
-        
     }
 }

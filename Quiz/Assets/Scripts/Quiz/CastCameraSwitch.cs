@@ -4,34 +4,35 @@ using System.Collections;
 
 public class CastCameraSwitch : MonoBehaviour {
 
-    //public CastRemoteDisplayManager chromeCast;
-    //public Camera phoneCamera;
-    //public Camera chromecastCamera;
-    //public Canvas mainCanvas;
-    //public Canvas phoneCanvas;
+    public CastRemoteDisplayManager chromeCast;
+    public Camera phoneCamera;
+    public Camera chromecastCamera;
+    public Canvas mainCanvas;
+    public Canvas phoneCanvas;
 
-    /*public void Start()
+    public void Start()
     {
-        //chromeCast.RemoteDisplaySessionStartEvent.AddListener(startCasting);
-        //chromeCast.RemoteDisplaySessionEndEvent.AddListener(stopCasting);
-        //chromeCast.RemoteDisplayErrorEvent.AddListener(errorCasting);
+        chromeCast.RemoteDisplaySessionStartEvent.AddListener(startCasting);
+        chromeCast.RemoteDisplaySessionEndEvent.AddListener(stopCasting);
+        chromeCast.RemoteDisplayErrorEvent.AddListener(errorCasting);
     }
 
     public void startCasting(CastRemoteDisplayManager c)
     {
-        //mainCanvas.worldCamera = chromecastCamera;
-        //phoneCanvas.worldCamera = phoneCamera;
+        Debug.Log("SuperVreemd");
+        mainCanvas.worldCamera = chromecastCamera;
+        phoneCanvas.worldCamera = phoneCamera;
     }
 
     public void stopCasting(CastRemoteDisplayManager c)
     {
-        //mainCanvas.worldCamera = phoneCamera;
-        //phoneCanvas.worldCamera = null;
+        mainCanvas.worldCamera = phoneCamera;
+        phoneCanvas.worldCamera = null;
     }
 
     public void errorCasting(CastRemoteDisplayManager c)
     {
-        //mainCanvas.worldCamera = phoneCamera;
-        //phoneCanvas.worldCamera = null;
-    }*/
+        mainCanvas.worldCamera = phoneCamera;
+        phoneCanvas.worldCamera = null;
+    }
 }
