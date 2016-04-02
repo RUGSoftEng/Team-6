@@ -531,12 +531,9 @@ MonoBehaviour:
   canvas: {fileID: 338176185}
   progressElement: {fileID: 11409732, guid: 32d01c4f0052e9b4c8c0ad78192a1111, type: 2}
   c: {fileID: 1735378281}
-  self: {fileID: 862734849}
-  leftDistance: {fileID: 0}
   colorCorrect: {r: 0.017241359, g: 0.5, b: 0, a: 1}
   colorToDo: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
   colorWrong: {r: 0.875, g: 0, b: 0, a: 1}
-  height: 40
 --- !u!1 &925935882
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,60 +606,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1338113039}
   m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
---- !u!1001 &1018358433
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 434812, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 434812, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 434812, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 434812, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 434812, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 434812, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 434812, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 434812, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 11467948, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
-      propertyPath: remoteDisplayCamera
-      value: 
-      objectReference: {fileID: 1320193929}
-    - target: {fileID: 11467948, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
-      propertyPath: castAppId
-      value: 5864F981
-      objectReference: {fileID: 0}
-    - target: {fileID: 11467948, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
-      propertyPath: remoteAudioListener
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1147881743
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,7 +815,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1001 &1338113039
 Prefab:
   m_ObjectHideFlags: 0
@@ -1657,45 +1600,3 @@ MonoBehaviour:
   chromecastCamera: {fileID: 1320193929}
   mainCanvas: {fileID: 338176185}
   phoneCanvas: {fileID: 1466864928}
---- !u!1001 &2066851639
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 454822, guid: ecf7bd90037d3472baa247be7ccd7de2, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454822, guid: ecf7bd90037d3472baa247be7ccd7de2, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454822, guid: ecf7bd90037d3472baa247be7ccd7de2, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454822, guid: ecf7bd90037d3472baa247be7ccd7de2, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454822, guid: ecf7bd90037d3472baa247be7ccd7de2, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454822, guid: ecf7bd90037d3472baa247be7ccd7de2, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454822, guid: ecf7bd90037d3472baa247be7ccd7de2, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 454822, guid: ecf7bd90037d3472baa247be7ccd7de2, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: ecf7bd90037d3472baa247be7ccd7de2, type: 2}
-  m_IsPrefabParent: 0

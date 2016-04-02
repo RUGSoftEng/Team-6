@@ -19,6 +19,13 @@ public class CastCanvasSwitch : MonoBehaviour
         phoneCanvas.enabled = false;
 
         chromeCast.RemoteDisplayCamera = chromecastCamera;
+        Debug.Log(chromeCast.IsCasting());
+
+        /* The phone is allready connected to a chromecast*/
+        if (chromeCast.IsCasting())
+        {
+            startCasting(null);
+        }
     }
 
     public void startCasting(CastRemoteDisplayManager c)
