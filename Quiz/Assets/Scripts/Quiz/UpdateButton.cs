@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿/*
+ * UpdateButton enables and disables the two main buttons in the quiz game.
+ * It also colors the buttons green or red after one of them is clicked.
+ */
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 

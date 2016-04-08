@@ -1,3 +1,8 @@
+/*
+ * A bookmark corresponds to a word that can be used in the games.
+ * it contains relevant information about that word,
+ * like a translation and a context sentence.
+ */
 using System.Collections;
 using UnityEngine;
 using Boomlagoon.JSON;
@@ -19,6 +24,7 @@ public class Bookmark {
         this.id = id;
     }
 
+	/* Changes the bookmarks in Json-format gotten from zeeguu into a bookmark-list */
     public static List<Bookmark> ListFromJson(string json) {
         List<Bookmark> bookmarks = new List<Bookmark>();
         JSONObject bm;

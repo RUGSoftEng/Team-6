@@ -2492,7 +2492,6 @@ GameObject:
   - 222: {fileID: 2025456768}
   - 114: {fileID: 2025456767}
   - 114: {fileID: 2025456770}
-  - 114: {fileID: 2025456769}
   m_Layer: 8
   m_Name: CornerPhant
   m_TagString: Untagged
@@ -2553,18 +2552,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2025456765}
---- !u!114 &2025456769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2025456765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ddd5aa82aedd75429aa88389bacc873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 857729870}
 --- !u!114 &2025456770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2603,17 +2590,6 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2025456767}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025456769}
-        m_MethodName: DebugLogin
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null

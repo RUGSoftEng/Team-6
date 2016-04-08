@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿/*
+ * This class handles the transition from having everything
+ * on your main screen to casting stuff to the chromecast.
+ */
+using UnityEngine;
 using Google.Cast.RemoteDisplay;
 using System.Collections;
 

@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿/*
+ * This class handles the text that is drawn in the description field of the game.
+ */
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 

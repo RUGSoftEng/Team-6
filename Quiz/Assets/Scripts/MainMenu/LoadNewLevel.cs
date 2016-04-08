@@ -1,3 +1,6 @@
+/*
+ * Opens up one of the minigames from the main menu.
+ */
 using UnityEngine;
 using System.Collections;
 

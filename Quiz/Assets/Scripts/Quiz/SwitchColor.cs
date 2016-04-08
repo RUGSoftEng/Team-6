@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿/*
+ * an instance of SwitchColor corresponds to a box on the progressbar
+ * and decides what color that box has.
+ */
+using UnityEngine;
 using UnityEngine.UI;
 
 public class SwitchColor : MonoBehaviour {

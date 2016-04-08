@@ -172,6 +172,8 @@ public class QuizController : MonoBehaviour {
         this.GetComponent<LoadNewLevel>().LoadLevel();
     }
 
+	/* this method disables the buttons after one of then is clicked, 
+	 * so that buttons cannot be clicked for a certain amount of time */
     IEnumerator DisableButtons(float time, int correct)
     {
         middleText.GetComponent<UpdateMiddleText>().DisableButtons(correct);
