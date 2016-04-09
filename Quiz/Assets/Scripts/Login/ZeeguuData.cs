@@ -1,3 +1,9 @@
+/*
+ * This script is responsible for handling the communication between the application
+ * and the Zeeguu web service API. It is instantiated once at the login screen, and will
+ * for the remainder of runtime.
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -122,6 +128,7 @@ public class ZeeguuData : MonoBehaviour {
         StartCoroutine(BookmarksRequest());
     }
 
+    // Serializes a session and saves it to a binary file.
     private void saveSession() {
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "session");
@@ -129,6 +136,8 @@ public class ZeeguuData : MonoBehaviour {
         file.Close();
     }
 
+    // Loads and deserializes a saved session from file.
+    // Returns true on success, false if session file non-existent.
     private bool loadSession() {
         if(File.Exists(Application.persistentDataPath + "session")) {
             BinaryFormatter formatter = new BinaryFormatter();
