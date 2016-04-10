@@ -61,18 +61,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Quiz.CSharp.Plugins.csproj">
@@ -83,7 +71,6 @@
   <ItemGroup>
     <Compile Include="Assets\Logout.cs" />
     <Compile Include="Assets\Scripts\Boomlagoon\JSON\JSONObject.cs" />
-    <Compile Include="Assets\Scripts\Login\DebugPhant.cs" />
     <Compile Include="Assets\Scripts\Login\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\Login\ZeeguuData.cs" />
     <Compile Include="Assets\Scripts\MainMenu\FillInUsername.cs" />
