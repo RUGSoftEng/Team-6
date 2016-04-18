@@ -10,7 +10,6 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class ProgressBarOnCanvas : MonoBehaviour {
-    public Canvas canvas;
     public Button progressElement;
     public GameObject c;
     public Color colorCorrect, colorToDo, colorWrong;
@@ -24,7 +23,7 @@ public class ProgressBarOnCanvas : MonoBehaviour {
         if (count == -1)
         {
             QuizController controller = c.GetComponent<QuizController>();
-            RectTransform canvasTrans = canvas.GetComponent<RectTransform>();
+            RectTransform canvasTrans = this.GetComponent<Transform>().parent.GetComponent<RectTransform>();
 
             count = controller.totalWordList.Count;
             float width = canvasTrans.sizeDelta.x / count;
@@ -38,7 +37,7 @@ public class ProgressBarOnCanvas : MonoBehaviour {
 
                 newProgressElement.transform.SetParent(this.transform, false);
                 RectTransform newTrans = newProgressElement.GetComponent<RectTransform>();
-                newTrans.position = new Vector3(spaceBetween*((float)(i-count/2))+0.5f*spaceBetween, newTrans.position.y);//(float)(0.5 * spaceBetween + i * spaceBetween), newTrans.position.y);
+                newTrans.position = new Vector3(spaceBetween*((float)(i-count/2))+0.5f*spaceBetween, newTrans.position.y);  
                 newTrans.sizeDelta = new Vector2(width, newTrans.sizeDelta.y);
             }
         }

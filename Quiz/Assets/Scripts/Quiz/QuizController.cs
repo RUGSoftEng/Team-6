@@ -121,7 +121,6 @@ public class QuizController : MonoBehaviour {
 
     public void RightPressed()
     {
-        Debug.Log("Rechts");
         if (fastClickFixer)
         {
             fastClickFixer = false;
@@ -139,8 +138,6 @@ public class QuizController : MonoBehaviour {
 
     public void LeftPressed()
     {
-        Debug.Log("Links");
-        Debug.Log("Badoooeeeba");
         if (fastClickFixer)
         {
             fastClickFixer = false;
