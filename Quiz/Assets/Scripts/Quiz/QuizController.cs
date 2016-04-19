@@ -22,8 +22,8 @@ public class QuizController : MonoBehaviour {
     private int correct; //0 is left   1 is right
 	public int numberOfClicks;
     private bool fastClickFixer = true; //To fix the delay of disabeling buttons 
-    public Timer timer;
-	public GameObject end;
+    private Timer timer;
+    public GameObject end;
 
     void Start()
     {

@@ -37,7 +37,7 @@ public class ProgressBarOnCanvas : MonoBehaviour {
 
                 newProgressElement.transform.SetParent(this.transform, false);
                 RectTransform newTrans = newProgressElement.GetComponent<RectTransform>();
-                newTrans.position = new Vector3(spaceBetween*((float)(i-count/2))+0.5f*spaceBetween, newTrans.position.y);  
+                newTrans.position = new Vector3(spaceBetween*((float)(i-count/2))+0.5f*spaceBetween, newTrans.position.y); 
                 newTrans.sizeDelta = new Vector2(width, newTrans.sizeDelta.y);
             }
         }

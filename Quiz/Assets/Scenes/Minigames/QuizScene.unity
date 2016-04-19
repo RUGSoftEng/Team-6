@@ -528,7 +528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2cb64ba779dc343a078e3da8005eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 338176185}
   progressElement: {fileID: 11409732, guid: 32d01c4f0052e9b4c8c0ad78192a1111, type: 2}
   c: {fileID: 1735378281}
   colorCorrect: {r: 0.017241359, g: 0.5, b: 0, a: 1}
@@ -1218,6 +1217,7 @@ GameObject:
   - 4: {fileID: 1735378282}
   - 114: {fileID: 1735378283}
   - 114: {fileID: 1735378284}
+  - 114: {fileID: 1735378285}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -1254,6 +1254,7 @@ MonoBehaviour:
   correctWaitTime: 0.5
   wrongWaitTime: 5
   numberOfClicks: 0
+  timer: {fileID: 0}
   end: {fileID: 135040, guid: 1dac0dbfe1877294fb1beb88665825c0, type: 2}
 --- !u!114 &1735378284
 MonoBehaviour:
@@ -1267,6 +1268,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelIndex: 1
+--- !u!114 &1735378285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1735378281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fc32cd3364f1b4cbf2dbf7dba60069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1737424542
 GameObject:
   m_ObjectHideFlags: 0
