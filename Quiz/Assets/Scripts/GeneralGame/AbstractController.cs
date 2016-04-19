@@ -1,17 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AbstractController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public List<WordData> totalWordList;
 
     /* this method should always be called if the quiz game is exitted */
     protected void Exit()

@@ -16,7 +16,6 @@ public class QuizController : AbstractController {
     public int maxAmountOfWords;
     public float correctWaitTime;
     public float wrongWaitTime;
-    public List<WordData> totalWordList;
     public List<WordData> toDoList;
     private WordData currentWord;
     private int correct; //0 is left   1 is right
