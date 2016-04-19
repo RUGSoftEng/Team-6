@@ -9,21 +9,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class QuizController : MonoBehaviour {
+public class QuizController : AbstractController {
 
     public Text middleText;
     public Text DescriptionShower;
     public int maxAmountOfWords;
     public float correctWaitTime;
     public float wrongWaitTime;
-    public List<WordData> totalWordList;
     public List<WordData> toDoList;
     private WordData currentWord;
     private int correct; //0 is left   1 is right
 	public int numberOfClicks;
     private bool fastClickFixer = true; //To fix the delay of disabeling buttons 
-    public Timer timer;
-	public GameObject end;
+    private Timer timer;
+    public GameObject end;
 
     void Start()
     {
@@ -73,7 +72,7 @@ public class QuizController : MonoBehaviour {
     {
         if (toDoList.Count < 1)
         {
-            StartCoroutine(Exit());
+            StartCoroutine(ShowFinished());
             return;
         }
 
@@ -166,20 +165,18 @@ public class QuizController : MonoBehaviour {
         }
     }
 
-    /* this method should always be called if the quiz game is exitted */
-    IEnumerator Exit()
+    private IEnumerator ShowFinished()
     {
-		GameObject canvas = GameObject.FindGameObjectsWithTag("canvas")[0];
-		GameObject endscreen = Instantiate(end);
-		endscreen.transform.SetParent(canvas.transform);
-		endscreen.transform.position = new Vector3(0,0,0);
-		endscreen.transform.localScale = new Vector3(1,1,1);
-		RectTransform rt = endscreen.GetComponent<RectTransform>();
-		rt.sizeDelta = new Vector2(Screen.width,Screen.height);
-		StartCoroutine(DisableButtons(8,1));
-		yield return new WaitForSeconds(5);
-        Screen.orientation = ScreenOrientation.Portrait;
-        this.GetComponent<LoadNewLevel>().LoadLevel();
+        GameObject canvas = GameObject.FindGameObjectsWithTag("canvas")[0];
+        GameObject endscreen = Instantiate(end);
+        endscreen.transform.SetParent(canvas.transform);
+        endscreen.transform.position = new Vector3(0, 0, 0);
+        endscreen.transform.localScale = new Vector3(1, 1, 1);
+        RectTransform rt = endscreen.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(Screen.width, Screen.height);
+        StartCoroutine(DisableButtons(8, 1));
+        yield return new WaitForSeconds(5);
+        Exit();
     }
 
 	/* this method disables the buttons after one of then is clicked, 
