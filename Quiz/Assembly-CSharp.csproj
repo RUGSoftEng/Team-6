@@ -47,6 +47,9 @@
   <ItemGroup>
      <Compile Include="Assets\Logout.cs" />
      <Compile Include="Assets\Scripts\Boomlagoon\JSON\JSONObject.cs" />
+     <Compile Include="Assets\Scripts\GeneralGame\AbstractController.cs" />
+     <Compile Include="Assets\Scripts\GeneralGame\WordData.cs" />
+     <Compile Include="Assets\Scripts\GeneralGame\loadCastCamera.cs" />
      <Compile Include="Assets\Scripts\Login\DontDestroy.cs" />
      <Compile Include="Assets\Scripts\Login\ZeeguuData.cs" />
      <Compile Include="Assets\Scripts\MainMenu\FillInUsername.cs" />
@@ -61,8 +64,6 @@
      <Compile Include="Assets\Scripts\Quiz\Timer.cs" />
      <Compile Include="Assets\Scripts\Quiz\UpdateButton.cs" />
      <Compile Include="Assets\Scripts\Quiz\UpdateMiddleText.cs" />
-     <Compile Include="Assets\Scripts\Quiz\WordData.cs" />
-     <Compile Include="Assets\Scripts\loadCastCamera.cs" />
      <None Include="Assets\Plugins\Android\appcompat\res\color\switch_thumb_material_light.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\drawable\abc_item_background_holo_light.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\layout\abc_alert_dialog_button_bar_material.xml" />
