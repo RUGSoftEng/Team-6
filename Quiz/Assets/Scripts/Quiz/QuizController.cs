@@ -22,11 +22,13 @@ public class QuizController : MonoBehaviour {
     private int correct; //0 is left   1 is right
 	public int numberOfClicks;
     private bool fastClickFixer = true; //To fix the delay of disabeling buttons 
+    public Timer timer;
 	public GameObject end;
 
     void Start()
     {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+        timer = this.GetComponent<Timer>();
         numberOfClicks = 0;
         LoadData();
         UpdateGame();
@@ -84,6 +86,7 @@ public class QuizController : MonoBehaviour {
         } while (currentWord.GetTrans().Equals(wrongTrans));
         correct = Random.Range(0, 2);
         middleText.GetComponent<UpdateMiddleText>().UpdateText(currentWord.GetWord(), currentWord.GetTrans(), wrongTrans, correct);
+        timer.StartTiming();
     }
 	
 	/*
@@ -93,13 +96,22 @@ public class QuizController : MonoBehaviour {
     {
         return list[Random.Range(0, list.Count)];
     }
+    
+    /* This method is allways called when an answer is given, either wrong or right.
+     * It stops the timer that records how long the person took to answer the question.
+     */
+    private void Answer()
+    {
+        currentWord.AddSeenTime(timer.StopTiming());
+    }
 
-	/*
+    /*
 	 * This method decides what happens when the button with the correct answer is clicked
 	 * It removes the current word from the todolist and disables the buttons for a small while.
 	 */
     private void CorrectAnswer()
     {
+        Answer();
         currentWord.Solved();
         toDoList.Remove(currentWord);
         StartCoroutine(DisableButtons(correctWaitTime,1));
@@ -112,7 +124,8 @@ public class QuizController : MonoBehaviour {
 	 */
     private void WrongAnswer()
     {
-		currentWord.Wrong();
+        Answer();
+        currentWord.Wrong();
         toDoList.Remove(currentWord);
 		toDoList.Add(currentWord);
         DescriptionShower.GetComponent<EditText>().setText(currentWord.GetDesc());

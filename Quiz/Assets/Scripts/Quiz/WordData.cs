@@ -13,6 +13,7 @@ public class WordData
     private string translation;
     private string description;
     private bool solved = false;
+    private double seenTime = 0.0;
     private SwitchColor observer;
 
 	public WordData (string word, string translation, string description) {
@@ -20,6 +21,16 @@ public class WordData
         this.translation = translation;
         this.description = description;	
 	}
+
+    public void AddSeenTime(double curSeenTime)
+    {
+        seenTime = seenTime + curSeenTime;
+    }
+
+    public double GetSeenTime()
+    {
+        return seenTime;
+    }
 	
 	public string GetWord()
     {

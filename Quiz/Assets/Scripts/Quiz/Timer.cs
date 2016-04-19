@@ -7,10 +7,11 @@ public class Timer : MonoBehaviour {
     bool timing = false;
 
 	// Starts the timing, when a timing is allready running nothing is done.
-	void StartTiming () {
+	public void StartTiming () {
 	    if (!timing)
         {
             currentTime = 0;
+            timing = true;
         }
 	}
 	
@@ -23,7 +24,7 @@ public class Timer : MonoBehaviour {
 	}
 
     //Stops the timer and returns the amount of time that is timed.
-    double StopTiming()
+    public double StopTiming()
     {
         timing = false;
         return currentTime;

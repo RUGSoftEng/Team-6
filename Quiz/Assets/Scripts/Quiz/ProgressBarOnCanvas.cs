@@ -24,7 +24,7 @@ public class ProgressBarOnCanvas : MonoBehaviour {
         {
             QuizController controller = c.GetComponent<QuizController>();
             RectTransform canvasTrans = this.GetComponent<Transform>().parent.GetComponent<RectTransform>();
-
+            
             count = controller.totalWordList.Count;
             float width = canvasTrans.sizeDelta.x / count;
             float spaceBetween = width*canvasTrans.localScale.x;
