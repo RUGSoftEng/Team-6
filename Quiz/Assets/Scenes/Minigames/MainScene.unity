@@ -192,6 +192,22 @@ Prefab:
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 11437764, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_Color.r
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437764, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_Color.g
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437764, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_Color.b
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437764, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_Color.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e47539078c65704f829e242a766bab4, type: 2}
   m_IsPrefabParent: 0
@@ -528,11 +544,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2cb64ba779dc343a078e3da8005eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 338176185}
   progressElement: {fileID: 11409732, guid: 32d01c4f0052e9b4c8c0ad78192a1111, type: 2}
   c: {fileID: 1735378281}
   colorCorrect: {r: 0.017241359, g: 0.5, b: 0, a: 1}
-  colorToDo: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
+  colorToDo: {r: 0.39607844, g: 0.39607844, b: 0.39607844, a: 1}
   colorWrong: {r: 0.875, g: 0, b: 0, a: 1}
 --- !u!1 &925935882
 GameObject:
@@ -939,6 +954,22 @@ Prefab:
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0.60294116
       objectReference: {fileID: 0}
+    - target: {fileID: 11437764, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_Color.r
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437764, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_Color.g
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437764, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_Color.b
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437764, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_Color.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e47539078c65704f829e242a766bab4, type: 2}
   m_IsPrefabParent: 0
@@ -1166,7 +1197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1254,6 +1285,7 @@ MonoBehaviour:
   correctWaitTime: 0.5
   wrongWaitTime: 5
   numberOfClicks: 0
+  timer: {fileID: 0}
   end: {fileID: 135040, guid: 1dac0dbfe1877294fb1beb88665825c0, type: 2}
 --- !u!114 &1735378284
 MonoBehaviour:
@@ -1548,7 +1580,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.29411763, g: 0.29411763, b: 0.29411763, a: 0.019607844}
+  m_BackGroundColor: {r: 0.9647059, g: 0.9647059, b: 0.9647059, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

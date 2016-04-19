@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\Quiz\ProgressBarOnCanvas.cs" />
      <Compile Include="Assets\Scripts\Quiz\QuizController.cs" />
      <Compile Include="Assets\Scripts\Quiz\SwitchColor.cs" />
+     <Compile Include="Assets\Scripts\Quiz\Timer.cs" />
      <Compile Include="Assets\Scripts\Quiz\UpdateButton.cs" />
      <Compile Include="Assets\Scripts\Quiz\UpdateMiddleText.cs" />
      <Compile Include="Assets\Scripts\Quiz\WordData.cs" />
