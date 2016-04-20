@@ -22,12 +22,9 @@ public class ProgressBarOnCanvas : MonoBehaviour {
     {
         if (count == -1)
         {
+			GameObject canvas = GameObject.FindGameObjectsWithTag("canvas")[0];
             AbstractController controller = c.GetComponent<AbstractController>();
-            RectTransform canvasTrans = this.GetComponent<Transform>().parent.GetComponent<RectTransform>();
-            Debug.Log(controller);
             count = controller.totalWordList.Count;
-            float width = canvasTrans.sizeDelta.x / count;
-            float spaceBetween = width*canvasTrans.localScale.x;
             for (int i = 0; i < count; i++)
             {
                 Button newProgressElement = Instantiate(progressElement) as Button;
@@ -35,10 +32,13 @@ public class ProgressBarOnCanvas : MonoBehaviour {
                 sC.SetColors(colorCorrect, colorToDo, colorWrong);
                 controller.totalWordList[i].setObserver(sC);
 
-                newProgressElement.transform.SetParent(this.transform, false);
-                RectTransform newTrans = newProgressElement.GetComponent<RectTransform>();
-                newTrans.position = new Vector3(spaceBetween*((float)(i-count/2))+0.5f*spaceBetween, newTrans.position.y); 
-                newTrans.sizeDelta = new Vector2(width, newTrans.sizeDelta.y);
+                newProgressElement.transform.SetParent(canvas.transform);
+				newProgressElement.transform.localScale = new Vector3(1, 1, 1);
+                RectTransform rt = newProgressElement.GetComponent<RectTransform>();
+				rt.anchorMin = new Vector2(i/count,0F);
+				rt.anchorMax = new Vector2((i+1)/count,0.05F);
+				rt.offsetMin = new Vector2(0,0);
+				rt.offsetMax = new Vector2(0,0);
             }
         }
     }

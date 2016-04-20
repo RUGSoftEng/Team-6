@@ -75,10 +75,8 @@ public class QuizController : AbstractController {
 			GameObject canvas = GameObject.FindGameObjectsWithTag("canvas")[0];
 			GameObject endscreen = Instantiate(end);
 			endscreen.transform.SetParent(canvas.transform);
-			endscreen.transform.position = new Vector3(0, 0, 0);
 			endscreen.transform.localScale = new Vector3(1, 1, 1);
 			RectTransform rt = endscreen.GetComponent<RectTransform>();
-			rt.sizeDelta = new Vector2(Screen.width, Screen.height);
 			rt.anchorMin = new Vector2(0,0);
 			rt.anchorMax = new Vector2(1,1);
 			rt.offsetMin = new Vector2(0,0);
