@@ -72,8 +72,19 @@ public class QuizController : AbstractController {
     {
         if (toDoList.Count < 1)
         {
-            StartCoroutine(ShowFinished());
-            return;
+			GameObject canvas = GameObject.FindGameObjectsWithTag("canvas")[0];
+			GameObject endscreen = Instantiate(end);
+			endscreen.transform.SetParent(canvas.transform);
+			endscreen.transform.position = new Vector3(0, 0, 0);
+			endscreen.transform.localScale = new Vector3(1, 1, 1);
+			RectTransform rt = endscreen.GetComponent<RectTransform>();
+			rt.sizeDelta = new Vector2(Screen.width, Screen.height);
+			rt.anchorMin = new Vector2(0,0);
+			rt.anchorMax = new Vector2(1,1);
+			rt.offsetMin = new Vector2(0,0);
+			rt.offsetMax = new Vector2(0,0);
+            StartCoroutine(WaitFinished());
+			return;
         }
 
         DescriptionShower.GetComponent<EditText>().removeText();
@@ -165,25 +176,22 @@ public class QuizController : AbstractController {
         }
     }
 
-    private IEnumerator ShowFinished()
+    IEnumerator WaitFinished()
     {
-        GameObject canvas = GameObject.FindGameObjectsWithTag("canvas")[0];
-        GameObject endscreen = Instantiate(end);
-        endscreen.transform.SetParent(canvas.transform);
-        endscreen.transform.position = new Vector3(0, 0, 0);
-        endscreen.transform.localScale = new Vector3(1, 1, 1);
-        RectTransform rt = endscreen.GetComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(Screen.width, Screen.height);
-        StartCoroutine(DisableButtons(8, 1));
-        yield return new WaitForSeconds(5);
-        Exit();
+		while(true) {
+			if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) {
+				Exit();
+				break;
+			}
+			yield return null;
+		}
     }
 
 	/* this method disables the buttons after one of then is clicked, 
 	 * so that buttons cannot be clicked for a certain amount of time */
     IEnumerator DisableButtons(float time, int correct)
     {
-        middleText.GetComponent<UpdateMiddleText>().DisableButtons(correct);
+		middleText.GetComponent<UpdateMiddleText>().DisableButtons(correct);
         yield return new WaitForSeconds(time);
         middleText.GetComponent<UpdateMiddleText>().EnableButtons();
         fastClickFixer = true;
