@@ -1280,7 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4a9bf1eb01b3141b104e89dfd4181c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmountOfWords: 5
+  maxAmountOfWords: 15
   middleText: {fileID: 1618838149}
   DescriptionShower: {fileID: 1469033900}
   correctWaitTime: 0.5
