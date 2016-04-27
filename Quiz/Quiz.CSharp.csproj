@@ -84,6 +84,7 @@
     <Compile Include="Assets\Logout.cs" />
     <Compile Include="Assets\Scripts\Boomlagoon\JSON\JSONObject.cs" />
     <Compile Include="Assets\Scripts\GeneralGame\AbstractController.cs" />
+    <Compile Include="Assets\Scripts\GeneralGame\BackButton.cs" />
     <Compile Include="Assets\Scripts\GeneralGame\WordData.cs" />
     <Compile Include="Assets\Scripts\GeneralGame\loadCastCamera.cs" />
     <Compile Include="Assets\Scripts\Login\DontDestroy.cs" />

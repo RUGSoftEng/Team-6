@@ -1280,9 +1280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4a9bf1eb01b3141b104e89dfd4181c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxAmountOfWords: 15
   middleText: {fileID: 1618838149}
   DescriptionShower: {fileID: 1469033900}
-  maxAmountOfWords: 15
   correctWaitTime: 0.5
   wrongWaitTime: 5
   numberOfClicks: 0
@@ -1643,3 +1643,53 @@ MonoBehaviour:
   chromecastCamera: {fileID: 1320193929}
   mainCanvas: {fileID: 338176185}
   phoneCanvas: {fileID: 1466864928}
+--- !u!1001 &2117181791
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 450026, guid: a26a26440ddb796479b908c0ce4f9694, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450026, guid: a26a26440ddb796479b908c0ce4f9694, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.457809
+      objectReference: {fileID: 0}
+    - target: {fileID: 450026, guid: a26a26440ddb796479b908c0ce4f9694, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -14
+      objectReference: {fileID: 0}
+    - target: {fileID: 450026, guid: a26a26440ddb796479b908c0ce4f9694, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450026, guid: a26a26440ddb796479b908c0ce4f9694, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450026, guid: a26a26440ddb796479b908c0ce4f9694, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450026, guid: a26a26440ddb796479b908c0ce4f9694, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 450026, guid: a26a26440ddb796479b908c0ce4f9694, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470780, guid: a26a26440ddb796479b908c0ce4f9694, type: 2}
+      propertyPath: sceneName
+      value: HomeScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470780, guid: a26a26440ddb796479b908c0ce4f9694, type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 1735378281}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a26a26440ddb796479b908c0ce4f9694, type: 2}
+  m_IsPrefabParent: 0
