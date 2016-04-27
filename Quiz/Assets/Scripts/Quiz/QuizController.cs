@@ -41,15 +41,7 @@ public class QuizController : AbstractController {
     {
         if (toDoList.Count < 1)
         {
-			GameObject canvas = GameObject.FindGameObjectsWithTag("canvas")[0];
-			GameObject endscreen = Instantiate(end);
-			endscreen.transform.SetParent(canvas.transform);
-			endscreen.transform.localScale = new Vector3(1, 1, 1);
-			RectTransform rt = endscreen.GetComponent<RectTransform>();
-			rt.anchorMin = new Vector2(0,0);
-			rt.anchorMax = new Vector2(1,1);
-			rt.offsetMin = new Vector2(0,0);
-			rt.offsetMax = new Vector2(0,0);
+			CreateEndscreen(end);
             StartCoroutine(WaitFinished());
 			return;
         }
@@ -141,17 +133,6 @@ public class QuizController : AbstractController {
                 WrongAnswer();
             }
         }
-    }
-
-    IEnumerator WaitFinished()
-    {
-		while(true) {
-			if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) {
-				Exit();
-				break;
-			}
-			yield return null;
-		}
     }
 
 	/* this method disables the buttons after one of then is clicked, 

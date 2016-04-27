@@ -15,11 +15,18 @@ public class WordData
     private bool solved = false;
     private double seenTime = 0.0;
     private SwitchColor observer;
+	private bool memory = false;
 
 	public WordData (string word, string translation, string description) {
         this.word = word;
         this.translation = translation;
         this.description = description;	
+	}
+	
+	public WordData (WordData wd) {
+		this.word = wd.word;
+		this.translation = wd.translation;
+		this.description = wd.description;
 	}
 
     public void AddSeenTime(double curSeenTime)
@@ -62,4 +69,17 @@ public class WordData
     {
         observer.Wrong();
     }
+	
+	public void SetMemory(bool b) {
+		this.memory = b;
+	}
+	
+	public string GetMemoryWord() {
+		Debug.Log(this.memory+"");
+		if (this.memory==true) {
+			return word;
+		} else {
+			return translation;
+		}
+	}
 }

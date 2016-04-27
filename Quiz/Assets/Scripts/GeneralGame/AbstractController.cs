@@ -25,6 +25,9 @@ public abstract class AbstractController : MonoBehaviour {
             totalWordList.Add(new WordData("Shout", "Schreeuw", "Harry Shouts to Mary"));
             totalWordList.Add(new WordData("Surf", "Surfen", "Harold loves to surf"));
             totalWordList.Add(new WordData("Moan", "Zeuren", "Jimmy moans a lot"));
+            totalWordList.Add(new WordData("Manatee", "Zeekoe", "Today I've eaten a manatee for breakfast"));
+            totalWordList.Add(new WordData("Moon", "Maan", "The moon comes out at night"));
+            totalWordList.Add(new WordData("Sun", "Zon", "The sun sits high in the sky"));
         }
         else
         {
@@ -47,5 +50,29 @@ public abstract class AbstractController : MonoBehaviour {
     {
         Screen.orientation = ScreenOrientation.Portrait;
         this.GetComponent<LoadNewLevel>().LoadLevel();
+    }
+	
+	public void CreateEndscreen(GameObject end) {
+		GameObject canvas = GameObject.FindGameObjectsWithTag("canvas")[0];
+		GameObject endscreen = Instantiate(end);
+		endscreen.transform.SetParent(canvas.transform);
+		endscreen.transform.localScale = new Vector3(1, 1, 1);
+		RectTransform rt = endscreen.GetComponent<RectTransform>();
+		rt.anchorMin = new Vector2(0,0);
+		rt.anchorMax = new Vector2(1,1);
+		rt.offsetMin = new Vector2(0,0);
+		rt.offsetMax = new Vector2(0,0);
+	}
+	
+	/* Waits for a mouseclick/fingerpress and then goes back to the menu*/
+	public IEnumerator WaitFinished()
+    {
+		while(true) {
+			if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) {
+				Exit();
+				break;
+			}
+			yield return null;
+		}
     }
 }

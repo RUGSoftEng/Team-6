@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/HomeScreen.unity
   - enabled: 1
     path: Assets/Scenes/Minigames/QuizScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Minigames/MemoryScene.unity
