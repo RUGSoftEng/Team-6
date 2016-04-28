@@ -27,12 +27,22 @@ public class ZeeguuData : MonoBehaviour {
     public InputField serverText;
     public Toggle keepSignedIn;
     public GameObject loginButton; //Handle needed so we can trigger animation of the login button.
+    public GameObject loginForm;
+    public GameObject signingIn;
 
     public string serverURL;
 
     public void Start() {
         if (loadSession()) {
+            //Show "Signing in"
+            loginForm.SetActive(false);
+            signingIn.SetActive(true);
             StartCoroutine(LoginRequest("", ""));
+        } else {
+            //Show the login form
+            loginForm.SetActive(true);
+            loginForm.GetComponent<Animator>().Play("FoldOut");
+            signingIn.SetActive(false);
         }
     }
     
