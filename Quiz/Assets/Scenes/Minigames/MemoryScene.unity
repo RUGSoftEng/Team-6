@@ -526,6 +526,7 @@ MonoBehaviour:
   colorCorrect: {r: 0.034482718, g: 1, b: 0, a: 1}
   colorWrong: {r: 1, g: 0, b: 0, a: 1}
   colorSelected: {r: 0.35294116, g: 0.35294116, b: 0.35294116, a: 1}
+  colorNormal: {r: 1, g: 1, b: 1, a: 0}
   end: {fileID: 135040, guid: 1dac0dbfe1877294fb1beb88665825c0, type: 2}
 --- !u!4 &168907397
 Transform:
