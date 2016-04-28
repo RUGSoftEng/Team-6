@@ -16,6 +16,7 @@ public class MemoryController : AbstractController {
 	private int pressed = -1, toDo = 7;
 	private List<WordData> words;
 	public GameObject end;
+	private bool[] locked = new bool[14];
 
 	// Use this for initialization
 	void Start () {
@@ -75,8 +76,7 @@ public class MemoryController : AbstractController {
 			pressed=-1;
 			toDo--;
 		} else {
-			buttons[i].GetComponent<Button>().interactable = false;
-			buttons[pressed].GetComponent<Button>().interactable = false;
+			LockAllButtons();
 			buttons[i].GetComponent<UpdateButton>().SetDisabledColor(colorWrong);
 			buttons[pressed].GetComponent<UpdateButton>().SetDisabledColor(colorWrong);
 			StartCoroutine(WaitButtons(pressed,i));
@@ -89,12 +89,26 @@ public class MemoryController : AbstractController {
 		}
 	}
 	
+	public void LockAllButtons() {
+		for (int i=0;i<14;i++) {
+			locked[i] = buttons[i].GetComponent<Button>().interactable;
+			buttons[i].GetComponent<Button>().interactable = false;
+		}
+	}
+	
+	public void UnlockAllButtons() {
+		for (int i=0;i<14;i++) {
+			buttons[i].GetComponent<Button>().interactable = locked[i];
+		}
+	}
+	
 	IEnumerator WaitButtons(int b1, int b2)
     {
-        yield return new WaitForSeconds(1);
-		buttons[b1].GetComponent<Button>().interactable = true;
-		buttons[b2].GetComponent<Button>().interactable = true;
+        yield return new WaitForSeconds(2.5F);
 		buttons[b1].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
 		buttons[b2].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
+		buttons[b1].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
+		buttons[b2].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
+		UnlockAllButtons();
     }
 }
