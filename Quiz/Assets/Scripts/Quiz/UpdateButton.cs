@@ -26,6 +26,17 @@ public class UpdateButton : MonoBehaviour {
         c.disabledColor = col;
         GetComponent<Button>().colors = c;
     }
+	
+	/*
+	 * set the color of this button, when it is enabled.
+	 */
+    public void SetEnabledColor(Color col)
+    {
+        var c = GetComponent<Button>().colors;
+        c.normalColor = col;
+		c.highlightedColor = col;
+        GetComponent<Button>().colors = c;
+    }
 
     public void Disable(int correct)
     {

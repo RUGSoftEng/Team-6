@@ -23,8 +23,8 @@ public abstract class AbstractController : MonoBehaviour {
             Debug.Log("No zeeguuData Available, using hardcoded Set");
             totalWordList.Add(new WordData("Lion", "Leeuw", "A Lion Roars"));
             totalWordList.Add(new WordData("Shout", "Schreeuw", "Harry Shouts to Mary"));
-            totalWordList.Add(new WordData("Surf", "Surfen", "Harold loves to surf"));
-            totalWordList.Add(new WordData("Moan", "Zeuren", "Jimmy moans a lot"));
+            totalWordList.Add(new WordData("A super long english word which you would never expect since it is way to long to be writable, or even readible", "Een ontezettend lang engels woord dat je nooit verwacht, het is zo lang dat je hem niet eens kan schrijven laat staan lezen", "Who that was really long"));
+            totalWordList.Add(new WordData("Moan", "Zeuren", "Jimmy moans a lot, and this becomes a very long test description so we can check if that also works properly at every game, because it would be very disappointing if it doesn't"));
             totalWordList.Add(new WordData("Manatee", "Zeekoe", "Today I've eaten a manatee for breakfast"));
             totalWordList.Add(new WordData("Moon", "Maan", "The moon comes out at night"));
             totalWordList.Add(new WordData("Sun", "Zon", "The sun sits high in the sky"));
