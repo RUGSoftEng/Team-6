@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System;
 
 public class ZeeguuData : MonoBehaviour {
     public static string DEFAULT_SERVER = "https://www.zeeguu.unibe.ch/";
@@ -94,13 +95,38 @@ public class ZeeguuData : MonoBehaviour {
         }
 
         //Retrieve user bookmarks
-        WWW bookmarkRequest = new WWW(serverURL + "/bookmarks_by_day/with_context?session=" + sessionID);
-        yield return bookmarkRequest;
-        if (!bookmarkRequest.text.Equals("")) {
-            userBookmarks = Bookmark.ListFromJson(bookmarkRequest.text);
+        if (loadBookmarks()) {
+            DateTime lastModified = File.GetLastWriteTime(Application.persistentDataPath + "bookmarks");
+
+            WWWForm bookmarksForm = new WWWForm();
+            bookmarksForm.AddField("with_context", "true");
+            bookmarksForm.AddField("after_date", lastModified.ToString("s"));
+
+            Debug.Log("Sending POST request:" + (serverURL + "/bookmarks_by_day?session=" + sessionID));
+            Debug.Log("With after_date set to: " + lastModified.ToString("s"));
+
+            WWW bookmarkRequest = new WWW(serverURL + "/bookmarks_by_day?session=" + sessionID, bookmarksForm);
+            yield return bookmarkRequest;
+
+            if (!bookmarkRequest.text.Equals("")) {
+                Debug.Log(Bookmark.ListFromJson(bookmarkRequest.text).Count + "additional bookmarks retrieved");
+                userBookmarks.AddRange(Bookmark.ListFromJson(bookmarkRequest.text));
+                saveBookmarks();
+            } else {
+                loginButton.GetComponent<Animator>().Play("Disabled");
+                yield break;
+            }
         } else {
-            loginButton.GetComponent<Animator>().Play("Disabled");
-            yield break;
+            WWW bookmarkRequest = new WWW(serverURL + "/bookmarks_by_day/with_context?session=" + sessionID);
+            yield return bookmarkRequest;
+            if (!bookmarkRequest.text.Equals("")) {
+                userBookmarks = Bookmark.ListFromJson(bookmarkRequest.text);
+                Debug.Log("Got all "+ userBookmarks.Count +"bookmarks from Zeeguu");
+                saveBookmarks();
+            } else {
+                loginButton.GetComponent<Animator>().Play("Disabled");
+                yield break;
+            }
         }
 
         //Store the session if needed.
@@ -161,6 +187,30 @@ public class ZeeguuData : MonoBehaviour {
         } else {
             return false;
         }
+    }
+
+    // Loads the list of bookmarks from file.
+    // Returns true on success, false if bookmark file does not exist.
+    private bool loadBookmarks() {
+        if(File.Exists(Application.persistentDataPath + "bookmarks")) {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "bookmarks", FileMode.Open);
+            userBookmarks = (List<Bookmark>)formatter.Deserialize(file);
+            Debug.Log(userBookmarks.Count + " saved bookmarks found");
+            file.Close();
+            return true;
+        } else {
+            Debug.Log("No bookmarks saved");
+            return false;
+        }
+    }
+
+    private void saveBookmarks() {
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "bookmarks");
+        formatter.Serialize(file, userBookmarks);
+        Debug.Log(userBookmarks.Count + " bookmarks saved");
+        file.Close();
     }
 
     public static void destroySession() {

@@ -9,9 +9,9 @@ using Boomlagoon.JSON;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class Bookmark {
-
-    public Text test;
+    
     public string word { get; set; }
     public string translation { get; set; }
     public string context { get; set; }
