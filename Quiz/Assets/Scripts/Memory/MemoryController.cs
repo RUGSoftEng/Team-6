@@ -10,7 +10,7 @@ using System.Linq;
 
 public class MemoryController : AbstractController {
 	
-	private List<GameObject> buttons;
+	private List<GameObject> buttons, chromeButtons;
     private Timer timer;
 	public Color colorCorrect, colorWrong, colorSelected, colorNormal;
 	private int pressed = -1, toDo = 7;
@@ -23,13 +23,21 @@ public class MemoryController : AbstractController {
 		Screen.orientation = ScreenOrientation.LandscapeLeft;
         timer = this.GetComponent<Timer>();
 		buttons = GameObject.FindGameObjectsWithTag("memButton").OrderBy( go => go.name ).ToList();
+        chromeButtons = GameObject.FindGameObjectsWithTag("chromeButton").OrderBy(go => go.name).ToList();
         LoadData();
 		AssignData();
 		for (int i=0;i<14;i++) {
-			SwitchColor sC = buttons[i].GetComponent<SwitchColor>();
+            SwitchColor sC = buttons[i].GetComponent<SwitchColor>();
 			sC.SetColors(colorCorrect, colorSelected, colorWrong);
 			totalWordList[i].setObserver(sC);
 		}
+
+        for (int i = 0; i < 14; i++)
+        {
+            SwitchColor sC = chromeButtons[i].GetComponent<SwitchColor>();
+            sC.SetColors(colorCorrect, colorSelected, colorWrong);
+            totalWordList[i].setObserver(sC);
+        }
         UpdateGame();
 	}
 	
@@ -59,7 +67,13 @@ public class MemoryController : AbstractController {
 			buttons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
 			buttons[i].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
 		}
-	}
+
+        for (int i = 0; i < 14; i++)
+        {
+            chromeButtons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
+            chromeButtons[i].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
+        }
+    }
 	
 	public void ButtonPressed(int i) {
 		if (pressed==i) {
@@ -73,12 +87,20 @@ public class MemoryController : AbstractController {
 			buttons[pressed].GetComponent<Button>().interactable = false;
 			buttons[i].GetComponent<UpdateButton>().SetDisabledColor(colorCorrect);
 			buttons[pressed].GetComponent<UpdateButton>().SetDisabledColor(colorCorrect);
-			pressed=-1;
+
+            chromeButtons[i].GetComponent<Button>().interactable = false;
+            chromeButtons[pressed].GetComponent<Button>().interactable = false;
+            chromeButtons[i].GetComponent<UpdateButton>().SetDisabledColor(colorCorrect);
+            chromeButtons[pressed].GetComponent<UpdateButton>().SetDisabledColor(colorCorrect);
+
+            pressed =-1;
 			toDo--;
 		} else {
 			LockAllButtons();
 			buttons[i].GetComponent<UpdateButton>().SetDisabledColor(colorWrong);
-			buttons[pressed].GetComponent<UpdateButton>().SetDisabledColor(colorWrong);
+            chromeButtons[i].GetComponent<UpdateButton>().SetDisabledColor(colorWrong);
+            buttons[pressed].GetComponent<UpdateButton>().SetDisabledColor(colorWrong);
+            chromeButtons[pressed].GetComponent<UpdateButton>().SetDisabledColor(colorWrong);
 			StartCoroutine(WaitButtons(pressed,i));
 			pressed=-1;
 		}
@@ -94,13 +116,24 @@ public class MemoryController : AbstractController {
 			locked[i] = buttons[i].GetComponent<Button>().interactable;
 			buttons[i].GetComponent<Button>().interactable = false;
 		}
-	}
+
+        for (int i = 0; i < 14; i++)
+        {
+            locked[i] = chromeButtons[i].GetComponent<Button>().interactable;
+            chromeButtons[i].GetComponent<Button>().interactable = false;
+        }
+    }
 	
 	public void UnlockAllButtons() {
 		for (int i=0;i<14;i++) {
 			buttons[i].GetComponent<Button>().interactable = locked[i];
 		}
-	}
+
+        for (int i = 0; i < 14; i++)
+        {
+            chromeButtons[i].GetComponent<Button>().interactable = locked[i];
+        }
+    }
 	
 	IEnumerator WaitButtons(int b1, int b2)
     {
@@ -109,6 +142,10 @@ public class MemoryController : AbstractController {
 		buttons[b2].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
 		buttons[b1].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
 		buttons[b2].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
-		UnlockAllButtons();
+        chromeButtons[b1].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
+        chromeButtons[b2].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
+        chromeButtons[b1].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
+        chromeButtons[b2].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
+        UnlockAllButtons();
     }
 }

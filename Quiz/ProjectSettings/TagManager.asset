@@ -8,6 +8,7 @@ TagManager:
   - canvas
   - EndScreen
   - memButton
+  - chromeButton
   layers:
   - Default
   - TransparentFX
