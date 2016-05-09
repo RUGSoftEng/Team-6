@@ -46,7 +46,6 @@ public class QuizController : AbstractController {
 			return;
         }
 
-        DescriptionShower.GetComponent<EditText>().removeText();
         currentWord = toDoList[0];
         string wrongTrans;
         do
@@ -55,6 +54,7 @@ public class QuizController : AbstractController {
         } while (currentWord.GetTrans().Equals(wrongTrans));
         correct = Random.Range(0, 2);
         middleText.GetComponent<UpdateMiddleText>().UpdateText(currentWord.GetWord(), currentWord.GetTrans(), wrongTrans, correct);
+        DescriptionShower.GetComponent<EditText>().setText(currentWord.GetDesc());
         timer.StartTiming();
     }
 	
@@ -97,7 +97,6 @@ public class QuizController : AbstractController {
         currentWord.Wrong();
         toDoList.Remove(currentWord);
 		toDoList.Add(currentWord);
-        DescriptionShower.GetComponent<EditText>().setText(currentWord.GetDesc());
         StartCoroutine(DisableButtons(wrongWaitTime,0));
     }
 

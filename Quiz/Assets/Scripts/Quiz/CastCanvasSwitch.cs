@@ -4,6 +4,7 @@
  */
 using UnityEngine;
 using Google.Cast.RemoteDisplay;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CastCanvasSwitch : MonoBehaviour
@@ -36,6 +37,8 @@ public class CastCanvasSwitch : MonoBehaviour
         mainCanvas.worldCamera = chromecastCamera;
         phoneCanvas.worldCamera = phoneCamera;
         phoneCanvas.enabled = true;
+        GraphicRaycaster gR = mainCanvas.GetComponent<GraphicRaycaster>();
+        gR.enabled = false;
     }
 
     public void stopCasting(CastRemoteDisplayManager c)
@@ -43,6 +46,8 @@ public class CastCanvasSwitch : MonoBehaviour
         mainCanvas.worldCamera = phoneCamera;
         phoneCanvas.worldCamera = chromecastCamera;
         phoneCanvas.enabled = false;
+        GraphicRaycaster gR = mainCanvas.GetComponent<GraphicRaycaster>();
+        gR.enabled = true;
     }
 
     public void errorCasting(CastRemoteDisplayManager c)
