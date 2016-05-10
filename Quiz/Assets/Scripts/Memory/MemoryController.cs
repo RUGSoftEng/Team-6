@@ -62,9 +62,11 @@ public class MemoryController : AbstractController {
 	
 	public void ButtonPressed(int i) {
 		if (pressed==i) {
-			buttons[i].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
-            chromeButtons[i].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
-            pressed =-1;
+			if (difficulty==0) {
+				buttons[i].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
+				chromeButtons[i].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
+				pressed =-1;
+			}
 		} else if (pressed==-1) {
 			buttons[i].GetComponent<UpdateButton>().SetEnabledColor(colorSelected);
             chromeButtons[i].GetComponent<UpdateButton>().SetEnabledColor(colorSelected);

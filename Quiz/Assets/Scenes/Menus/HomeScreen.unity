@@ -1027,6 +1027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73e0c4157c50cf4e963c3e50d888d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minWords: 7
 --- !u!114 &934501464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1525,6 +1526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73e0c4157c50cf4e963c3e50d888d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minWords: 3
 --- !u!114 &1493266668
 MonoBehaviour:
   m_ObjectHideFlags: 0
