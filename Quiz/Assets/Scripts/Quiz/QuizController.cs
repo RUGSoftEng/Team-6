@@ -8,6 +8,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
+using Google.Cast.RemoteDisplay;
 
 public class QuizController : AbstractController {
 
@@ -41,8 +43,8 @@ public class QuizController : AbstractController {
     {
         if (toDoList.Count < 1)
         {
-			CreateEndscreen(end);
-            StartCoroutine(WaitFinished());
+			CreateEndscreen();
+            /*StartCoroutine(WaitFinished());*/
 			return;
         }
 
@@ -52,7 +54,7 @@ public class QuizController : AbstractController {
         {
             wrongTrans = SelectRandomWord(totalWordList).GetTrans();
         } while (currentWord.GetTrans().Equals(wrongTrans));
-        correct = Random.Range(0, 2);
+        correct = UnityEngine.Random.Range(0, 2);
         middleText.GetComponent<UpdateMiddleText>().UpdateText(currentWord.GetWord(), currentWord.GetTrans(), wrongTrans, correct);
         DescriptionShower.GetComponent<EditText>().setText(currentWord.GetDesc());
         timer.StartTiming();
@@ -63,7 +65,7 @@ public class QuizController : AbstractController {
 	 */
     private WordData SelectRandomWord(List<WordData> list)
     {
-        return list[Random.Range(0, list.Count)];
+        return list[UnityEngine.Random.Range(0, list.Count)];
     }
     
     /* This method is allways called when an answer is given, either wrong or right.
@@ -143,5 +145,12 @@ public class QuizController : AbstractController {
         middleText.GetComponent<UpdateMiddleText>().EnableButtons();
         fastClickFixer = true;
         UpdateGame();
+    }
+
+    public override void CreateEndscreen()
+    {
+        Debug.Log("CreateEndScreen");
+        CastCanvasSwitch ccs = mainCamera.GetComponent<CastCanvasSwitch>();
+        ccs.EndScreen();
     }
 }

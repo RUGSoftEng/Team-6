@@ -1631,6 +1631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4a9bf1eb01b3141b104e89dfd4181c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
   maxAmountOfWords: 10
   middleText: {fileID: 1618838149}
   DescriptionShower: {fileID: 1469033900}
@@ -2067,6 +2068,8 @@ MonoBehaviour:
   chromecastCamera: {fileID: 1320193929}
   mainCanvas: {fileID: 338176185}
   phoneCanvas: {fileID: 1466864928}
+  endCanvas: {fileID: 0}
+  endChromeCanvas: {fileID: 0}
 --- !u!1001 &2117181791
 Prefab:
   m_ObjectHideFlags: 0
@@ -2134,7 +2137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2139504283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2180,7 +2183,7 @@ Canvas:
   m_GameObject: {fileID: 2139504282}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0

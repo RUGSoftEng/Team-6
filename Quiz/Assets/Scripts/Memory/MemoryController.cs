@@ -96,8 +96,8 @@ public class MemoryController : AbstractController {
 		}
 		toggleTextVisibility();
 		if (toDo==0) {
-			CreateEndscreen(end);
-            StartCoroutine(WaitFinished());
+			//CreateEndscreen(end);
+            //StartCoroutine(WaitFinished());
 			return;
 		}
 	}
@@ -153,5 +153,10 @@ public class MemoryController : AbstractController {
         chromeButtons[b2].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
         UnlockAllButtons();
 		toggleTextVisibility();
+    }
+
+    public override void CreateEndscreen()
+    {
+        throw new NotImplementedException();
     }
 }
