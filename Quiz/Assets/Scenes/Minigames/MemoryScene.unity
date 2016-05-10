@@ -858,6 +858,7 @@ GameObject:
   - 114: {fileID: 168907396}
   - 114: {fileID: 168907395}
   - 114: {fileID: 168907394}
+  - 114: {fileID: 168907398}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -887,6 +888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73e0c4157c50cf4e963c3e50d888d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minWords: 0
+  text: {fileID: 0}
 --- !u!114 &168907396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,6 +901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd904ca366ee4e429040661de1558cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
   maxAmountOfWords: 7
   colorCorrect: {r: 0.034482718, g: 1, b: 0, a: 1}
   colorWrong: {r: 1, g: 0, b: 0, a: 1}
@@ -916,11 +920,130 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &168907398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 168907393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b55af7fff513df04f8d5f0b51e89eb5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phoneCamera: {fileID: 1241388934}
+  chromeCastCamera: {fileID: 1657808154}
+  phoneCanvas: {fileID: 1534682512}
+  chromeCanvas: {fileID: 614384493}
+  endCanvas: {fileID: 186909187}
 --- !u!224 &179455486 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22404936, guid: f8a89980f6ee44b45b40553eca06533a,
     type: 2}
   m_PrefabInternal: {fileID: 1706642293}
+--- !u!1001 &186909186
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420154, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483712, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 168907396}
+    - target: {fileID: 11483712, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 11457856, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 168907396}
+    - target: {fileID: 11457856, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Continue
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: aae94dbec3a032943a948fe6875a81ee, type: 2}
+  m_IsPrefabParent: 0
+--- !u!223 &186909187 stripped
+Canvas:
+  m_PrefabParentObject: {fileID: 22350844, guid: aae94dbec3a032943a948fe6875a81ee,
+    type: 2}
+  m_PrefabInternal: {fileID: 186909186}
 --- !u!1 &276371410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2634,7 +2757,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1394a5ad8acc22c45b3a63e02a6249f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phoneCamera: {fileID: 0}
   chromecastCamera: {fileID: 1657808154}
+  phoneCanvas: {fileID: 0}
+  chromeCanvas: {fileID: 0}
+  endCanvas: {fileID: 0}
 --- !u!224 &1248158925 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22404936, guid: f8a89980f6ee44b45b40553eca06533a,

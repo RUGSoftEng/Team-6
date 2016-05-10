@@ -13,14 +13,12 @@ public class CastCanvasSwitch : MonoBehaviour
     public Camera chromecastCamera;
     public Canvas mainCanvas;
     public Canvas phoneCanvas;
-    public Canvas endCanvas;
 
     private CastRemoteDisplayManager chromeCast;
 
     public void Start()
     {
         phoneCanvas.enabled = false;
-        endCanvas.enabled = false;
 
         chromeCast = (CastRemoteDisplayManager)FindObjectOfType(typeof(CastRemoteDisplayManager));
         chromeCast.RemoteDisplaySessionStartEvent.AddListener(startCasting);
@@ -28,7 +26,6 @@ public class CastCanvasSwitch : MonoBehaviour
         chromeCast.RemoteDisplayErrorEvent.AddListener(errorCasting);
 
         phoneCanvas.enabled = false;
-        endCanvas.enabled = false;
 
         chromeCast.RemoteDisplayCamera = chromecastCamera;
 
@@ -62,21 +59,5 @@ public class CastCanvasSwitch : MonoBehaviour
         mainCanvas.worldCamera = phoneCamera;
         phoneCanvas.worldCamera = chromecastCamera;
         phoneCanvas.enabled = false;
-    }
-
-    public void EndScreen()
-    {
-        Canvas phone = Instantiate(endCanvas);
-        Canvas cast = Instantiate(endCanvas);
-
-        phone.enabled = true;
-        mainCanvas.enabled = false;
-        phone.worldCamera = phoneCamera;
-
-        cast.enabled = true;
-        phoneCanvas.enabled = false;
-        cast.worldCamera = chromecastCamera;
-        GraphicRaycaster gR = cast.GetComponent<GraphicRaycaster>();
-        gR.enabled = false;
     }
 }

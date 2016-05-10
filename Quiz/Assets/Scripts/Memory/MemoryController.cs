@@ -96,8 +96,7 @@ public class MemoryController : AbstractController {
 		}
 		toggleTextVisibility();
 		if (toDo==0) {
-			//CreateEndscreen(end);
-            //StartCoroutine(WaitFinished());
+			CreateEndscreen();
 			return;
 		}
 	}
@@ -157,6 +156,7 @@ public class MemoryController : AbstractController {
 
     public override void CreateEndscreen()
     {
-        throw new NotImplementedException();
+        DrawEndCanvas dec = GetComponent<DrawEndCanvas>();
+        dec.EndScreen();
     }
 }

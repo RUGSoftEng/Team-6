@@ -838,7 +838,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1394a5ad8acc22c45b3a63e02a6249f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phoneCamera: {fileID: 0}
   chromecastCamera: {fileID: 1174519731}
+  phoneCanvas: {fileID: 0}
+  chromeCanvas: {fileID: 0}
+  endCanvas: {fileID: 0}
 --- !u!1 &489304864
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +986,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1518,6 +1521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sessionID: 0
   username: 
+  userBookmarks: []
   userNativeLanguage: 
   userLearnedLanguage: 
   usernameText: {fileID: 718698576}
@@ -1781,7 +1785,6 @@ GameObject:
   - 20: {fileID: 1174519731}
   - 124: {fileID: 1174519730}
   - 92: {fileID: 1174519729}
-  - 81: {fileID: 1174519728}
   m_Layer: 0
   m_Name: castCamera
   m_TagString: Untagged
@@ -1789,13 +1792,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!81 &1174519728
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1174519727}
-  m_Enabled: 0
 --- !u!92 &1174519729
 Behaviour:
   m_ObjectHideFlags: 0
