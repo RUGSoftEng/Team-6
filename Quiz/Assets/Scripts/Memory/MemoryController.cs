@@ -159,4 +159,9 @@ public class MemoryController : AbstractController {
     {
         throw new NotImplementedException();
     }
+
+    public override void Continue()
+    {
+        throw new NotImplementedException();
+    }
 }
