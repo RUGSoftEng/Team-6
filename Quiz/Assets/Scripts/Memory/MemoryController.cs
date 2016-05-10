@@ -117,10 +117,10 @@ public class MemoryController : AbstractController {
 	public void switchDifficulty() {
 		if (difficulty==0) {
 			difficulty = 1;
-			GameObject.FindGameObjectsWithTag("diffSwitch")[0].GetComponent<Transform>().GetComponentInChildren<Text>().text = "Hard";
+			GameObject.FindGameObjectsWithTag("diffSwitch")[0].GetComponent<Transform>().GetComponentInChildren<Text>().text = "Difficulty: Hard";
 		} else {
 			difficulty = 0;
-			GameObject.FindGameObjectsWithTag("diffSwitch")[0].GetComponent<Transform>().GetComponentInChildren<Text>().text = "Easy";
+			GameObject.FindGameObjectsWithTag("diffSwitch")[0].GetComponent<Transform>().GetComponentInChildren<Text>().text = "Difficulty: Easy";
 		}
 		toggleTextVisibility();
 	}

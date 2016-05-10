@@ -49,7 +49,7 @@ public abstract class AbstractController : MonoBehaviour {
     public void Exit()
     {
         Screen.orientation = ScreenOrientation.Portrait;
-        this.GetComponent<LoadNewLevel>().LoadLevel();
+        this.GetComponent<LoadNewLevel>().LoadLevel(1);
     }
 	
 	public void CreateEndscreen(GameObject end) {
