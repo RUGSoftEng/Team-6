@@ -55,16 +55,19 @@ public abstract class AbstractController : MonoBehaviour {
 
     abstract public void CreateEndscreen();
 
-	/* this method should always be called if a game is quit */
-	/*public void Exit()
+    /* this method should always be called if a game is quit */
+    /*public void Exit()
 	{
 		Screen.orientation = ScreenOrientation.Portrait;
 		this.GetComponent<LoadNewLevel>().LoadLevel(1);
 	}*/
 
-	abstract public void Continue();
-	
-	/*public void CreateEndscreen(GameObject end) {
+    public void Continue()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
+    /*public void CreateEndscreen(GameObject end) {
 		GameObject canvas = GameObject.FindGameObjectsWithTag("canvas")[0];
 		GameObject endscreen = Instantiate(end);
 		endscreen.transform.SetParent(canvas.transform);
@@ -75,10 +78,10 @@ public abstract class AbstractController : MonoBehaviour {
 		rt.offsetMin = new Vector2(0,0);
 		rt.offsetMax = new Vector2(0,0);
 	}*/
-	
-	/* Waits for a mouseclick/fingerpress and then goes back to the menu*/
 
-	/*public IEnumerator WaitFinished()
+    /* Waits for a mouseclick/fingerpress and then goes back to the menu*/
+
+    /*public IEnumerator WaitFinished()
 	{
 		while(true) {
 			if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) {

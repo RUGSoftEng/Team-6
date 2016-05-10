@@ -149,13 +149,7 @@ public class QuizController : AbstractController {
 
     public override void CreateEndscreen()
     {
-        Debug.Log("CreateEndScreen");
         CastCanvasSwitch ccs = mainCamera.GetComponent<CastCanvasSwitch>();
         ccs.EndScreen();
-    }
-
-    public override void Continue()
-    {
-        Application.LoadLevel(Application.loadedLevel);
     }
 }
