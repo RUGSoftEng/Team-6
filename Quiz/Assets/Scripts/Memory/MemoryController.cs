@@ -17,6 +17,7 @@ public class MemoryController : AbstractController {
 	private List<WordData> words;
 	public GameObject end;
 	private bool[] locked = new bool[14];
+	private int difficulty;
 
 	// Use this for initialization
 	void Start () {
@@ -26,18 +27,6 @@ public class MemoryController : AbstractController {
         chromeButtons = GameObject.FindGameObjectsWithTag("chromeButton").OrderBy(go => go.name).ToList();
         LoadData();
 		AssignData();
-		for (int i=0;i<14;i++) {
-            SwitchColor sC = buttons[i].GetComponent<SwitchColor>();
-			sC.SetColors(colorCorrect, colorSelected, colorWrong);
-			totalWordList[i].setObserver(sC);
-		}
-
-        for (int i = 0; i < 14; i++)
-        {
-            SwitchColor sC = chromeButtons[i].GetComponent<SwitchColor>();
-            sC.SetColors(colorCorrect, colorSelected, colorWrong);
-            totalWordList[i].setObserver(sC);
-        }
         UpdateGame();
 	}
 	
@@ -66,13 +55,9 @@ public class MemoryController : AbstractController {
 		for(int i=0;i<14;i++) {
 			buttons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
 			buttons[i].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
-		}
-
-        for (int i = 0; i < 14; i++)
-        {
-            chromeButtons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
+			chromeButtons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
             chromeButtons[i].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
-        }
+		}
     }
 	
 	public void ButtonPressed(int i) {
@@ -106,6 +91,7 @@ public class MemoryController : AbstractController {
 			StartCoroutine(WaitButtons(pressed,i));
 			pressed=-1;
 		}
+		toggleTextVisibility();
 		if (toDo==0) {
 			CreateEndscreen(end);
             StartCoroutine(WaitFinished());
@@ -117,25 +103,39 @@ public class MemoryController : AbstractController {
 		for (int i=0;i<14;i++) {
 			locked[i] = buttons[i].GetComponent<Button>().interactable;
 			buttons[i].GetComponent<Button>().interactable = false;
-		}
-
-        for (int i = 0; i < 14; i++)
-        {
-            locked[i] = chromeButtons[i].GetComponent<Button>().interactable;
             chromeButtons[i].GetComponent<Button>().interactable = false;
-        }
+		}
     }
 	
 	public void UnlockAllButtons() {
 		for (int i=0;i<14;i++) {
 			buttons[i].GetComponent<Button>().interactable = locked[i];
-		}
-
-        for (int i = 0; i < 14; i++)
-        {
             chromeButtons[i].GetComponent<Button>().interactable = locked[i];
-        }
+		}
     }
+	
+	public void switchDifficulty() {
+		if (difficulty==0) {
+			difficulty = 1;
+			GameObject.FindGameObjectsWithTag("diffSwitch")[0].GetComponent<Transform>().GetComponentInChildren<Text>().text = "Hard";
+		} else {
+			difficulty = 0;
+			GameObject.FindGameObjectsWithTag("diffSwitch")[0].GetComponent<Transform>().GetComponentInChildren<Text>().text = "Easy";
+		}
+		toggleTextVisibility();
+	}
+	
+	private void toggleTextVisibility() {
+		for(int i=0;i<14;i++) {
+			if (difficulty == 0 || (!buttons[i].GetComponent<Button>().interactable && buttons[i].GetComponent<UpdateButton>().GetComponent<Button>().colors.disabledColor!=colorSelected) || i==pressed) {
+				buttons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
+				chromeButtons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
+			} else {
+				buttons[i].GetComponent<UpdateButton>().UpdateText("");
+				chromeButtons[i].GetComponent<UpdateButton>().UpdateText("");
+			}
+		}
+	}
 	
 	IEnumerator WaitButtons(int b1, int b2)
     {
@@ -149,5 +149,6 @@ public class MemoryController : AbstractController {
         chromeButtons[b1].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
         chromeButtons[b2].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
         UnlockAllButtons();
+		toggleTextVisibility();
     }
 }
