@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Linq;
+using System;
 
 public class MemoryController : AbstractController {
 	
@@ -29,9 +30,9 @@ public class MemoryController : AbstractController {
 		AssignData();
         UpdateGame();
 	}
-	
-	// Update is called once per frame
-	void UpdateGame () {
+
+    // Update is called once per frame
+    void UpdateGame () {
 	
 	}
 	

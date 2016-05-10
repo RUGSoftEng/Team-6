@@ -51,8 +51,8 @@ public abstract class AbstractController : MonoBehaviour {
         Screen.orientation = ScreenOrientation.Portrait;
         this.GetComponent<LoadNewLevel>().LoadLevel(1);
     }
-	
-	public void CreateEndscreen(GameObject end) {
+
+    public void CreateEndscreen(GameObject end) {
 		GameObject canvas = GameObject.FindGameObjectsWithTag("canvas")[0];
 		GameObject endscreen = Instantiate(end);
 		endscreen.transform.SetParent(canvas.transform);
