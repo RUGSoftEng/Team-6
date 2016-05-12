@@ -30,11 +30,6 @@ public class MemoryController : AbstractController {
 		AssignData();
         UpdateGame();
 	}
-
-    // Update is called once per frame
-    void UpdateGame () {
-	
-	}
 	
 	void AssignData() {
 		words = new List<WordData>();

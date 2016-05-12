@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 /*
  * The controller from all the different games should extend from this AbstractController.
@@ -55,16 +56,9 @@ public abstract class AbstractController : MonoBehaviour {
 
     abstract public void CreateEndscreen();
 
-    /* this method should always be called if a game is quit */
-    /*public void Exit()
-	{
-		Screen.orientation = ScreenOrientation.Portrait;
-		this.GetComponent<LoadNewLevel>().LoadLevel(1);
-	}*/
-
     public void Continue()
     {
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     /*public void CreateEndscreen(GameObject end) {
