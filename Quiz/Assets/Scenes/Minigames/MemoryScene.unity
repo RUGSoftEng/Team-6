@@ -579,6 +579,11 @@ RectTransform:
   m_PrefabParentObject: {fileID: 22404936, guid: f8a89980f6ee44b45b40553eca06533a,
     type: 2}
   m_PrefabInternal: {fileID: 66604022}
+--- !u!223 &95215433 stripped
+Canvas:
+  m_PrefabParentObject: {fileID: 22378500, guid: b2b2e5da713db554ab418bbf28009d82,
+    type: 2}
+  m_PrefabInternal: {fileID: 967290503}
 --- !u!1001 &112257399
 Prefab:
   m_ObjectHideFlags: 0
@@ -935,7 +940,7 @@ MonoBehaviour:
   chromeCastCamera: {fileID: 1657808154}
   phoneCanvas: {fileID: 1534682512}
   chromeCanvas: {fileID: 614384493}
-  endCanvas: {fileID: 0}
+  endCanvas: {fileID: 95215433}
 --- !u!224 &179455486 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22404936, guid: f8a89980f6ee44b45b40553eca06533a,
@@ -1783,6 +1788,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Continue
       objectReference: {fileID: 0}
+    - target: {fileID: 142548, guid: b2b2e5da713db554ab418bbf28009d82, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2b2e5da713db554ab418bbf28009d82, type: 2}
   m_IsPrefabParent: 0
@@ -2016,79 +2025,79 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22483044, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22483044, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22483044, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 225
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22483044, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22483044, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 57
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22483044, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22486666, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22486666, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22486666, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 225
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22486666, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -64
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22486666, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 410
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22486666, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 112
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22401236, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22401236, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22401236, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 225
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22401236, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -208
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22401236, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 185
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22401236, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22445450, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 250
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 745f04433ade1439d8ef5ec2e3af8367, type: 2}
@@ -2752,11 +2761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1394a5ad8acc22c45b3a63e02a6249f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phoneCamera: {fileID: 0}
   chromecastCamera: {fileID: 1657808154}
-  phoneCanvas: {fileID: 0}
-  chromeCanvas: {fileID: 0}
-  endCanvas: {fileID: 0}
 --- !u!224 &1248158925 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22404936, guid: f8a89980f6ee44b45b40553eca06533a,
@@ -3345,7 +3350,6 @@ GameObject:
   - 20: {fileID: 1657808154}
   - 124: {fileID: 1657808153}
   - 92: {fileID: 1657808152}
-  - 81: {fileID: 1657808151}
   m_Layer: 0
   m_Name: CastCamera
   m_TagString: Untagged
@@ -3353,13 +3357,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!81 &1657808151
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1657808150}
-  m_Enabled: 1
 --- !u!92 &1657808152
 Behaviour:
   m_ObjectHideFlags: 0

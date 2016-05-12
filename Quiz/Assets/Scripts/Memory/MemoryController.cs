@@ -28,7 +28,6 @@ public class MemoryController : AbstractController {
         chromeButtons = GameObject.FindGameObjectsWithTag("chromeButton").OrderBy(go => go.name).ToList();
         LoadData();
 		AssignData();
-        UpdateGame();
 	}
 	
 	void AssignData() {
