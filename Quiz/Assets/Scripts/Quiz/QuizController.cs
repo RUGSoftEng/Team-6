@@ -56,7 +56,7 @@ public class QuizController : AbstractController {
         } while (currentWord.GetTrans().Equals(wrongTrans));
         correct = UnityEngine.Random.Range(0, 2);
         middleText.GetComponent<UpdateMiddleText>().UpdateText(currentWord.GetWord(), currentWord.GetTrans(), wrongTrans, correct);
-        DescriptionShower.GetComponent<EditText>().setText(currentWord.GetDesc());
+        DescriptionShower.GetComponent<EditText>().setText(currentWord.GetDesc(), currentWord.GetWord());
         timer.StartTiming();
     }
 	
