@@ -53,7 +53,7 @@ public class MemoryController : AbstractController {
 				x = 0+rng.Next(0,70);
 				y = 0+rng.Next(0,90);
 				rt.anchorMin = new Vector2(x/100F,y/100F);
-				rt.anchorMax = new Vector2((x+30)/100F,(y+10)/100F);
+				rt.anchorMax = new Vector2((x+20)/100F,(y+10)/100F);
 				rt.offsetMin = new Vector2(0,0);
 				rt.offsetMax = new Vector2(0,0);
 			} while (overlapping(i));
