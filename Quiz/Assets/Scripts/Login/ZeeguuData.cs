@@ -149,7 +149,7 @@ public class ZeeguuData : MonoBehaviour {
 
         RectTransform rt = load.GetComponent<RectTransform> ();
         rt.anchorMin = new Vector2 (0.5F, 0.5F);
-        rt.anchorMax = new Vector2 (0.5F, 0.5F);
+        rt.anchorMax = new Vector2 (0.5F, 0.5F); 
         rt.offsetMin = new Vector2 (-90, -76);
         rt.offsetMax = new Vector2 (90, 76);
         rt.localScale = new Vector3 (1, 1, 1);
