@@ -44,20 +44,32 @@ public class MemoryController : AbstractController {
 			words.Add(totalWordList[i]);
 			words[2*i+1].SetMemory(true);
 		}
-		System.Random rng = new System.Random();
-		int n = words.Count;
+		/*int n = words.Count;
 		while (n>1) {
 			n--;
 			int k = rng.Next(0,n-1);
 			WordData v = words[k];
 			words[k] = words[n];
 			words[n] = v;
-		}
+		}*/
+		System.Random rng = new System.Random();
+		int x,y;
+		RectTransform rt;
 		for(int i=0;i<14;i++) {
 			buttons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
 			buttons[i].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
 			chromeButtons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
             chromeButtons[i].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
+			rt = buttons[i].GetComponent<RectTransform>();
+			x = rng.Next(0,Screen.width);
+			y = rng.Next(0,Screen.height);
+			rt.anchorMin = new Vector2(x,y);
+			rt.anchorMax = new Vector2(x+Screen.width/10,y+Screen.height/10);
+			rt = chromeButtons[i].GetComponent<RectTransform>();
+			x = rng.Next(0,Screen.width);
+			y = rng.Next(0,Screen.height);
+			rt.anchorMin = new Vector2(x,y);
+			rt.anchorMax = new Vector2(x+Screen.width/10,y+Screen.height/10);
 		}
     }
 	
@@ -156,7 +168,6 @@ public class MemoryController : AbstractController {
 
     public override void CreateEndscreen()
     {
-        DrawEndCanvas dec = GetComponent<DrawEndCanvas>();
-        dec.EndScreen();
+        GetComponent<DrawEndCanvas>().EndScreen();
     }
 }
