@@ -75,7 +75,6 @@ public class WordData
 	}
 	
 	public string GetMemoryWord() {
-		Debug.Log(this.memory+"");
 		if (this.memory==true) {
 			return word;
 		} else {

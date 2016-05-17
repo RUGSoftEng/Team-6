@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LoadNewLevel : MonoBehaviour {
 	public int minWords;
@@ -13,7 +14,7 @@ public class LoadNewLevel : MonoBehaviour {
 	public void LoadLevel(int index) {
 		GameObject zd = GameObject.FindWithTag("ZeeguuData");
         if (zd==null || zd.GetComponent<ZeeguuData>().userBookmarks.Count>minWords) {
-			Application.LoadLevel(index);
+            SceneManager.LoadScene(index);
 		} else {
 			Color c = text.color;
 			c.a = 10;
