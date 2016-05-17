@@ -45,8 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\LoadAnimation.cs" />
      <Compile Include="Assets\Logout.cs" />
-     <Compile Include="Assets\Rotate.cs" />
      <Compile Include="Assets\Scripts\Boomlagoon\JSON\JSONObject.cs" />
      <Compile Include="Assets\Scripts\GeneralGame\AbstractController.cs" />
      <Compile Include="Assets\Scripts\GeneralGame\BackButton.cs" />

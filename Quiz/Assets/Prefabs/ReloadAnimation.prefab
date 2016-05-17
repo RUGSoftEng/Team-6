@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11480728}
   - 114: {fileID: 11443562}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ReloadAnimation
   m_TagString: ReloadMessage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

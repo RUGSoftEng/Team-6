@@ -30,14 +30,17 @@ public class ZeeguuData : MonoBehaviour {
     public GameObject loginButton; //Handle needed so we can trigger animation of the login button.
     public GameObject loginForm;
     public GameObject signingIn;
+    public GameObject loadAnimation;
 
     public string serverURL;
 
     public void Start() {
+        // Find loading animation prefab.
+        loadAnimation = GameObject.FindGameObjectWithTag ("ReloadMessage");
         if (loadSession()) {
             //Show "Signing in"
             loginForm.SetActive(false);
-            signingIn.SetActive(true);
+            // signingIn.SetActive(true);
             StartCoroutine(LoginRequest("", ""));
         } else {
             //Show the login form
@@ -48,6 +51,12 @@ public class ZeeguuData : MonoBehaviour {
     }
     
     IEnumerator LoginRequest(string username, string password){
+        // Instantiate loading animation.
+        Debug.Log ("Instantiating load animation");
+        GameObject canvas = GameObject.FindGameObjectsWithTag ("canvas")[0];
+        GameObject load = Instantiate (loadAnimation);
+        load.transform.SetParent (canvas.transform);
+
         //First, try if a stored session exists and if it still works.
         if(sessionID != 0) {
             WWW testRequest = new WWW(serverURL + "/native_language?session=" + sessionID);
@@ -129,31 +138,27 @@ public class ZeeguuData : MonoBehaviour {
             }
         }
 
-        //Store the session if needed.
+        // Store the session if needed.
         if (keepSignedIn.isOn) {
             saveSession();
         } else {
             destroySession();
         }
 
+        // Finalise loading animation.
+        Debug.Log ("Destroying load animation");
+        Destroy (load);
+
         //Go to main menu
         SceneManager.LoadScene(1);
     }
 
     // This function will update the bookmarks. Nothing more, nothing less.
-    public IEnumerator UpdateBookmarks (GameObject loadAnimation) {
+    public IEnumerator UpdateBookmarks (GameObject animation) {
         Debug.Log ("Instantiating load animation");
         GameObject canvas = GameObject.FindGameObjectsWithTag ("canvas")[0];
-        GameObject load = Instantiate (loadAnimation);
+        GameObject load = Instantiate (animation);
         load.transform.SetParent (canvas.transform);
-
-        RectTransform rt = load.GetComponent<RectTransform> ();
-        rt.anchorMin = new Vector2 (0.5F, 0.5F);
-        rt.anchorMax = new Vector2 (0.5F, 0.5F); 
-        rt.offsetMin = new Vector2 (-90, -76);
-        rt.offsetMax = new Vector2 (90, 76);
-        rt.localScale = new Vector3 (1, 1, 1);
-        rt.localPosition = new Vector3 (0, 40, 0);
 
         if (loadBookmarks()) {
             DateTime lastModified = File.GetLastWriteTime(Application.persistentDataPath + "bookmarks");
@@ -201,7 +206,8 @@ public class ZeeguuData : MonoBehaviour {
         }
     }
 
-    public void Login(){
+    public void Login(GameObject animation){
+        loadAnimation = animation;
         username = usernameText.text;
         string password = passwordText.text;
         serverURL = serverText.text.Equals("") ? DEFAULT_SERVER : serverText.text;
