@@ -14,7 +14,6 @@ using Google.Cast.RemoteDisplay;
 public class QuizController : AbstractController {
 
     public Text middleText;
-    public Text DescriptionShower;
     public float correctWaitTime;
     public float wrongWaitTime;
     public List<WordData> toDoList;
@@ -39,6 +38,7 @@ public class QuizController : AbstractController {
 	 * The UpdateGame method makes sure everything in the game is correct at any point in time.
 	 * It sets the right words for the buttons and selects new ones if needed.
 	 */
+
     private void UpdateGame()
     {
         if (toDoList.Count < 1)
@@ -55,8 +55,7 @@ public class QuizController : AbstractController {
             wrongTrans = SelectRandomWord(totalWordList).GetTrans();
         } while (currentWord.GetTrans().Equals(wrongTrans));
         correct = UnityEngine.Random.Range(0, 2);
-        middleText.GetComponent<UpdateMiddleText>().UpdateText(currentWord.GetWord(), currentWord.GetTrans(), wrongTrans, correct);
-        DescriptionShower.GetComponent<EditText>().setText(currentWord.GetDesc(), currentWord.GetWord());
+        middleText.GetComponent<UpdateMiddleText>().UpdateText(currentWord.GetDesc(), currentWord.GetWord(), currentWord.GetTrans(), wrongTrans, correct);
         timer.StartTiming();
     }
 	
