@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ReloadBookies : MonoBehaviour {
 
+	public GameObject loadAnimation;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -12,10 +14,10 @@ public class ReloadBookies : MonoBehaviour {
 	
 	}
 
-	public void Reload () {
+	public void Reload (GameObject loadAnimation) {
 		Debug.Log ("Attempting to refresh the bookmarks.");
 		GameObject tmp = GameObject.FindGameObjectWithTag ("ZeeguuData");
 		ZeeguuData bookshelf = tmp.GetComponent <ZeeguuData> ();
-		StartCoroutine (bookshelf.UpdateBookmarks ());
+		StartCoroutine (bookshelf.UpdateBookmarks (loadAnimation));
 	}
 }

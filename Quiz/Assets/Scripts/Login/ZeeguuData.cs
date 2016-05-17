@@ -140,7 +140,21 @@ public class ZeeguuData : MonoBehaviour {
         SceneManager.LoadScene(1);
     }
 
-    public IEnumerator UpdateBookmarks () {
+    // This function will update the bookmarks. Nothing more, nothing less.
+    public IEnumerator UpdateBookmarks (GameObject loadAnimation) {
+        Debug.Log ("Instantiating load animation");
+        GameObject canvas = GameObject.FindGameObjectsWithTag ("canvas")[0];
+        GameObject load = Instantiate (loadAnimation);
+        load.transform.SetParent (canvas.transform);
+
+        RectTransform rt = load.GetComponent<RectTransform> ();
+        rt.anchorMin = new Vector2 (0.5F, 0.5F);
+        rt.anchorMax = new Vector2 (0.5F, 0.5F);
+        rt.offsetMin = new Vector2 (-90, -76);
+        rt.offsetMax = new Vector2 (90, 76);
+        rt.localScale = new Vector3 (1, 1, 1);
+        rt.localPosition = new Vector3 (0, 40, 0);
+
         if (loadBookmarks()) {
             DateTime lastModified = File.GetLastWriteTime(Application.persistentDataPath + "bookmarks");
 
@@ -174,6 +188,9 @@ public class ZeeguuData : MonoBehaviour {
                 yield break;
             }
         }
+
+        Debug.Log ("Destroying load animation");
+        Destroy (load);
     }
 
     IEnumerator BookmarksRequest() {
