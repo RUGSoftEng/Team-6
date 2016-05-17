@@ -10,6 +10,7 @@ TagManager:
   - memButton
   - chromeButton
   - diffSwitch
+  - ReloadMessage
   layers:
   - Default
   - TransparentFX

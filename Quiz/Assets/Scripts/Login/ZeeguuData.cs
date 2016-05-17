@@ -140,6 +140,59 @@ public class ZeeguuData : MonoBehaviour {
         SceneManager.LoadScene(1);
     }
 
+    // This function will update the bookmarks. Nothing more, nothing less.
+    public IEnumerator UpdateBookmarks (GameObject loadAnimation) {
+        Debug.Log ("Instantiating load animation");
+        GameObject canvas = GameObject.FindGameObjectsWithTag ("canvas")[0];
+        GameObject load = Instantiate (loadAnimation);
+        load.transform.SetParent (canvas.transform);
+
+        RectTransform rt = load.GetComponent<RectTransform> ();
+        rt.anchorMin = new Vector2 (0.5F, 0.5F);
+        rt.anchorMax = new Vector2 (0.5F, 0.5F);
+        rt.offsetMin = new Vector2 (-90, -76);
+        rt.offsetMax = new Vector2 (90, 76);
+        rt.localScale = new Vector3 (1, 1, 1);
+        rt.localPosition = new Vector3 (0, 40, 0);
+
+        if (loadBookmarks()) {
+            DateTime lastModified = File.GetLastWriteTime(Application.persistentDataPath + "bookmarks");
+
+            WWWForm bookmarksForm = new WWWForm();
+            bookmarksForm.AddField("with_context", "true");
+            bookmarksForm.AddField("after_date", lastModified.ToString("s"));
+
+            Debug.Log("Sending POST request:" + (serverURL + "/bookmarks_by_day?session=" + sessionID));
+            Debug.Log("With after_date set to: " + lastModified.ToString("s"));
+
+            WWW bookmarkRequest = new WWW(serverURL + "/bookmarks_by_day?session=" + sessionID, bookmarksForm);
+            yield return bookmarkRequest;
+
+            if (!bookmarkRequest.text.Equals("")) {
+                Debug.Log(Bookmark.ListFromJson(bookmarkRequest.text).Count + "additional bookmarks retrieved");
+                userBookmarks.AddRange(Bookmark.ListFromJson(bookmarkRequest.text));
+                saveBookmarks();
+            } else {
+                loginButton.GetComponent<Animator>().Play("Disabled");
+                yield break;
+            }
+        } else {
+            WWW bookmarkRequest = new WWW(serverURL + "/bookmarks_by_day/with_context?session=" + sessionID);
+            yield return bookmarkRequest;
+            if (!bookmarkRequest.text.Equals("")) {
+                userBookmarks = Bookmark.ListFromJson(bookmarkRequest.text);
+                Debug.Log("Got all "+ userBookmarks.Count +"bookmarks from Zeeguu");
+                saveBookmarks();
+            } else {
+                loginButton.GetComponent<Animator>().Play("Disabled");
+                yield break;
+            }
+        }
+
+        Debug.Log ("Destroying load animation");
+        Destroy (load);
+    }
+
     IEnumerator BookmarksRequest() {
         WWW bookmarkRequest = new WWW(serverURL + "/bookmarks_by_day/with_context?session=" + sessionID);
         yield return bookmarkRequest;

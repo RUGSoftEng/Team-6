@@ -13,7 +13,7 @@ public class MemoryController : AbstractController {
 	
 	private List<GameObject> buttons, chromeButtons;
     private Timer timer;
-	public Color colorCorrect, colorWrong, colorSelected, colorNormal;
+	public Color colorCorrect, colorWrong, colorSelected1, colorSelected2, colorNormal1, colorNormal2;
 	private int pressed = -1, toDo = 7;
 	private List<WordData> words;
 	public GameObject end;
@@ -39,32 +39,79 @@ public class MemoryController : AbstractController {
 			words[2*i+1].SetMemory(true);
 		}
 		System.Random rng = new System.Random();
-		int n = words.Count;
-		while (n>1) {
-			n--;
-			int k = rng.Next(0,n-1);
-			WordData v = words[k];
-			words[k] = words[n];
-			words[n] = v;
-		}
+		int x,y;
+		RectTransform rt;
 		for(int i=0;i<14;i++) {
 			buttons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
-			buttons[i].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
 			chromeButtons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
-            chromeButtons[i].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
+			buttons[i].GetComponent<UpdateButton>().SetEnabledColor(i%2==0?colorNormal1:colorNormal2);
+            chromeButtons[i].GetComponent<UpdateButton>().SetEnabledColor(i%2==0?colorNormal1:colorNormal2);
+			buttons[i].GetComponent<UpdateButton>().SetDisabledColor(i%2==0?colorSelected1:colorSelected2);
+            chromeButtons[i].GetComponent<UpdateButton>().SetDisabledColor(i%2==0?colorSelected1:colorSelected2);
+			rt = buttons[i].GetComponent<RectTransform>();
+			do {
+				x = 0+rng.Next(0,70);
+				y = 0+rng.Next(0,90);
+				rt.anchorMin = new Vector2(x/100F,y/100F);
+				rt.anchorMax = new Vector2((x+30)/100F,(y+10)/100F);
+				rt.offsetMin = new Vector2(0,0);
+				rt.offsetMax = new Vector2(0,0);
+			} while (overlapping(i));
+			rt = chromeButtons[i].GetComponent<RectTransform>();
+			rt.anchorMin = new Vector2(x/100F,y/100F);
+			rt.anchorMax = new Vector2((x+30)/100F,(y+10)/100F);
+			rt.offsetMin = new Vector2(0,0);
+			rt.offsetMax = new Vector2(0,0);
 		}
     }
+	
+	public static float WordSize(Text text, string word)
+     {
+         float width = 0.0f;
+         CharacterInfo charInfo;
+         foreach (char c in word)
+         {
+             text.font.GetCharacterInfo(c, out charInfo, text.fontSize);
+             
+             width += charInfo.advance;
+ 
+         }
+         return width;
+     }
+	
+	public bool overlapping(int i) {
+		RectTransform rt1 = buttons[i].GetComponent<RectTransform>(), rt2;
+		Vector2 min1,min2,max1,max2;
+		min1 = rt1.anchorMin;
+		max1 = rt1.anchorMax;
+		for(int j=0;j<14;j++) {
+			rt2 = buttons[j].GetComponent<RectTransform>();
+			min2 = rt2.anchorMin;
+			max2 = rt2.anchorMax;
+			if (i==j) {
+				
+			} else if (((min1[0]<=min2[0] && max1[0]>=min2[0]) || (min2[0]<=min1[0] && max2[0]>=min1[0])) && 
+			((min1[1]<=min2[1] && max1[1]>=min2[1]) || (min2[1]<=min1[1] && max2[1]>=min1[1]))) {
+				return true;
+			}
+		}
+		
+		if (min1[0]<0.22 && max1[1]>0.8) {
+			return true;
+		}
+		return false;
+	}
 	
 	public void ButtonPressed(int i) {
 		if (pressed==i) {
 			if (difficulty==0) {
-				buttons[i].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
-				chromeButtons[i].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
+				buttons[i].GetComponent<UpdateButton>().SetEnabledColor(i%2==0?colorNormal1:colorNormal2);
+				chromeButtons[i].GetComponent<UpdateButton>().SetEnabledColor(i%2==0?colorNormal1:colorNormal2);
 				pressed =-1;
 			}
 		} else if (pressed==-1) {
-			buttons[i].GetComponent<UpdateButton>().SetEnabledColor(colorSelected);
-            chromeButtons[i].GetComponent<UpdateButton>().SetEnabledColor(colorSelected);
+			buttons[i].GetComponent<UpdateButton>().SetEnabledColor(i%2==0?colorSelected1:colorSelected2);
+            chromeButtons[i].GetComponent<UpdateButton>().SetEnabledColor(i%2==0?colorSelected1:colorSelected2);
             pressed = i;
 		} else if (words[i].GetWord()==words[pressed].GetWord()) {
 			buttons[i].GetComponent<Button>().interactable = false;
@@ -123,7 +170,7 @@ public class MemoryController : AbstractController {
 	
 	private void toggleTextVisibility() {
 		for(int i=0;i<14;i++) {
-			if (difficulty == 0 || (!buttons[i].GetComponent<Button>().interactable && buttons[i].GetComponent<UpdateButton>().GetComponent<Button>().colors.disabledColor!=colorSelected) || i==pressed) {
+			if (difficulty == 0 || (!buttons[i].GetComponent<Button>().interactable && buttons[i].GetComponent<UpdateButton>().GetComponent<Button>().colors.disabledColor!=(i%2==0?colorSelected1:colorSelected2)) || i==pressed) {
 				buttons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
 				chromeButtons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
 			} else {
@@ -136,21 +183,20 @@ public class MemoryController : AbstractController {
 	IEnumerator WaitButtons(int b1, int b2)
     {
         yield return new WaitForSeconds(2.5F);
-		buttons[b1].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
-		buttons[b2].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
-		buttons[b1].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
-		buttons[b2].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
-        chromeButtons[b1].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
-        chromeButtons[b2].GetComponent<UpdateButton>().SetEnabledColor(colorNormal);
-        chromeButtons[b1].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
-        chromeButtons[b2].GetComponent<UpdateButton>().SetDisabledColor(colorSelected);
+		buttons[b1].GetComponent<UpdateButton>().SetEnabledColor(b1<7?colorNormal1:colorNormal2);
+		buttons[b2].GetComponent<UpdateButton>().SetEnabledColor(b2<7?colorNormal1:colorNormal2);
+		buttons[b1].GetComponent<UpdateButton>().SetDisabledColor(b1<7?colorSelected1:colorSelected2);
+		buttons[b2].GetComponent<UpdateButton>().SetDisabledColor(b2<7?colorSelected1:colorSelected2);
+        chromeButtons[b1].GetComponent<UpdateButton>().SetEnabledColor(b1<7?colorNormal1:colorNormal2);
+        chromeButtons[b2].GetComponent<UpdateButton>().SetEnabledColor(b2<7?colorNormal1:colorNormal2);
+        chromeButtons[b1].GetComponent<UpdateButton>().SetDisabledColor(b1<7?colorSelected1:colorSelected2);
+        chromeButtons[b2].GetComponent<UpdateButton>().SetDisabledColor(b2<7?colorSelected1:colorSelected2);
         UnlockAllButtons();
 		toggleTextVisibility();
     }
 
     public override void CreateEndscreen()
     {
-        DrawEndCanvas dec = GetComponent<DrawEndCanvas>();
-        dec.EndScreen();
+        GetComponent<DrawEndCanvas>().EndScreen();
     }
 }
