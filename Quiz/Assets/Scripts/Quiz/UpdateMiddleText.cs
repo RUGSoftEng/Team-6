@@ -19,9 +19,9 @@ public class UpdateMiddleText : MonoBehaviour {
 	/*
 	 * Update the word that is displayed in the middle of the screen and on the answer buttons.
 	 */
-    public void UpdateText(string description, string word, string trans, string wrongTrans, int correct)
+    public void UpdateText(string enhancedDescription, string trans, string wrongTrans, int correct)
     {
-        setText(description, word);
+        this.GetComponent<Text>().text = enhancedDescription;
         UpdateButton r = right.GetComponent<UpdateButton>();
         UpdateButton l = left.GetComponent<UpdateButton>();
 		this.correct = correct;
@@ -67,14 +67,10 @@ public class UpdateMiddleText : MonoBehaviour {
         l.Enable();
     }
 
-    private void setText(string description, string word)
+    public string FindMatchingText(WordData wd)
     {
-        string enhancedDescription = FindMatchingText(description, word);
-        this.GetComponent<Text>().text = enhancedDescription;
-    }
-
-    private string FindMatchingText(string description, string word)
-    {
+        string description = wd.GetDesc();
+        string word = wd.GetWord();
         char[] descriptionArr = description.ToLower().ToCharArray();
         char[] wordArr = word.ToLower().ToCharArray();
 
@@ -92,7 +88,6 @@ public class UpdateMiddleText : MonoBehaviour {
     {
         for (int j = 0; j < wordArr.Length; j++)
         {
-            Debug.Log(descriptionArr[i] + " != " + wordArr[j] + (descriptionArr[i] != wordArr[j]));
             if (descriptionArr[i] != wordArr[j])
             {
                 return false;

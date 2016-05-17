@@ -35,7 +35,6 @@ public class EditText : MonoBehaviour {
     {
         for (int j = 0; j < wordArr.Length; j++)
         {
-            Debug.Log(descriptionArr[i]+" != "+ wordArr[j] + (descriptionArr[i] != wordArr[j]));
             if (descriptionArr[i] != wordArr[j])
             {
                 return false;

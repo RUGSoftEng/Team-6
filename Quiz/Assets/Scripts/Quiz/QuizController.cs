@@ -17,11 +17,12 @@ public class QuizController : AbstractController {
     public float correctWaitTime;
     public float wrongWaitTime;
     public List<WordData> toDoList;
-    private WordData currentWord;
+    private WordData currentWord, nextWord;
     private int correct; //0 is left   1 is right
 	public int numberOfClicks;
     private bool fastClickFixer = true; //To fix the delay of disabeling buttons 
     private Timer timer;
+    private string descWithWord;
     public GameObject end;
 
     void Start()
@@ -31,31 +32,43 @@ public class QuizController : AbstractController {
         numberOfClicks = 0;
         LoadData();
         toDoList = new List<WordData>(totalWordList);
+        InstantiateGame();
         UpdateGame();
     }
 
-	/*
-	 * The UpdateGame method makes sure everything in the game is correct at any point in time.
-	 * It sets the right words for the buttons and selects new ones if needed.
-	 */
 
+    /* this allready makes sure everything is ready to go when the game has to continue after the disable.*/
+    private void InstantiateGame()
+    {
+        Debug.Log("Instantiate");
+        if (toDoList.Count < 1)
+        {
+            return;
+        }
+        nextWord = toDoList[0];
+        descWithWord = middleText.GetComponent<UpdateMiddleText>().FindMatchingText(nextWord);
+    }
+
+    /*
+     * The UpdateGame method makes sure everything in the game is correct at any point in time.
+     * It sets the right words for the buttons and selects new ones if needed.
+     */
     private void UpdateGame()
     {
         if (toDoList.Count < 1)
         {
 			CreateEndscreen();
-            /*StartCoroutine(WaitFinished());*/
 			return;
         }
 
-        currentWord = toDoList[0];
+        currentWord = nextWord;
         string wrongTrans;
         do
         {
             wrongTrans = SelectRandomWord(totalWordList).GetTrans();
         } while (currentWord.GetTrans().Equals(wrongTrans));
         correct = UnityEngine.Random.Range(0, 2);
-        middleText.GetComponent<UpdateMiddleText>().UpdateText(currentWord.GetDesc(), currentWord.GetWord(), currentWord.GetTrans(), wrongTrans, correct);
+        middleText.GetComponent<UpdateMiddleText>().UpdateText(descWithWord, currentWord.GetTrans(), wrongTrans, correct);
         timer.StartTiming();
     }
 	
@@ -85,6 +98,7 @@ public class QuizController : AbstractController {
         currentWord.Solved();
         toDoList.Remove(currentWord);
         StartCoroutine(DisableButtons(correctWaitTime,1));
+        InstantiateGame();
     }
 
 	/*
@@ -99,6 +113,7 @@ public class QuizController : AbstractController {
         toDoList.Remove(currentWord);
 		toDoList.Add(currentWord);
         StartCoroutine(DisableButtons(wrongWaitTime,0));
+        InstantiateGame();
     }
 
     public void RightPressed()

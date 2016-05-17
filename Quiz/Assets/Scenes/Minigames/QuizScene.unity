@@ -1290,8 +1290,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   right: {fileID: 971100091}
   left: {fileID: 1262536789}
-  correctCol: {r: 0.15424177, g: 0.35294116, b: 0.11678201, a: 0.866}
-  wrongCol: {r: 0.5808823, g: 0.09396624, b: 0.09396624, a: 0.853}
+  correctCol: {r: 0.15424177, g: 0.35294116, b: 0.11678201, a: 1}
+  wrongCol: {r: 0.5808823, g: 0.09396624, b: 0.09396624, a: 1}
   beginWord: <color=red><b>
   endWord: </b></color>
 --- !u!1 &1735378281
