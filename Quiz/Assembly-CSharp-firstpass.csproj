@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\CastRemoteDisplayManager.cs" />
-     <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Deprecated\CastRemoteDisplayAudioListener.cs" />
      <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\Android\CastRemoteDisplayAndroidExtension.cs" />
      <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\CastRemoteDisplayAudioInterceptor.cs" />
      <Compile Include="Assets\Plugins\GoogleCastRemoteDisplay\Internal\CastRemoteDisplayExtensionManager.cs" />

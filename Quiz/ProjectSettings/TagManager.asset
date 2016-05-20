@@ -11,6 +11,7 @@ TagManager:
   - chromeButton
   - diffSwitch
   - ReloadMessage
+  - ReloadButton
   layers:
   - Default
   - TransparentFX

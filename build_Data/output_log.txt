@@ -1,0 +1,140 @@
+Initialize engine version: 5.3.3f1 (910d71450a97)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 4000 (ID=0x166)
+    Vendor:   Intel
+    VRAM:     1066 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.416 seconds
+Platform assembly: C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Nadia\Documents\CS\SE2\Team-6\build_Data\Managed\System.dll (this message is harmless)
+desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.284814 ms
+Activating Cast Remote Display.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Disabling the CastRemoteDisplayManager because the platform is not Android or iOS, and no simulator is found.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Remote display is not activated. Can't update remote display texture or camera.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 8.562171 ms
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 307.
+Total: 0.817609 ms (FindLiveObjects: 0.038607 ms CreateObjectMapping: 0.038607 ms MarkObjects: 0.598667 ms  DeleteObjects: 0.140259 ms)
+
+Remote display is not activated. Can't update remote display texture or camera.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.963527 ms
+The AnimationClip 'SearchingAnimation' used by the Animation component 'SearchingBar' must be marked as Legacy.
+ 
+(Filename:  Line: 1971)
+
+Default clip could not be found in attached animations list.
+ 
+(Filename:  Line: 401)
+
+Coroutine couldn't be started because the the game object 'CastListDialog' is inactive!
+ 
+(Filename:  Line: 737)
+
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 511.
+Total: 0.967153 ms (FindLiveObjects: 0.055712 ms CreateObjectMapping: 0.038119 ms MarkObjects: 0.835691 ms  DeleteObjects: 0.036653 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at QuizController.UpdateGame () [0x00000] in <filename unknown>:0 
+  at QuizController.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Remote display is not activated. Can't update remote display texture or camera.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at QuizController.Answer () [0x00000] in <filename unknown>:0 
+  at QuizController.CorrectAnswer () [0x00000] in <filename unknown>:0 
+  at QuizController.RightPressed () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.InvokableCall.Invoke (System.Object[] args) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.InvokableCallList.Invoke (System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.UnityEvent.Invoke () [0x00000] in <filename unknown>:0 
+  at UnityEngine.UI.Button.Press () [0x00000] in <filename unknown>:0 
+  at UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) [0x00000] in <filename unknown>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent()
+UnityEngine.EventSystems.StandaloneInputModule:Process()
+UnityEngine.EventSystems.EventSystem:Update()
+ 
+(Filename:  Line: -1)
+
+Remote display is not activated. Can't update remote display texture or camera.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Remote display is not activated. Can't update remote display texture or camera.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Remote display is not activated. Can't update remote display texture or camera.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Remote display is not activated. Can't update remote display texture or camera.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Remote display is not activated. Can't update remote display texture or camera.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Remote display is not activated. Can't update remote display texture or camera.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Remote display is not activated. Can't update remote display texture or camera.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1e48 -> priority: 1 
+  Thread -> id: 1984 -> priority: 1 
+Deactivating Cast Remote Display.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+

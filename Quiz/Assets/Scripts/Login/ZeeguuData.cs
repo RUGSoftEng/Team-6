@@ -155,6 +155,9 @@ public class ZeeguuData : MonoBehaviour {
 
     // This function will update the bookmarks. Nothing more, nothing less.
     public IEnumerator UpdateBookmarks (GameObject animation) {
+        GameObject button = GameObject.FindGameObjectWithTag ("ReloadButton");
+        button.GetComponent<Button>().interactable = false;
+
         Debug.Log ("Instantiating load animation");
         GameObject canvas = GameObject.FindGameObjectsWithTag ("canvas")[0];
         GameObject load = Instantiate (animation);
@@ -196,6 +199,8 @@ public class ZeeguuData : MonoBehaviour {
 
         Debug.Log ("Destroying load animation");
         Destroy (load);
+        
+        button.GetComponent<Button> ().interactable = true;
     }
 
     IEnumerator BookmarksRequest() {
@@ -207,6 +212,8 @@ public class ZeeguuData : MonoBehaviour {
     }
 
     public void Login(GameObject animation){
+        loginForm.GetComponent<Animator>().Play("FoldOut");
+        loginForm.SetActive(false);
         loadAnimation = animation;
         username = usernameText.text;
         string password = passwordText.text;

@@ -143,7 +143,7 @@ MonoBehaviour:
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 2
+    m_MinSize: 10
     m_MaxSize: 25
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Refresh da bookies!
+  m_Text: Refresh words
 --- !u!222 &50663709
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1303,7 +1303,7 @@ MonoBehaviour:
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 3
+    m_MinSize: 10
     m_MaxSize: 25
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1311,7 +1311,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Sign out
+  m_Text: 'Log out
 
 '
 --- !u!222 &982975601
@@ -1379,7 +1379,7 @@ GameObject:
   - 114: {fileID: 1151076276}
   m_Layer: 5
   m_Name: Refresh
-  m_TagString: Untagged
+  m_TagString: ReloadButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
