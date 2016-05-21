@@ -40,7 +40,6 @@ public class QuizController : AbstractController {
     /* this allready makes sure everything is ready to go when the game has to continue after the disable.*/
     private void InstantiateGame()
     {
-        Debug.Log("Instantiate");
         if (toDoList.Count < 1)
         {
             return;

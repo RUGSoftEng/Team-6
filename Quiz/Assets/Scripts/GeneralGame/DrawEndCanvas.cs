@@ -18,6 +18,8 @@ public class DrawEndCanvas : MonoBehaviour {
     {
         Canvas phone = Instantiate(endCanvas);
         Canvas cast = Instantiate(endCanvas);
+        Debug.Log("testing:"+phone.GetComponentInChildren<SwitchText>().strList.Count);
+        int iStr = Random.Range(0, phone.GetComponentInChildren<SwitchText>().strList.Count);
 
         phone.enabled = true;
         phoneCanvas.enabled = false;
@@ -28,5 +30,8 @@ public class DrawEndCanvas : MonoBehaviour {
         cast.worldCamera = chromeCastCamera;
         GraphicRaycaster gR = cast.GetComponent<GraphicRaycaster>();
         gR.enabled = false;
+
+        phone.GetComponentInChildren<SwitchText>().NotRandom(iStr);
+        cast.GetComponentInChildren<SwitchText>().NotRandom(iStr);
     }
 }
