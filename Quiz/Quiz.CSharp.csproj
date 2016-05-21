@@ -81,8 +81,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\LoadAnimation.cs" />
     <Compile Include="Assets\Logout.cs" />
     <Compile Include="Assets\Scripts\Boomlagoon\JSON\JSONObject.cs" />
+    <Compile Include="Assets\Scripts\Deprecated\CastRemoteDisplayAudioListener.cs" />
+    <Compile Include="Assets\Scripts\General\SwitchText.cs" />
     <Compile Include="Assets\Scripts\GeneralGame\AbstractController.cs" />
     <Compile Include="Assets\Scripts\GeneralGame\BackButton.cs" />
     <Compile Include="Assets\Scripts\GeneralGame\DrawEndCanvas.cs" />
@@ -92,9 +95,11 @@
     <Compile Include="Assets\Scripts\Login\ZeeguuData.cs" />
     <Compile Include="Assets\Scripts\MainMenu\FillInUsername.cs" />
     <Compile Include="Assets\Scripts\MainMenu\LoadNewLevel.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\ReloadBookies.cs" />
     <Compile Include="Assets\Scripts\Memory\MemoryController.cs" />
     <Compile Include="Assets\Scripts\Menus\Bookmark.cs" />
     <Compile Include="Assets\Scripts\Menus\OpenCloseSettings.cs" />
+    <Compile Include="Assets\Scripts\Order\OrderGameController.cs" />
     <Compile Include="Assets\Scripts\Quiz\CastCanvasSwitch.cs" />
     <Compile Include="Assets\Scripts\Quiz\EditText.cs" />
     <Compile Include="Assets\Scripts\Quiz\ProgressBarOnCanvas.cs" />

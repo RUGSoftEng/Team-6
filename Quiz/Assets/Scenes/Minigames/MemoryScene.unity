@@ -1774,6 +1774,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11448628, guid: b2b2e5da713db554ab418bbf28009d82, type: 2}
+      propertyPath: strList.Array.data[0]
+      value: Well done, you finished memory!
+      objectReference: {fileID: 0}
     - target: {fileID: 11403072, guid: b2b2e5da713db554ab418bbf28009d82, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1789,10 +1793,6 @@ Prefab:
     - target: {fileID: 11408044, guid: b2b2e5da713db554ab418bbf28009d82, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Continue
-      objectReference: {fileID: 0}
-    - target: {fileID: 142548, guid: b2b2e5da713db554ab418bbf28009d82, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2b2e5da713db554ab418bbf28009d82, type: 2}
@@ -3382,7 +3382,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_BackGroundColor: {r: 0.7764706, g: 0.7764706, b: 0.7764706, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
