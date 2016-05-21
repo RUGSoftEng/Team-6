@@ -39,9 +39,9 @@ public class MemoryController : AbstractController {
 			words[2*i+1].SetMemory(true);
 		}
 		System.Random rng = new System.Random();
-		int x,y;
 		RectTransform rt;
 		for(int i=0;i<14;i++) {
+			int x,y;
 			buttons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
 			chromeButtons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
 			buttons[i].GetComponent<UpdateButton>().SetEnabledColor(i%2==0?colorNormal1:colorNormal2);
@@ -49,19 +49,41 @@ public class MemoryController : AbstractController {
 			buttons[i].GetComponent<UpdateButton>().SetDisabledColor(i%2==0?colorSelected1:colorSelected2);
             chromeButtons[i].GetComponent<UpdateButton>().SetDisabledColor(i%2==0?colorSelected1:colorSelected2);
 			rt = buttons[i].GetComponent<RectTransform>();
+			rt.offsetMin = new Vector2(0,0);
+			rt.offsetMax = new Vector2(0,0);
 			do {
 				x = 0+rng.Next(0,70);
 				y = 0+rng.Next(0,90);
 				rt.anchorMin = new Vector2(x/100F,y/100F);
 				rt.anchorMax = new Vector2((x+20)/100F,(y+10)/100F);
-				rt.offsetMin = new Vector2(0,0);
-				rt.offsetMax = new Vector2(0,0);
 			} while (overlapping(i));
 			rt = chromeButtons[i].GetComponent<RectTransform>();
 			rt.anchorMin = new Vector2(x/100F,y/100F);
 			rt.anchorMax = new Vector2((x+30)/100F,(y+10)/100F);
 			rt.offsetMin = new Vector2(0,0);
 			rt.offsetMax = new Vector2(0,0);
+		}
+		for(int i=0;i<14;i++) {
+			rt = buttons[i].GetComponent<RectTransform>();
+			int tl = words[i].GetMemoryWord().Length;
+			float x = (rt.anchorMax[0]+rt.anchorMin[0])/2;
+			float y = (rt.anchorMax[1]+rt.anchorMin[1])/2;
+			Vector2 c1 = new Vector2(x-0.02F,y-0.05F);
+			Vector2 c2 = new Vector2(x+0.02F,y+0.05F);
+			int sz = 4;
+			while (!overlapping(i) && (sz)<3*tl) {
+				c1[0]-=0.01F;
+				c2[0]+=0.01F;
+				sz+=2;
+				rt.anchorMin = c1;
+				rt.anchorMax = c2;
+			}
+			if (overlapping(i)) {
+				c1[0]+=0.01F;
+				c2[0]-=0.01F;
+				rt.anchorMin = c1;
+				rt.anchorMax = c2;
+			}
 		}
     }
 	
