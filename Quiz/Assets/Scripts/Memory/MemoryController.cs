@@ -17,8 +17,9 @@ public class MemoryController : AbstractController {
 	private int pressed = -1, toDo = 7;
 	private List<WordData> words;
 	public GameObject end;
-	private bool[] locked = new bool[14];
+	private bool[] locked = new bool[14], heldDown = new bool[14];
 	private int difficulty;
+	public Text pressText;
 
 	// Use this for initialization
 	void Start () {
@@ -53,7 +54,7 @@ public class MemoryController : AbstractController {
 			rt.offsetMax = new Vector2(0,0);
 			do {
 				x = 0+rng.Next(0,70);
-				y = 0+rng.Next(0,90);
+				y = 6+rng.Next(0,84);
 				rt.anchorMin = new Vector2(x/100F,y/100F);
 				rt.anchorMax = new Vector2((x+20)/100F,(y+10)/100F);
 			} while (overlapping(i));
@@ -114,6 +115,7 @@ public class MemoryController : AbstractController {
 	
 	/*decides what happens when any of the 14 buttons is pressed*/
 	public void ButtonPressed(int i) {
+		heldDown[i]=false;
 		if (pressed==i) {
 			if (difficulty==0) {
 				buttons[i].GetComponent<UpdateButton>().SetEnabledColor(i%2==0?colorNormal1:colorNormal2);
@@ -151,6 +153,11 @@ public class MemoryController : AbstractController {
 			CreateEndscreen();
 			return;
 		}
+	}
+	
+	public void ButtonHold(int i) {
+		heldDown[i]=true;
+		StartCoroutine(HoldButton(i));
 	}
 	
 	public void LockAllButtons() {
@@ -204,6 +211,35 @@ public class MemoryController : AbstractController {
         chromeButtons[b2].GetComponent<UpdateButton>().SetDisabledColor(b2%2==0?colorSelected1:colorSelected2);
         UnlockAllButtons();
 		toggleTextVisibility();
+    }
+	
+	IEnumerator HoldButton(int i)
+    {
+        yield return new WaitForSeconds(1);
+		if (heldDown[i]) {
+			Color c = pressText.color;
+			c.a = 10;
+			pressText.color = c;
+			pressText.GetComponent<Text>().text = words[i].GetDesc();
+			StartCoroutine(FadeText());
+		}
+    }
+	
+	public IEnumerator FadeText()
+    {
+		Color c = pressText.color;
+		yield return new WaitForSeconds(2.5F);
+		c.a = 0.99F;
+		pressText.color = c;
+		for(int i=0;i<=25;i++) {
+			yield return new WaitForSeconds(0.04F);
+			c = pressText.color;
+			if (c.a>1) {
+				return true;
+			}
+			c.a -= 0.04F;
+			pressText.color = c;
+		}
     }
 
     public override void CreateEndscreen()
