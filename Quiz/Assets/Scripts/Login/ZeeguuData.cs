@@ -33,6 +33,7 @@ public class ZeeguuData : MonoBehaviour {
     public GameObject loginForm;
     public GameObject signingIn;
     public GameObject loadAnimation;
+    GameObject load;
     public FrequencyList frequencyList;
 
     public string serverURL;
@@ -76,7 +77,7 @@ public class ZeeguuData : MonoBehaviour {
             if (!System.Int32.TryParse(loginRequest.text, out sessionID)) {
                 //Login button shakes and turns red to signal login failure.
                 loginButton.GetComponent<Animator>().Play("Disabled");
-                yield break;
+                loginFail();
             }
         }
     }
@@ -86,9 +87,6 @@ public class ZeeguuData : MonoBehaviour {
         yield return nativeLanguageRequest;
         if (!nativeLanguageRequest.text.Equals("")) {
             userNativeLanguage = nativeLanguageRequest.text;
-        } else {
-            loginButton.GetComponent<Animator>().Play("Disabled");
-            yield break;
         }
     }
 
@@ -97,9 +95,6 @@ public class ZeeguuData : MonoBehaviour {
         yield return learnedLanguageRequest;
         if (!learnedLanguageRequest.text.Equals("")) {
             userLearnedLanguage = learnedLanguageRequest.text;
-        } else {
-            loginButton.GetComponent<Animator>().Play("Disabled");
-            yield break;
         }
     }
 
@@ -127,9 +122,6 @@ public class ZeeguuData : MonoBehaviour {
                 }
 
                 saveBookmarks();
-            } else {
-                loginButton.GetComponent<Animator>().Play("Disabled");
-                yield break;
             }
         } else {
             WWW bookmarkRequest = new WWW(serverURL + "/bookmarks_by_day/with_context?session=" + sessionID);
@@ -138,11 +130,20 @@ public class ZeeguuData : MonoBehaviour {
                 userBookmarks = Bookmark.ListFromJson(bookmarkRequest.text);
                 Debug.Log("Got all " + userBookmarks.Count + "bookmarks from Zeeguu");
                 saveBookmarks();
-            } else {
-                loginButton.GetComponent<Animator>().Play("Disabled");
-                yield break;
             }
         }
+    }
+
+    void loginFail() {
+        Debug.Log("Login failed");
+        //Invoked if the login fails.
+
+        loginForm.SetActive(true);
+        loginButton.GetComponent<Animator>().Play("Disabled");
+
+        // Finalise loading animation.
+        Debug.Log("Destroying load animation");
+        Destroy(load);
     }
 
     //Selects a number of the most useful bookmarks to learn.
@@ -181,13 +182,6 @@ public class ZeeguuData : MonoBehaviour {
         return selectedWords;
     }
 
-    void testSelectWords() {
-        List<Bookmark> result = SelectWords(10);
-        foreach(Bookmark b in result) {
-            Debug.Log(b.word + "\t\t" + b.bookmarkDate + "\t\t" + Math.Log10(frequencyList.Search(b.word)));
-        }
-    }
-
     //Marks per bookmark in userBookmarks whether it is being learned or not.
     IEnumerator RetrieveLearnedBookmarks() {
         WWW bookmarkRequest = new WWW(serverURL + "/bookmarks_by_day/with_context?session=" + sessionID);
@@ -210,18 +204,38 @@ public class ZeeguuData : MonoBehaviour {
         // Instantiate loading animation.
         Debug.Log ("Instantiating load animation");
         GameObject canvas = GameObject.FindGameObjectsWithTag ("canvas")[0];
-        GameObject load = Instantiate (loadAnimation);
+        load = Instantiate (loadAnimation);
         load.transform.SetParent (canvas.transform);
         
         yield return TestSession();
         
         yield return SignIn(username,password);
+
+        Debug.Log(sessionID);
+
+        if (sessionID == 0) {
+            loginFail();
+        } else {
+            yield return NativeLanguageRequest();
+        }
+
+        Debug.Log(sessionID);
         
-        yield return NativeLanguageRequest();
-        
-        yield return LearnedLanguageRequest();
-        
-        yield return RetrieveBookmarks();
+        if(userNativeLanguage != null && userNativeLanguage != "") {
+            yield return LearnedLanguageRequest();
+        } else {
+            loginFail();
+        }
+
+        if (userLearnedLanguage != null && userLearnedLanguage != "") {
+            yield return RetrieveBookmarks();
+        } else {
+            loginFail();
+        }
+
+        if(userBookmarks == null) {
+            loginFail();
+        }
 
         // Store the session if needed.
         if (keepSignedIn.isOn) {
@@ -238,8 +252,14 @@ public class ZeeguuData : MonoBehaviour {
         Debug.Log ("Destroying load animation");
         Destroy (load);
 
+        Debug.Log(frequencyList.lang);
         //Go to main menu
-        SceneManager.LoadScene(1);
+        if(frequencyList.lang != null && frequencyList.lang != "") {
+            SceneManager.LoadScene(1);
+        } else {
+            loginFail();
+        }
+        
     }
 
     // This function will update the bookmarks. Nothing more, nothing less.
