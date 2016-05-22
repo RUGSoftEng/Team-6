@@ -90,7 +90,7 @@
      <None Include="Assets\Plugins\Android\mediarouter\res\values\strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-mk-rMK\location_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\common_strings.xml" />
-     <None Include="Assets\Wordlists\da.txt" />
+     <None Include="Assets\Resources\da.txt" />
      <None Include="Assets\Plugins\Android\appcompat\res\values-pt-rPT\strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\wallet_attrs.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sv\wallet_strings.xml" />
@@ -138,7 +138,7 @@
      <None Include="Assets\Plugins\Android\appcompat\res\drawable\abc_textfield_search_material.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\values-pl\strings.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\values-de\strings.xml" />
-     <None Include="Assets\Wordlists\pt.txt" />
+     <None Include="Assets\Resources\pt.txt" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-te-rIN\location_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt-rBR\common_strings.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\layout\abc_search_dropdown_item_icons_2line.xml" />
@@ -151,7 +151,7 @@
      <None Include="Assets\Plugins\Android\appcompat\res\drawable\abc_cab_background_internal_bg.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-tr\location_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-cs\wallet_strings.xml" />
-     <None Include="Assets\Wordlists\ro.txt" />
+     <None Include="Assets\Resources\ro.txt" />
      <None Include="Assets\Plugins\Android\appcompat\res\drawable\abc_item_background_holo_dark.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-si-rLK\location_strings.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\color\abc_secondary_text_material_light.xml" />
@@ -298,7 +298,7 @@
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-my-rMM\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-mk-rMK\base_strings.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\values-port\bools.xml" />
-     <None Include="Assets\Wordlists\es.txt" />
+     <None Include="Assets\Resources\es.txt" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-lt\base_strings.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\values-w480dp\config.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\drawable\abc_ic_menu_copy_material.xml" />
@@ -368,13 +368,13 @@
      <None Include="Assets\Plugins\Android\appcompat\res\values-v12\styles_base.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\values-v18\dimens.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\drawable\abc_ic_menu_share_material.xml" />
-     <None Include="Assets\Wordlists\nl.txt" />
+     <None Include="Assets\Resources\nl.txt" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-kn-rIN\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sk\base_strings.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\drawable\abc_list_selector_holo_light.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt-rPT\wallet_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pl\base_strings.xml" />
-     <None Include="Assets\Wordlists\el.txt" />
+     <None Include="Assets\Resources\el.txt" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-es-rUS\wallet_strings.xml" />
      <None Include="Assets\Plugins\Android\mediarouter\res\values-sq-rAL\strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-vi\base_strings.xml" />
@@ -498,7 +498,7 @@
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\location_dimens.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\layout\abc_screen_simple_overlay_action_mode.xml" />
      <None Include="Assets\Plugins\Android\mediarouter\res\values-vi\strings.xml" />
-     <None Include="Assets\Wordlists\no.txt" />
+     <None Include="Assets\Resources\no.txt" />
      <None Include="Assets\Plugins\Android\appcompat\res\drawable-v21\abc_action_bar_item_background_material.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-it\location_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hu\common_strings.xml" />
@@ -566,7 +566,7 @@
      <None Include="Assets\Plugins\Android\appcompat\res\values-en-rAU\strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-lt\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pl\common_strings.xml" />
-     <None Include="Assets\Wordlists\it.txt" />
+     <None Include="Assets\Resources\it.txt" />
      <None Include="Assets\Plugins\Android\appcompat\res\values-large\themes_base.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-es\wallet_strings.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\drawable\abc_btn_colored_material.xml" />
@@ -607,7 +607,7 @@
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fi\wallet_strings.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\values-large\config.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ko\base_strings.xml" />
-     <None Include="Assets\Wordlists\de.txt" />
+     <None Include="Assets\Resources\de.txt" />
      <None Include="Assets\Plugins\Android\appcompat\res\values-af\strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fr\base_strings.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\drawable\abc_edit_text_material.xml" />
@@ -697,7 +697,7 @@
      <None Include="Assets\Plugins\Android\appcompat\res\drawable\abc_ic_clear_material.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\anim\abc_popup_enter.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ar\common_strings.xml" />
-     <None Include="Assets\Wordlists\fr.txt" />
+     <None Include="Assets\Resources\fr.txt" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ko\location_strings.xml" />
      <None Include="Assets\Plugins\Android\mediarouter\README.txt" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-en-rIN\location_strings.xml" />
@@ -722,7 +722,7 @@
      <None Include="Assets\Plugins\Android\appcompat\res\layout\select_dialog_singlechoice_material.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ca\wallet_strings.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\drawable\abc_text_cursor_material.xml" />
-     <None Include="Assets\Wordlists\en.txt" />
+     <None Include="Assets\Resources\en.txt" />
      <None Include="Assets\Plugins\Android\appcompat\res\values-w480dp\bools.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt-rBR\base_strings.xml" />
      <None Include="Assets\Plugins\Android\mediarouter\res\values-ml-rIN\strings.xml" />

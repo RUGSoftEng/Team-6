@@ -212,15 +212,15 @@ public class ZeeguuData : MonoBehaviour {
         GameObject canvas = GameObject.FindGameObjectsWithTag ("canvas")[0];
         GameObject load = Instantiate (loadAnimation);
         load.transform.SetParent (canvas.transform);
-    
+        
         yield return TestSession();
-
+        
         yield return SignIn(username,password);
-
+        
         yield return NativeLanguageRequest();
-
+        
         yield return LearnedLanguageRequest();
-
+        
         yield return RetrieveBookmarks();
 
         // Store the session if needed.
@@ -229,12 +229,11 @@ public class ZeeguuData : MonoBehaviour {
         } else {
             destroySession();
         }
-
+        
         //Loading up the word frequency list to be used in word selection
         frequencyList = new FrequencyList(userLearnedLanguage);
-
-        testSelectWords();
-
+        frequencyList.initialize();
+        
         // Finalise loading animation.
         Debug.Log ("Destroying load animation");
         Destroy (load);
@@ -350,8 +349,7 @@ public class ZeeguuData : MonoBehaviour {
     // Function that redirects to the website for sign-up.
     public void SignUp ()
     {
-        // This needs to link to the sign up page.
-        System.Diagnostics.Process.Start ("http://watbenjedan.nl");
+        Application.OpenURL("https://www.zeeguu.unibe.ch/");
     }
 }
 
