@@ -789,18 +789,18 @@
     <None Include="Assets\Plugins\Android\mediarouter\res\values\styles.xml" />
     <None Include="Assets\Plugins\Android\mediarouter\res\values\themes.xml" />
     <None Include="Assets\Plugins\GoogleCastRemoteDisplay\README.txt" />
+    <None Include="Assets\Resources\da.txt" />
+    <None Include="Assets\Resources\de.txt" />
+    <None Include="Assets\Resources\el.txt" />
+    <None Include="Assets\Resources\en.txt" />
+    <None Include="Assets\Resources\es.txt" />
+    <None Include="Assets\Resources\fr.txt" />
+    <None Include="Assets\Resources\it.txt" />
+    <None Include="Assets\Resources\nl.txt" />
+    <None Include="Assets\Resources\no.txt" />
+    <None Include="Assets\Resources\pt.txt" />
+    <None Include="Assets\Resources\ro.txt" />
     <None Include="Assets\Scripts\Menus\nl.txt" />
-    <None Include="Assets\Wordlists\da.txt" />
-    <None Include="Assets\Wordlists\de.txt" />
-    <None Include="Assets\Wordlists\el.txt" />
-    <None Include="Assets\Wordlists\en.txt" />
-    <None Include="Assets\Wordlists\es.txt" />
-    <None Include="Assets\Wordlists\fr.txt" />
-    <None Include="Assets\Wordlists\it.txt" />
-    <None Include="Assets\Wordlists\nl.txt" />
-    <None Include="Assets\Wordlists\no.txt" />
-    <None Include="Assets\Wordlists\pt.txt" />
-    <None Include="Assets\Wordlists\ro.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

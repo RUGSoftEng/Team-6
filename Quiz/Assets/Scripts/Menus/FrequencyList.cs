@@ -4,38 +4,42 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class FrequencyList {
-
+    public string lang;
     Dictionary<string, double> words;
     public int mostCommonOccurence = 0;
 
     public FrequencyList(string lang) {
-        Debug.Log("Making frequency list for " + lang);
         words = new Dictionary<string, double>();
+        this.lang = lang;
+    }
 
-        string line, word;
+    public IEnumerator initialize() {
+        
+        string word;
         int freq;
-        StreamReader file = new StreamReader("Assets/Wordlists/"+ lang + ".txt");
+        string list = ((TextAsset)Resources.Load(lang)).text;
 
         int linenr = 0;
-        while ((line = file.ReadLine()) != null) {
-            if(linenr++ % 10000 == 0) {
-                Debug.Log("Number crunching at line" + linenr);
+
+        string[] lines = list.Split('\n');
+        foreach (string line in lines.Take(lines.Length - 1)) {
+            if (linenr % 10000 == 0) {
+                yield return 0;
             }
             if (mostCommonOccurence == 0) {
                 mostCommonOccurence = Convert.ToInt32(line.Split(' ')[1]);
             }
             word = line.Split(' ')[0];
             freq = Convert.ToInt32(line.Split(' ')[1]);
-            words.Add(word, Convert.ToDouble(freq)/mostCommonOccurence);
+            words.Add(word, Convert.ToDouble(freq) / mostCommonOccurence);
         }
-
-        file.Close();
     }
 
     public double Search(string word) {
-        Debug.Log("Searching in frequency list for '" + word + "'");
         if(!word.Contains(" ")) {
             if (words.ContainsKey(word)) {
                 return words[word];
