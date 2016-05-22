@@ -351,7 +351,8 @@ public class ZeeguuData : MonoBehaviour {
     public void SignUp ()
     {
         // This needs to link to the sign up page.
-        System.Diagnostics.Process.Start ("http://watbenjedan.nl");
+        //System.Diagnostics.Process.Start ("http://watbenjedan.nl");
+        Application.OpenURL("https://www.zeeguu.unibe.ch/");
     }
 }
 

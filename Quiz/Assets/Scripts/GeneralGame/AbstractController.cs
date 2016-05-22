@@ -33,9 +33,16 @@ public abstract class AbstractController : MonoBehaviour {
 		}
 		else
 		{
-			List<Bookmark> localBookmarkList = new List<Bookmark>(zeeguuList[0].GetComponent<ZeeguuData>().userBookmarks);
-			for (int i = 0; i < maxAmountOfWords; i++)
-			{
+            ZeeguuData zd = zeeguuList[0].GetComponent<ZeeguuData>();
+            
+            
+			foreach (Bookmark b in zd.SelectWords(maxAmountOfWords))
+            {
+                totalWordList.Add(new WordData(b.word, b.translation, b.context));
+            }
+
+            //List<Bookmark> localBookmarkList = new List<Bookmark>(zeeguuList[0].GetComponent<ZeeguuData>().userBookmarks);        
+            /*{
 				if (localBookmarkList.Count == 0)
 				{
 					break;
@@ -43,9 +50,9 @@ public abstract class AbstractController : MonoBehaviour {
 				int randomIndex = Random.Range(0, localBookmarkList.Count);
 				totalWordList.Add(new WordData(localBookmarkList[randomIndex].word, localBookmarkList[randomIndex].translation, localBookmarkList[randomIndex].context));
 				localBookmarkList.RemoveAt(randomIndex);
-			}
-		}
-	}
+			}*/
+        }
+    }
 
     /* this method should always be called if a game is quit */
     public void Exit()
@@ -60,29 +67,4 @@ public abstract class AbstractController : MonoBehaviour {
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-    /*public void CreateEndscreen(GameObject end) {
-		GameObject canvas = GameObject.FindGameObjectsWithTag("canvas")[0];
-		GameObject endscreen = Instantiate(end);
-		endscreen.transform.SetParent(canvas.transform);
-		endscreen.transform.localScale = new Vector3(1, 1, 1);
-		RectTransform rt = endscreen.GetComponent<RectTransform>();
-		rt.anchorMin = new Vector2(0,0);
-		rt.anchorMax = new Vector2(1,1);
-		rt.offsetMin = new Vector2(0,0);
-		rt.offsetMax = new Vector2(0,0);
-	}*/
-
-    /* Waits for a mouseclick/fingerpress and then goes back to the menu*/
-
-    /*public IEnumerator WaitFinished()
-	{
-		while(true) {
-			if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) {
-				Exit();
-				break;
-			}
-			yield return null;
-		}
-    }*/
 }
