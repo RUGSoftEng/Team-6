@@ -17,7 +17,13 @@ public class UpdateButton : MonoBehaviour {
         textContainer.text = text;
     }
 
-	/*
+    public void UpdateTextColor(Color c)
+    {
+        Text textContainer = GetComponent<Transform>().GetComponentInChildren<Text>();
+        textContainer.color = c;
+    }
+
+    /*
 	 * set the color of this button, when it is disabled.
 	 */
     public void SetDisabledColor(Color col)

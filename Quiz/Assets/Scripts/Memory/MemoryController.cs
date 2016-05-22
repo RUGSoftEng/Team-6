@@ -13,7 +13,7 @@ public class MemoryController : AbstractController {
 	
 	private List<GameObject> buttons, chromeButtons;
     private Timer timer;
-	public Color colorCorrect, colorWrong, colorSelected1, colorSelected2, colorNormal1, colorNormal2;
+	public Color colorCorrect, colorWrong, colorSelected1, colorSelected2, colorNormal1, colorNormal2, textColor1, textColor2;
 	private int pressed = -1, toDo = 7;
 	private List<WordData> words;
 	public GameObject end;
@@ -44,8 +44,11 @@ public class MemoryController : AbstractController {
 		for(int i=0;i<14;i++) {
 			int x,y;
 			buttons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
-			chromeButtons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
-			buttons[i].GetComponent<UpdateButton>().SetEnabledColor(i%2==0?colorNormal1:colorNormal2);
+            buttons[i].GetComponent<UpdateButton>().UpdateTextColor(i % 2 == 0 ? textColor1 : textColor2);
+            chromeButtons[i].GetComponent<UpdateButton>().UpdateText(words[i].GetMemoryWord());
+            chromeButtons[i].GetComponent<UpdateButton>().UpdateTextColor(i % 2 == 0 ? textColor1 : textColor2);
+
+            buttons[i].GetComponent<UpdateButton>().SetEnabledColor(i%2==0?colorNormal1:colorNormal2);
             chromeButtons[i].GetComponent<UpdateButton>().SetEnabledColor(i%2==0?colorNormal1:colorNormal2);
 			buttons[i].GetComponent<UpdateButton>().SetDisabledColor(i%2==0?colorSelected1:colorSelected2);
             chromeButtons[i].GetComponent<UpdateButton>().SetDisabledColor(i%2==0?colorSelected1:colorSelected2);
