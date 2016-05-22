@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1394a5ad8acc22c45b3a63e02a6249f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chromecastCamera: {fileID: 1174519731}
+  chromecastCamera: {fileID: 0}
 --- !u!1 &489304864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   loginButton: {fileID: 1224673774}
   loginForm: {fileID: 853324552}
   signingIn: {fileID: 738979318}
-  loadAnimation: {fileID: 0}
+  loadAnimation: {fileID: 1935273341}
   serverURL: 
 --- !u!4 &857729872
 Transform:
@@ -3194,6 +3194,10 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1809745794}
+--- !u!1 &1935273341 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 117682, guid: cd88e425a952a40b0a733816526e558c, type: 2}
+  m_PrefabInternal: {fileID: 292874499}
 --- !u!1 &2001325522
 GameObject:
   m_ObjectHideFlags: 0

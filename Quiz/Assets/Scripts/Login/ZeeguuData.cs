@@ -12,6 +12,8 @@ using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System;
+using Boomlagoon.JSON;
+using System.Linq;
 
 public class ZeeguuData : MonoBehaviour {
     public static string DEFAULT_SERVER = "https://www.zeeguu.unibe.ch/";
@@ -31,6 +33,7 @@ public class ZeeguuData : MonoBehaviour {
     public GameObject loginForm;
     public GameObject signingIn;
     public GameObject loadAnimation;
+    public FrequencyList frequencyList;
 
     public string serverURL;
 
@@ -49,16 +52,9 @@ public class ZeeguuData : MonoBehaviour {
             signingIn.SetActive(false);
         }
     }
-    
-    IEnumerator LoginRequest(string username, string password){
-        // Instantiate loading animation.
-        Debug.Log ("Instantiating load animation");
-        GameObject canvas = GameObject.FindGameObjectsWithTag ("canvas")[0];
-        GameObject load = Instantiate (loadAnimation);
-        load.transform.SetParent (canvas.transform);
 
-        //First, try if a stored session exists and if it still works.
-        if(sessionID != 0) {
+    IEnumerator TestSession() {
+        if (sessionID != 0) {
             WWW testRequest = new WWW(serverURL + "/native_language?session=" + sessionID);
             yield return testRequest;
             if (testRequest.text.Contains("401") || testRequest.text.Equals("")) {
@@ -66,8 +62,9 @@ public class ZeeguuData : MonoBehaviour {
                 sessionID = 0;
             }
         }
-        
-        //If not, log in
+    }
+
+    IEnumerator SignIn(string username, string password) {
         if (sessionID == 0) {
             WWWForm loginForm = new WWWForm();
             loginForm.AddField("password", password);
@@ -82,8 +79,9 @@ public class ZeeguuData : MonoBehaviour {
                 yield break;
             }
         }
+    }
 
-        //Retrieve user native language
+    IEnumerator NativeLanguageRequest() {
         WWW nativeLanguageRequest = new WWW(serverURL + "/native_language?session=" + sessionID);
         yield return nativeLanguageRequest;
         if (!nativeLanguageRequest.text.Equals("")) {
@@ -92,8 +90,9 @@ public class ZeeguuData : MonoBehaviour {
             loginButton.GetComponent<Animator>().Play("Disabled");
             yield break;
         }
+    }
 
-        //Retrieve user learned language
+    IEnumerator LearnedLanguageRequest() {
         WWW learnedLanguageRequest = new WWW(serverURL + "/learned_language?session=" + sessionID);
         yield return learnedLanguageRequest;
         if (!learnedLanguageRequest.text.Equals("")) {
@@ -102,8 +101,9 @@ public class ZeeguuData : MonoBehaviour {
             loginButton.GetComponent<Animator>().Play("Disabled");
             yield break;
         }
+    }
 
-        //Retrieve user bookmarks
+    IEnumerator RetrieveBookmarks() {
         if (loadBookmarks()) {
             DateTime lastModified = File.GetLastWriteTime(Application.persistentDataPath + "bookmarks");
 
@@ -118,8 +118,14 @@ public class ZeeguuData : MonoBehaviour {
             yield return bookmarkRequest;
 
             if (!bookmarkRequest.text.Equals("")) {
-                Debug.Log(Bookmark.ListFromJson(bookmarkRequest.text).Count + "additional bookmarks retrieved");
-                userBookmarks.AddRange(Bookmark.ListFromJson(bookmarkRequest.text));
+                List<Bookmark> newBookmarks = Bookmark.ListFromJson(bookmarkRequest.text);
+                Debug.Log(newBookmarks.Count + "additional bookmarks retrieved");
+                userBookmarks.AddRange(newBookmarks);
+
+                if(newBookmarks.Count > 0) {
+                    yield return RetrieveLearnedBookmarks();
+                }
+
                 saveBookmarks();
             } else {
                 loginButton.GetComponent<Animator>().Play("Disabled");
@@ -130,13 +136,92 @@ public class ZeeguuData : MonoBehaviour {
             yield return bookmarkRequest;
             if (!bookmarkRequest.text.Equals("")) {
                 userBookmarks = Bookmark.ListFromJson(bookmarkRequest.text);
-                Debug.Log("Got all "+ userBookmarks.Count +"bookmarks from Zeeguu");
+                Debug.Log("Got all " + userBookmarks.Count + "bookmarks from Zeeguu");
                 saveBookmarks();
             } else {
                 loginButton.GetComponent<Animator>().Play("Disabled");
                 yield break;
             }
         }
+    }
+
+    //Selects a number of the most useful bookmarks to learn.
+    public List<Bookmark> SelectWords(int num) {
+        List<Bookmark> selectedWords = new List<Bookmark>();
+
+        if (userBookmarks.Count < num) {
+            // If there aren't enough words anyway, don't bother doing the hard computation
+            // to select them: just return everything
+            return userBookmarks;
+        }
+
+        // We need to normalize the timestamps: when we order the bookmarks, they're
+        // spread from old to new in values 0.0 to 1.0
+        DateTime firstBookmarkDate = userBookmarks.Min(x => x.bookmarkDate);
+        DateTime lastBookmarkDate = userBookmarks.Max(x => x.bookmarkDate);
+        double dateRange = lastBookmarkDate.Ticks - firstBookmarkDate.Ticks;
+
+        //LINQ is pretty cool yo
+        //This picks all learned words, ordered from new to old and common to rare (how to combine these is, ehm, "under construction")
+        selectedWords = userBookmarks.Where(x => x.isLearned)
+                                    .OrderByDescending(x => (x.bookmarkDate - firstBookmarkDate).Ticks/dateRange + frequencyList.Search(x.word))
+                                    .ToList();
+        
+        if (selectedWords.Count > num) {
+            //If we have too many words, just pick the best ones.
+            selectedWords = selectedWords.GetRange(0, num);
+        } else if (selectedWords.Count < num) {
+                //Not enough learned words: supplement with non-learned words, again preferring the newest most common ones.
+                selectedWords.AddRange(userBookmarks.Where(x => !x.isLearned)
+                                                    .OrderBy(x => (x.bookmarkDate - firstBookmarkDate).Ticks / dateRange + frequencyList.Search(x.word))
+                                                    .ToList()
+                                                    .GetRange(0,num- selectedWords.Count));
+        }
+
+        return selectedWords;
+    }
+
+    void testSelectWords() {
+        List<Bookmark> result = SelectWords(10);
+        foreach(Bookmark b in result) {
+            Debug.Log(b.word + "\t\t" + b.bookmarkDate + "\t\t" + Math.Log10(frequencyList.Search(b.word)));
+        }
+    }
+
+    //Marks per bookmark in userBookmarks whether it is being learned or not.
+    IEnumerator RetrieveLearnedBookmarks() {
+        WWW bookmarkRequest = new WWW(serverURL + "/bookmarks_by_day/with_context?session=" + sessionID);
+        yield return bookmarkRequest;
+
+        JSONArray learnedBookmarks = JSONArray.Parse(bookmarkRequest.text);
+
+        foreach(Bookmark bm in userBookmarks) {
+            bm.isLearned = false;
+            foreach(JSONValue lbm in learnedBookmarks) {
+                if (lbm.Obj.GetString("id") == bm.id.ToString()) {
+                    bm.isLearned = true;
+                    break;
+                }
+            }
+        }
+    }
+    
+    IEnumerator LoginRequest(string username, string password){
+        // Instantiate loading animation.
+        Debug.Log ("Instantiating load animation");
+        GameObject canvas = GameObject.FindGameObjectsWithTag ("canvas")[0];
+        GameObject load = Instantiate (loadAnimation);
+        load.transform.SetParent (canvas.transform);
+    
+        yield return TestSession();
+
+        yield return SignIn(username,password);
+
+        yield return NativeLanguageRequest();
+
+        yield return LearnedLanguageRequest();
+
+        yield return RetrieveBookmarks();
 
         // Store the session if needed.
         if (keepSignedIn.isOn) {
@@ -144,6 +229,11 @@ public class ZeeguuData : MonoBehaviour {
         } else {
             destroySession();
         }
+
+        //Loading up the word frequency list to be used in word selection
+        frequencyList = new FrequencyList(userLearnedLanguage);
+
+        testSelectWords();
 
         // Finalise loading animation.
         Debug.Log ("Destroying load animation");
@@ -163,39 +253,7 @@ public class ZeeguuData : MonoBehaviour {
         GameObject load = Instantiate (animation);
         load.transform.SetParent (canvas.transform);
 
-        if (loadBookmarks()) {
-            DateTime lastModified = File.GetLastWriteTime(Application.persistentDataPath + "bookmarks");
-
-            WWWForm bookmarksForm = new WWWForm();
-            bookmarksForm.AddField("with_context", "true");
-            bookmarksForm.AddField("after_date", lastModified.ToString("s"));
-
-            Debug.Log("Sending POST request:" + (serverURL + "/bookmarks_by_day?session=" + sessionID));
-            Debug.Log("With after_date set to: " + lastModified.ToString("s"));
-
-            WWW bookmarkRequest = new WWW(serverURL + "/bookmarks_by_day?session=" + sessionID, bookmarksForm);
-            yield return bookmarkRequest;
-
-            if (!bookmarkRequest.text.Equals("")) {
-                Debug.Log(Bookmark.ListFromJson(bookmarkRequest.text).Count + "additional bookmarks retrieved");
-                userBookmarks.AddRange(Bookmark.ListFromJson(bookmarkRequest.text));
-                saveBookmarks();
-            } else {
-                loginButton.GetComponent<Animator>().Play("Disabled");
-                yield break;
-            }
-        } else {
-            WWW bookmarkRequest = new WWW(serverURL + "/bookmarks_by_day/with_context?session=" + sessionID);
-            yield return bookmarkRequest;
-            if (!bookmarkRequest.text.Equals("")) {
-                userBookmarks = Bookmark.ListFromJson(bookmarkRequest.text);
-                Debug.Log("Got all "+ userBookmarks.Count +"bookmarks from Zeeguu");
-                saveBookmarks();
-            } else {
-                loginButton.GetComponent<Animator>().Play("Disabled");
-                yield break;
-            }
-        }
+        yield return RetrieveBookmarks();
 
         Debug.Log ("Destroying load animation");
         Destroy (load);
@@ -264,6 +322,10 @@ public class ZeeguuData : MonoBehaviour {
             userBookmarks = (List<Bookmark>)formatter.Deserialize(file);
             Debug.Log(userBookmarks.Count + " saved bookmarks found");
             file.Close();
+            Debug.Log("first bookmark was bookmarked at timestamp " + userBookmarks[0].bookmarkDate.Ticks);
+            if(userBookmarks.Count > 0 && userBookmarks[0].bookmarkDate.Ticks == 0) {
+                return false;
+            }
             return true;
         } else {
             Debug.Log("No bookmarks saved");

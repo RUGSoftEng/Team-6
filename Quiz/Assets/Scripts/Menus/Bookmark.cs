@@ -8,6 +8,7 @@ using UnityEngine;
 using Boomlagoon.JSON;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 [System.Serializable]
 public class Bookmark {
@@ -15,13 +16,17 @@ public class Bookmark {
     public string word { get; set; }
     public string translation { get; set; }
     public string context { get; set; }
-    private uint id { get; set; }
+    public uint id { get; set; }
+    public bool isLearned;
+    public DateTime bookmarkDate;
 
-    public Bookmark(string word, string translation, string context, uint id) {
+    public Bookmark(string word, string translation, string context, uint id, DateTime bookmarkDate) {
         this.word = word;
         this.translation = translation;
         this.context = context;
         this.id = id;
+        this.isLearned = false;
+        this.bookmarkDate = bookmarkDate;
     }
 
 	/* Changes the bookmarks in Json-format gotten from zeeguu into a bookmark-list */
@@ -36,9 +41,10 @@ public class Bookmark {
                 bm = dateBookmark.Obj;
                 foreach(JSONValue translation in bm.GetArray("to")) {
                     bookmarks.Add(new Bookmark(bm.GetString("from"),
-                        translation.Str, 
+                        translation.Str,
                         bm.GetString("context"),
-                        System.Convert.ToUInt32(bm.GetNumber("id"))));
+                        System.Convert.ToUInt32(bm.GetNumber("id")),
+                        DateTime.Parse(date.Obj.GetString("date"))));
                 }
             }
         }
