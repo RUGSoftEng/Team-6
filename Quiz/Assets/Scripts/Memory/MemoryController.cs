@@ -72,7 +72,7 @@ public class MemoryController : AbstractController {
 			Vector2 c1 = new Vector2(x-0.02F,y-0.05F);
 			Vector2 c2 = new Vector2(x+0.02F,y+0.05F);
 			int sz = 4;
-			while (!overlapping(i) && (sz)<3*tl) {
+			while (!overlapping(i) && (sz)<3*tl && c1[0]>0 && c2[0]<1) {
 				c1[0]-=0.01F;
 				c2[0]+=0.01F;
 				sz+=2;
@@ -105,10 +105,6 @@ public class MemoryController : AbstractController {
 			((min1[1]<=min2[1] && max1[1]>=min2[1]) || (min2[1]<=min1[1] && max2[1]>=min1[1]))) {
 				return true;
 			}
-		}
-		
-		if (min1[0]<0.22 && max1[1]>0.8) {
-			return true;
 		}
 		return false;
 	}
