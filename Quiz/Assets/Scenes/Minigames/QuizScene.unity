@@ -357,6 +357,14 @@ Prefab:
       propertyPath: m_Colors.m_PressedColor.b
       value: 0.77254903
       objectReference: {fileID: 0}
+    - target: {fileID: 11488620, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488620, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_FontData.m_MaxSize
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e47539078c65704f829e242a766bab4, type: 2}
   m_IsPrefabParent: 0
@@ -1702,6 +1710,18 @@ Prefab:
       propertyPath: m_Colors.m_PressedColor.b
       value: 0.77254903
       objectReference: {fileID: 0}
+    - target: {fileID: 11488620, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488620, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488620, guid: 8e47539078c65704f829e242a766bab4, type: 2}
+      propertyPath: m_FontData.m_MaxSize
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e47539078c65704f829e242a766bab4, type: 2}
   m_IsPrefabParent: 0
@@ -1953,8 +1973,8 @@ MonoBehaviour:
     m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 3
-    m_MaxSize: 48
+    m_MinSize: 25
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
