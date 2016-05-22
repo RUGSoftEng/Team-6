@@ -361,6 +361,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1126,6 +1127,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1407,27 +1409,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22456664, guid: 97d16a9b142edb14285f2004ac40f4bb, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 1080
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22456664, guid: 97d16a9b142edb14285f2004ac40f4bb, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 1920
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22456664, guid: 97d16a9b142edb14285f2004ac40f4bb, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22456664, guid: 97d16a9b142edb14285f2004ac40f4bb, type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22456664, guid: 97d16a9b142edb14285f2004ac40f4bb, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22456664, guid: 97d16a9b142edb14285f2004ac40f4bb, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22456664, guid: 97d16a9b142edb14285f2004ac40f4bb, type: 2}
       propertyPath: m_Pivot.x
@@ -1440,6 +1442,14 @@ Prefab:
     - target: {fileID: 111498, guid: 97d16a9b142edb14285f2004ac40f4bb, type: 2}
       propertyPath: m_Name
       value: Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 22456664, guid: 97d16a9b142edb14285f2004ac40f4bb, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22456664, guid: 97d16a9b142edb14285f2004ac40f4bb, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 97d16a9b142edb14285f2004ac40f4bb, type: 2}
