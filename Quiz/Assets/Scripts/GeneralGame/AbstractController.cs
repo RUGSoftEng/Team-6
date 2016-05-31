@@ -13,7 +13,6 @@ public abstract class AbstractController : MonoBehaviour {
     public int maxAmountOfWords;
     public List<WordData> totalWordList;
     public bool usingHardcodedSet = false;
-    protected ZeeguuData zd;
 
 	/*
 	 * The loadData method selects the words to be used in the game.
@@ -36,7 +35,7 @@ public abstract class AbstractController : MonoBehaviour {
 		}
 		else
 		{
-            zd = zeeguuList[0].GetComponent<ZeeguuData>();
+            ZeeguuData zd = zeeguuList[0].GetComponent<ZeeguuData>();
             
             
 			foreach (Bookmark b in zd.SelectWords(maxAmountOfWords))
@@ -57,7 +56,7 @@ public abstract class AbstractController : MonoBehaviour {
         else
         {
             int toLong = 0, prevToLong = 0;
-            zd = zeeguuList[0].GetComponent<ZeeguuData>();
+            ZeeguuData zd = zeeguuList[0].GetComponent<ZeeguuData>();
 
             foreach (Bookmark b in zd.SelectWords(maxAmountOfWords))
             {
