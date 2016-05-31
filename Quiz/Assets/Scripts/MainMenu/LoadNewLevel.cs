@@ -9,19 +9,41 @@ using UnityEngine.SceneManagement;
 
 public class LoadNewLevel : MonoBehaviour {
 	public int minWords;
+    public int maxLength;
 	public Text text;
 	
 	public void LoadLevel(int index) {
-		GameObject zd = GameObject.FindWithTag("ZeeguuData");
+        int cnt = 0;
+        GameObject zd = GameObject.FindWithTag("ZeeguuData");
         if (zd==null || zd.GetComponent<ZeeguuData>().userBookmarks.Count>minWords) {
+            if (maxLength != 0)
+            {
+                foreach (Bookmark b in zd.GetComponent<ZeeguuData>().userBookmarks)
+                {
+                    if (b.word.Length <= maxLength)
+                    {
+                        cnt++;
+                    }
+                }
+                if (cnt<=minWords)
+                {
+                    showTooFewWords("You need at least " + minWords + " words with maximal length "+maxLength+" to play that!");
+                    return;
+                }
+            }
             SceneManager.LoadScene(index);
 		} else {
-			Color c = text.color;
-			c.a = 10;
-			text.color = c;
-			text.GetComponent<Text>().text = "You need at least "+minWords+" words to play that!";
-			StartCoroutine(FadeText());
+            showTooFewWords("You need at least " + minWords + " words to play that!");
 		}
+    }
+
+    private void showTooFewWords(string message)
+    {
+        Color c = text.color;
+        c.a = 10;
+        text.color = c;
+        text.GetComponent<Text>().text = message;
+        StartCoroutine(FadeText());
     }
 	
 	public IEnumerator FadeText()

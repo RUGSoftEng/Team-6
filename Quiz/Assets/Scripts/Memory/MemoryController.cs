@@ -20,6 +20,7 @@ public class MemoryController : AbstractController {
 	private bool[] locked = new bool[14], heldDown = new bool[14];
 	private int difficulty;
 	public Text pressText;
+    public int maxWordLength;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +28,7 @@ public class MemoryController : AbstractController {
         timer = this.GetComponent<Timer>();
 		buttons = GameObject.FindGameObjectsWithTag("memButton").OrderBy( go => go.name ).ToList();
         chromeButtons = GameObject.FindGameObjectsWithTag("chromeButton").OrderBy(go => go.name).ToList();
-        LoadData();
+        LoadData(maxWordLength);
 		AssignData();
 	}
 	
@@ -75,7 +76,7 @@ public class MemoryController : AbstractController {
 			Vector2 c1 = new Vector2(x-0.02F,y-0.05F);
 			Vector2 c2 = new Vector2(x+0.02F,y+0.05F);
 			int sz = 4;
-			while (!overlapping(i) && (sz)<3*tl && c1[0]>0.02F && c2[0]<0.98F) {
+			while (!overlapping(i) && (sz)<2.75*tl && c1[0]>0.02F && c2[0]<0.98F) {
 				c1[0]-=0.01F;
 				c2[0]+=0.01F;
 				sz+=2;
