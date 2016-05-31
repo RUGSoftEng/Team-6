@@ -20,6 +20,17 @@ public class SwitchText : MonoBehaviour {
         this.GetComponent<Text>().text = strList[i];
     }
 
+    public void SetRandom ()
+    {
+        Debug.Log("set string to random");
+        int x;
+        do 
+        {
+            x = Random.Range(0, strList.Count);
+        } while (x == this.i);
+        NotRandom (x);
+    }
+
     void Update()
     {
         this.GetComponent<Text>().text = strList[i];
