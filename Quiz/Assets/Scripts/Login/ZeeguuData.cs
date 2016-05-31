@@ -32,6 +32,7 @@ public class ZeeguuData : MonoBehaviour {
     public GameObject loginForm;
     public GameObject signingIn;
     public GameObject loadAnimation;
+    public GameObject wrongPasswordLabel;
     GameObject load;
     public FrequencyList frequencyList;
 
@@ -48,6 +49,7 @@ public class ZeeguuData : MonoBehaviour {
         } else {
             //Show the login form
             loginForm.SetActive(true);
+            wrongPasswordLabel.SetActive (false);
             loginForm.GetComponent<Animator>().Play("FoldOut");
             signingIn.SetActive(false);
         }
@@ -139,6 +141,8 @@ public class ZeeguuData : MonoBehaviour {
 
         loginForm.SetActive(true);
         loginButton.GetComponent<Animator>().Play("Disabled");
+
+        wrongPasswordLabel.SetActive (true);
 
         // Finalise loading animation.
         Debug.Log("Destroying load animation");
@@ -242,10 +246,6 @@ public class ZeeguuData : MonoBehaviour {
         //Loading up the word frequency list to be used in word selection
         frequencyList = new FrequencyList(userLearnedLanguage);
         frequencyList.initialize();
-        
-        // Finalise loading animation.
-        Debug.Log ("Destroying load animation");
-        Destroy (load);
 
         Debug.Log(frequencyList.lang);
         //Go to main menu
@@ -254,7 +254,10 @@ public class ZeeguuData : MonoBehaviour {
         } else {
             loginFail();
         }
-        
+
+        // Finalise loading animation.
+        Debug.Log ("Destroying load animation");
+        Destroy (load);
     }
 
     // This function will update the bookmarks. Nothing more, nothing less.
