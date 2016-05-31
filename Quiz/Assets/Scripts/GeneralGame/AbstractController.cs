@@ -12,6 +12,8 @@ public abstract class AbstractController : MonoBehaviour {
     public Camera mainCamera;
     public int maxAmountOfWords;
     public List<WordData> totalWordList;
+    public bool usingHardcodedSet = false;
+    protected ZeeguuData zd;
 
 	/*
 	 * The loadData method selects the words to be used in the game.
@@ -22,7 +24,8 @@ public abstract class AbstractController : MonoBehaviour {
 		GameObject[] zeeguuList = GameObject.FindGameObjectsWithTag("ZeeguuData");
 		if (zeeguuList.Length < 1)
 		{
-			Debug.Log("No zeeguuData Available, using hardcoded Set");
+            usingHardcodedSet = true;
+            Debug.Log("No zeeguuData Available, using hardcoded Set");
 			totalWordList.Add(new WordData("Lion", "Leeuw", "The zombie-lion Roars"));
 			totalWordList.Add(new WordData("Shout", "Schreeuw", "Harry Shouts while he is being ripped in pieces by Mary"));
 			totalWordList.Add(new WordData("A super long english word which you would never expect since it is way to long to be writable, or even readible", "Een ontezettend lang engels woord dat je nooit verwacht, het is zo lang dat je hem niet eens kan schrijven laat staan lezen", "Who that was really long"));
@@ -33,12 +36,12 @@ public abstract class AbstractController : MonoBehaviour {
 		}
 		else
 		{
-            ZeeguuData zd = zeeguuList[0].GetComponent<ZeeguuData>();
+            zd = zeeguuList[0].GetComponent<ZeeguuData>();
             
             
 			foreach (Bookmark b in zd.SelectWords(maxAmountOfWords))
             {
-                totalWordList.Add(new WordData(b.word, b.translation, b.context));
+                totalWordList.Add(new WordData(b.word, b.translation, b.context, b.id));
             }
         }
     }
@@ -54,7 +57,7 @@ public abstract class AbstractController : MonoBehaviour {
         else
         {
             int toLong = 0, prevToLong = 0;
-            ZeeguuData zd = zeeguuList[0].GetComponent<ZeeguuData>();
+            zd = zeeguuList[0].GetComponent<ZeeguuData>();
 
             foreach (Bookmark b in zd.SelectWords(maxAmountOfWords))
             {

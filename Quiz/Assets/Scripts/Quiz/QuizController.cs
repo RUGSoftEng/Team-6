@@ -160,8 +160,20 @@ public class QuizController : AbstractController {
         UpdateGame();
     }
 
+    public void SendTimingData()
+    {
+        foreach (WordData w in totalWordList)
+        {
+            uint timeInMilliseconds = System.Convert.ToUInt32(1000 * w.GetSeenTime());
+            zd.sendResults(w.GetID(), "Correct", timeInMilliseconds);
+        }
+    }
+
     public override void CreateEndscreen()
     {
+        // Is this the correct place?
+        // if (!usingHardcodedSet) SendTimingData();
+
         DrawEndCanvas dec = GetComponent<DrawEndCanvas>();
         dec.EndScreen();
     }
