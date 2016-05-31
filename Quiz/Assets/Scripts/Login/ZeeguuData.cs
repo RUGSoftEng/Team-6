@@ -366,6 +366,24 @@ public class ZeeguuData : MonoBehaviour {
     {
         Application.OpenURL("https://www.zeeguu.unibe.ch/");
     }
+
+    // Reports results of a certain bookmark to the Zeeguu backend
+    //  'speed' is in milliseconds
+    //  'outcome' should be either: Correct, Retry, Wrong, Typo, Too easy
+    IEnumerator saveResults(uint bookmark_id, String outcome, uint speed) {
+
+        // The endpoint does not require any fields, yet it is a POST request
+        WWW resultsRequest = new WWW(serverURL + "/report_exercise_outcome/"
+            + outcome + "/ZeeKoe/" + speed + '/' + bookmark_id
+            + "?session=" + sessionID, new WWWForm());
+
+        yield return resultsRequest;
+
+        if (!resultsRequest.text.Equals("OK")) {
+            Debug.Log("Failed to report results to Zeeguu for word: " + bookmark.word);
+        }
+    }
+
 }
 
 [System.Serializable]
