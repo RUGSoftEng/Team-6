@@ -369,20 +369,20 @@ public class ZeeguuData : MonoBehaviour {
 
     // Reports results of a certain bookmark to the Zeeguu backend
     //  'speed' is in milliseconds
-    //  'outcome' should be either: Correct, Retry, Wrong, Typo, Too easy
-    IEnumerator saveResults(uint bookmark_id, String outcome, uint speed) {
+    // //  'outcome' should be either: Correct, Retry, Wrong, Typo, Too easy
+    // IEnumerator saveResults(uint bookmark_id, String outcome, uint speed) {
 
-        // The endpoint does not require any fields, yet it is a POST request
-        WWW resultsRequest = new WWW(serverURL + "/report_exercise_outcome/"
-            + outcome + "/ZeeKoe/" + speed + '/' + bookmark_id
-            + "?session=" + sessionID, new WWWForm());
+    //     // The endpoint does not require any fields, yet it is a POST request
+    //     WWW resultsRequest = new WWW(serverURL + "/report_exercise_outcome/"
+    //         + outcome + "/ZeeKoe/" + speed + '/' + bookmark_id
+    //         + "?session=" + sessionID, new WWWForm());
 
-        yield return resultsRequest;
+    //     yield return resultsRequest;
 
-        if (!resultsRequest.text.Equals("OK")) {
-            Debug.Log("Failed to report results to Zeeguu for word: " + bookmark.word);
-        }
-    }
+    //     if (!resultsRequest.text.Equals("OK")) {
+    //         Debug.Log("Failed to report results to Zeeguu for word: " + bookmark.word);
+    //     }
+    // }
 
 }
 
