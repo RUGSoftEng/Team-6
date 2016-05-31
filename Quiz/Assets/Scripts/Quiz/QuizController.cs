@@ -162,10 +162,18 @@ public class QuizController : AbstractController {
 
     public void SendTimingData()
     {
+        GameObject zd = GameObject.FindWithTag("ZeeguuData");
+
+        if (zd == null)
+        {
+            Debug.Log("Failed finding ZeeguuData object for sending timing data");
+            return;
+        }
+
         foreach (WordData w in totalWordList)
         {
             uint timeInMilliseconds = System.Convert.ToUInt32(1000 * w.GetSeenTime());
-            zd.sendResults(w.GetID(), "Correct", timeInMilliseconds);
+            zd.GetComponent<ZeeguuData>().sendResults(w.GetID(), "Correct", timeInMilliseconds);
         }
     }
 
