@@ -28,7 +28,6 @@ public class ZeeguuData : MonoBehaviour {
     public InputField usernameText;
     public InputField passwordText;
     public InputField serverText;
-    public Toggle keepSignedIn;
     public GameObject loginButton; //Handle needed so we can trigger animation of the login button.
     public GameObject loginForm;
     public GameObject signingIn;
@@ -237,12 +236,8 @@ public class ZeeguuData : MonoBehaviour {
             loginFail();
         }
 
-        // Store the session if needed.
-        if (keepSignedIn.isOn) {
-            saveSession();
-        } else {
-            destroySession();
-        }
+        // Store the session
+        saveSession();
         
         //Loading up the word frequency list to be used in word selection
         frequencyList = new FrequencyList(userLearnedLanguage);
