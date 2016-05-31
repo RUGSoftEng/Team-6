@@ -915,8 +915,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   maxAmountOfWords: 7
-  colorCorrect: {r: 0.034482718, g: 1, b: 0, a: 1}
-  colorWrong: {r: 1, g: 0, b: 0, a: 1}
+  colorCorrect: {r: 0.015686275, g: 0.49803922, b: 0, a: 1}
+  colorWrong: {r: 0.8745098, g: 0, b: 0, a: 1}
   colorSelected1: {r: 0.53676474, g: 0.53676474, b: 0.53676474, a: 1}
   colorSelected2: {r: 0.23529412, g: 0.27058825, b: 0.6901961, a: 1}
   colorNormal1: {r: 1, g: 1, b: 1, a: 1}
@@ -925,6 +925,7 @@ MonoBehaviour:
   textColor2: {r: 1, g: 1, b: 1, a: 1}
   end: {fileID: 135040, guid: 1dac0dbfe1877294fb1beb88665825c0, type: 2}
   pressText: {fileID: 1727188460}
+  maxWordLength: 4
 --- !u!4 &168907397
 Transform:
   m_ObjectHideFlags: 0

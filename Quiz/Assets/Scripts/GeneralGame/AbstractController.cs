@@ -40,17 +40,62 @@ public abstract class AbstractController : MonoBehaviour {
             {
                 totalWordList.Add(new WordData(b.word, b.translation, b.context));
             }
+        }
+    }
 
-            //List<Bookmark> localBookmarkList = new List<Bookmark>(zeeguuList[0].GetComponent<ZeeguuData>().userBookmarks);        
-            /*{
-				if (localBookmarkList.Count == 0)
-				{
-					break;
-				}
-				int randomIndex = Random.Range(0, localBookmarkList.Count);
-				totalWordList.Add(new WordData(localBookmarkList[randomIndex].word, localBookmarkList[randomIndex].translation, localBookmarkList[randomIndex].context));
-				localBookmarkList.RemoveAt(randomIndex);
-			}*/
+    protected void LoadData(int maxWordLength)
+    {
+        totalWordList = new List<WordData>();
+        GameObject[] zeeguuList = GameObject.FindGameObjectsWithTag("ZeeguuData");
+        if (zeeguuList.Length < 1)
+        {
+            LoadData();
+        }
+        else
+        {
+            int toLong = 0, prevToLong = 0;
+            ZeeguuData zd = zeeguuList[0].GetComponent<ZeeguuData>();
+
+            foreach (Bookmark b in zd.SelectWords(maxAmountOfWords))
+            {
+                if (b.word.Length <= maxWordLength)
+                {
+                    totalWordList.Add(new WordData(b.word, b.translation, b.context));
+                } else
+                {
+                    Debug.Log("TOOOO LONG" + b.word);
+                    toLong++;
+                }
+            }
+
+            //to fill up the amount of words that where to long
+            while (toLong > prevToLong) {
+                int rememberLength = toLong;
+                List<Bookmark> bookList = zd.SelectWords(maxAmountOfWords+toLong);
+                Debug.Log("BooklistSize: " + bookList.Count + " maxAmountOfWords" + maxAmountOfWords + " toLong: " + toLong);
+                for (int i=prevToLong; i<rememberLength; i++)
+                {
+                    Debug.Log(i);
+                    Bookmark b = bookList[maxAmountOfWords+i];
+                    if (b.word.Length <= maxWordLength)
+                    {
+                        Debug.Log("adding it" + b.word);
+                        totalWordList.Add(new WordData(b.word, b.translation, b.context));
+                    }
+                    else
+                    {
+                        Debug.Log("nog steeds te long" + b.word);
+                        toLong++;
+                    }
+                }
+                prevToLong = rememberLength;
+                Debug.Log("New Round prevToLong" + prevToLong + " toLong: " + toLong);
+            }
+            foreach (WordData wd in totalWordList)
+            {
+                Debug.Log("WORD: " + wd.GetWord());
+            }
+            Debug.Log(totalWordList);
         }
     }
 
