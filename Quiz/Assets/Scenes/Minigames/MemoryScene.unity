@@ -901,6 +901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minWords: 0
+  maxLength: 0
   text: {fileID: 0}
 --- !u!114 &168907396
 MonoBehaviour:
@@ -925,7 +926,7 @@ MonoBehaviour:
   textColor2: {r: 1, g: 1, b: 1, a: 1}
   end: {fileID: 135040, guid: 1dac0dbfe1877294fb1beb88665825c0, type: 2}
   pressText: {fileID: 1727188460}
-  maxWordLength: 4
+  maxWordLength: 12
 --- !u!4 &168907397
 Transform:
   m_ObjectHideFlags: 0
