@@ -378,13 +378,16 @@ public class ZeeguuData : MonoBehaviour {
 
     IEnumerator ResultsRequest(uint bookmark_id, string outcome, uint speed) {
 
-        // The endpoint does not require any fields, yet it is a POST request
-        WWW resultsRequest = new WWW(serverURL+ "/report_exercise_outcome/"
+        // The endpoint does not require any fields, yet it is a POST request..
+        WWWForm resultsForm = new WWWForm();
+        resultsForm.AddField("", "");
+
+        WWW resultsRequest = new WWW(serverURL + "/report_exercise_outcome/"
             + outcome           // Correct, Retry, Wrong, Typo, Too easy
             + "/ZeeKoe/"        // source (as defined in backend)
             + speed + '/'       // speed in milliseconds
             + bookmark_id
-            + "?session=" + sessionID, new WWWForm());
+            + "?session=" + sessionID, resultsForm);
 
         yield return resultsRequest;
 
