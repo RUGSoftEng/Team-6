@@ -16,17 +16,27 @@ public class WordData
     private double seenTime = 0.0;
     private SwitchColor observer;
 	private bool memory = false;
+    private uint id = 0;
 
-	public WordData (string word, string translation, string description) {
+	public WordData (string word, string translation, string description, uint id) {
         this.word = word;
         this.translation = translation;
-        this.description = description;	
+        this.description = description;
+        this.id = id;
 	}
-	
-	public WordData (WordData wd) {
+
+    public WordData(string word, string translation, string description)
+    {
+        this.word = word;
+        this.translation = translation;
+        this.description = description;
+    }
+
+    public WordData (WordData wd) {
 		this.word = wd.word;
 		this.translation = wd.translation;
 		this.description = wd.description;
+        this.id = wd.id;
 	}
 
     public void AddSeenTime(double curSeenTime)
@@ -52,6 +62,11 @@ public class WordData
     public string GetDesc()
     {
         return description;
+    }
+
+    public uint GetID()
+    {
+        return id;
     }
 
     public void setObserver(SwitchColor sc)
