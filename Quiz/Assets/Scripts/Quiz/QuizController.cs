@@ -185,4 +185,9 @@ public class QuizController : AbstractController {
         DrawEndCanvas dec = GetComponent<DrawEndCanvas>();
         dec.EndScreen();
     }
+
+    public WordData GetCurrentWord()
+    {
+        return currentWord;
+    }
 }

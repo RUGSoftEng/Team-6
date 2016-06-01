@@ -58,12 +58,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -109,6 +103,7 @@
     <Compile Include="Assets\Scripts\Menus\OpenCloseSettings.cs" />
     <Compile Include="Assets\Scripts\Order\OrderGameController.cs" />
     <Compile Include="Assets\Scripts\Quiz\CastCanvasSwitch.cs" />
+    <Compile Include="Assets\Scripts\Quiz\DropDownHandler.cs" />
     <Compile Include="Assets\Scripts\Quiz\EditText.cs" />
     <Compile Include="Assets\Scripts\Quiz\ProgressBarOnCanvas.cs" />
     <Compile Include="Assets\Scripts\Quiz\QuizController.cs" />
@@ -116,6 +111,7 @@
     <Compile Include="Assets\Scripts\Quiz\Timer.cs" />
     <Compile Include="Assets\Scripts\Quiz\UpdateButton.cs" />
     <Compile Include="Assets\Scripts\Quiz\UpdateMiddleText.cs" />
+    <Compile Include="Assets\SendFeedBack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\Apache License.txt" />
