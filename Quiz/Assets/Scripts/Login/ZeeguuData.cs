@@ -339,7 +339,8 @@ public class ZeeguuData : MonoBehaviour {
             userBookmarks = (List<Bookmark>)formatter.Deserialize(file);
             Debug.Log(userBookmarks.Count + " saved bookmarks found");
             file.Close();
-            Debug.Log("first bookmark was bookmarked at timestamp " + userBookmarks[0].bookmarkDate.Ticks);
+            if (userBookmarks.Count > 0)
+                Debug.Log("first bookmark was bookmarked at timestamp " + userBookmarks[0].bookmarkDate.Ticks);
             if(userBookmarks.Count > 0 && userBookmarks[0].bookmarkDate.Ticks == 0) {
                 return false;
             }
@@ -392,7 +393,8 @@ public class ZeeguuData : MonoBehaviour {
         yield return resultsRequest;
 
         if (!resultsRequest.text.Equals("OK")) {
-            Debug.Log("Failed to report results to Zeeguu for bookmark id: " + bookmark_id);
+            Debug.Log("Failed to report results to Zeeguu for bookmark id: " + bookmark_id + '\n'
+                + "Error: " + resultsRequest.text);
         }
     }
 
