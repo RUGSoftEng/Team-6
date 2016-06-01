@@ -32,6 +32,7 @@ public class ZeeguuData : MonoBehaviour {
     public GameObject loginForm;
     public GameObject signingIn;
     public GameObject loadAnimation;
+    public GameObject wrongPasswordLabel;
     GameObject load;
     public FrequencyList frequencyList;
 
@@ -48,6 +49,7 @@ public class ZeeguuData : MonoBehaviour {
         } else {
             //Show the login form
             loginForm.SetActive(true);
+            wrongPasswordLabel.SetActive (false);
             loginForm.GetComponent<Animator>().Play("FoldOut");
             signingIn.SetActive(false);
         }
@@ -139,6 +141,8 @@ public class ZeeguuData : MonoBehaviour {
 
         loginForm.SetActive(true);
         loginButton.GetComponent<Animator>().Play("Disabled");
+
+        wrongPasswordLabel.SetActive (true);
 
         // Finalise loading animation.
         Debug.Log("Destroying load animation");
@@ -242,10 +246,6 @@ public class ZeeguuData : MonoBehaviour {
         //Loading up the word frequency list to be used in word selection
         frequencyList = new FrequencyList(userLearnedLanguage);
         frequencyList.initialize();
-        
-        // Finalise loading animation.
-        Debug.Log ("Destroying load animation");
-        Destroy (load);
 
         Debug.Log(frequencyList.lang);
         //Go to main menu
@@ -254,7 +254,10 @@ public class ZeeguuData : MonoBehaviour {
         } else {
             loginFail();
         }
-        
+
+        // Finalise loading animation.
+        Debug.Log ("Destroying load animation");
+        Destroy (load);
     }
 
     // This function will update the bookmarks. Nothing more, nothing less.
@@ -367,22 +370,31 @@ public class ZeeguuData : MonoBehaviour {
         Application.OpenURL("https://www.zeeguu.unibe.ch/");
     }
 
-    // Reports results of a certain bookmark to the Zeeguu backend
-    //  'speed' is in milliseconds
-    // //  'outcome' should be either: Correct, Retry, Wrong, Typo, Too easy
-    // IEnumerator saveResults(uint bookmark_id, String outcome, uint speed) {
+    // Reports results of a certain bookmark to the Zeeguu backend.
+    public void sendResults(uint bookmark_id, string outcome, uint speed)
+    {
+        StartCoroutine(ResultsRequest(bookmark_id, outcome, speed));
+    }
 
-    //     // The endpoint does not require any fields, yet it is a POST request
-    //     WWW resultsRequest = new WWW(serverURL + "/report_exercise_outcome/"
-    //         + outcome + "/ZeeKoe/" + speed + '/' + bookmark_id
-    //         + "?session=" + sessionID, new WWWForm());
+    IEnumerator ResultsRequest(uint bookmark_id, string outcome, uint speed) {
 
-    //     yield return resultsRequest;
+        // The endpoint does not require any fields, yet it is a POST request..
+        WWWForm resultsForm = new WWWForm();
+        resultsForm.AddField("", "");
 
-    //     if (!resultsRequest.text.Equals("OK")) {
-    //         Debug.Log("Failed to report results to Zeeguu for word: " + bookmark.word);
-    //     }
-    // }
+        WWW resultsRequest = new WWW(serverURL + "/report_exercise_outcome/"
+            + outcome           // Correct, Retry, Wrong, Typo, Too easy
+            + "/ZeeKoe/"        // source (as defined in backend)
+            + speed + '/'       // speed in milliseconds
+            + bookmark_id
+            + "?session=" + sessionID, resultsForm);
+
+        yield return resultsRequest;
+
+        if (!resultsRequest.text.Equals("OK")) {
+            Debug.Log("Failed to report results to Zeeguu for bookmark id: " + bookmark_id);
+        }
+    }
 
 }
 
