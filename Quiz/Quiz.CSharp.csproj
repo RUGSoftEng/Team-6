@@ -87,6 +87,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Images\NewScript.cs" />
     <Compile Include="Assets\LoadAnimation.cs" />
     <Compile Include="Assets\Logout.cs" />
     <Compile Include="Assets\Scripts\Boomlagoon\JSON\JSONObject.cs" />

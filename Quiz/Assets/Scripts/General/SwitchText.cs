@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class SwitchText : MonoBehaviour {
 
-    private int i;
+    private int i=-1;
     public List<string> strList;
     
 	void Start () {
-        Debug.Log("set string to random");
-        this.GetComponent<Text>().text = strList[Random.Range(0, strList.Count)];
+        /*Debug.Log("set string to random");
+        this.GetComponent<Text>().text = strList[Random.Range(0, strList.Count)];*/
+        SetRandom();
 	}
 
     public void NotRandom(int i)
