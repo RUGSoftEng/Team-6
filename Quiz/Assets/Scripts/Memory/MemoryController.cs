@@ -70,7 +70,8 @@ public class MemoryController : AbstractController {
 		}
 		for(int i=0;i<14;i++) {
 			rt = buttons[i].GetComponent<RectTransform>();
-			int tl = words[i].GetMemoryWord().Length;
+            RectTransform rt2 = chromeButtons[i].GetComponent<RectTransform>();
+            int tl = words[i].GetMemoryWord().Length;
 			float x = (rt.anchorMax[0]+rt.anchorMin[0])/2;
 			float y = (rt.anchorMax[1]+rt.anchorMin[1])/2;
 			Vector2 c1 = new Vector2(x-0.02F,y-0.05F);
@@ -82,13 +83,19 @@ public class MemoryController : AbstractController {
 				sz+=2;
 				rt.anchorMin = c1;
 				rt.anchorMax = c2;
-			}
+                rt2.anchorMin = c1;
+                rt2.anchorMax = c2;
+
+            }
 			if (overlapping(i)) {
 				c1[0]+=0.01F;
 				c2[0]-=0.01F;
 				rt.anchorMin = c1;
 				rt.anchorMax = c2;
-			}
+                rt2.anchorMin = c1;
+                rt2.anchorMax = c2;
+
+            }
 		}
     }
 	
