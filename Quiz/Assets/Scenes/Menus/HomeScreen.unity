@@ -493,7 +493,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -950,7 +949,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
       propertyPath: strList.Array.size
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 22497330, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1052,6 +1051,58 @@ Prefab:
       propertyPath: strList.Array.data[6]
       value: You are cool!
       objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+      propertyPath: strList.Array.data[7]
+      value: You are cool!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+      propertyPath: strList.Array.data[8]
+      value: You are cool!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+      propertyPath: strList.Array.data[9]
+      value: You are cool!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+      propertyPath: strList.Array.data[10]
+      value: You are cool!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+      propertyPath: strList.Array.data[11]
+      value: You are cool!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+      propertyPath: strList.Array.data[12]
+      value: You are cool!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+      propertyPath: strList.Array.data[13]
+      value: You are cool!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+      propertyPath: strList.Array.data[14]
+      value: You are cool!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+      propertyPath: strList.Array.data[15]
+      value: You are cool!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+      propertyPath: strList.Array.data[16]
+      value: You are cool!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+      propertyPath: strList.Array.data[17]
+      value: You are cool!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+      propertyPath: strList.Array.data[18]
+      value: You are cool!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+      propertyPath: strList.Array.data[19]
+      value: You are cool!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
   m_IsPrefabParent: 0
@@ -1125,7 +1176,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1837,6 +1887,7 @@ MonoBehaviour:
   - Since 1973 it's illegal in Brazil to hunt me.
   - NASA's spaceship part collecting ships are propelled by water jets to protect
     me and my family.
+  changeAlso: {fileID: 1907517796}
 --- !u!114 &1196513460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2510,6 +2561,10 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1907517796 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 124682, guid: 1acca21aa7f62524bafca3fa5a3efbf6, type: 2}
+  m_PrefabInternal: {fileID: 622737046}
 --- !u!1001 &1927029462
 Prefab:
   m_ObjectHideFlags: 0

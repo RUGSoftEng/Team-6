@@ -160,9 +160,34 @@ public class QuizController : AbstractController {
         UpdateGame();
     }
 
+    public void SendTimingData()
+    {
+        GameObject zd = GameObject.FindWithTag("ZeeguuData");
+
+        if (zd == null)
+        {
+            Debug.Log("Failed finding ZeeguuData object for sending timing data");
+            return;
+        }
+
+        foreach (WordData w in totalWordList)
+        {
+            uint timeInMilliseconds = System.Convert.ToUInt32(1000 * w.GetSeenTime());
+            zd.GetComponent<ZeeguuData>().sendResults(w.GetID(), "Correct", timeInMilliseconds);
+        }
+    }
+
     public override void CreateEndscreen()
     {
+        // Is this the correct place?
+        // if (!usingHardcodedSet) SendTimingData();
+
         DrawEndCanvas dec = GetComponent<DrawEndCanvas>();
         dec.EndScreen();
+    }
+
+    public WordData GetCurrentWord()
+    {
+        return currentWord;
     }
 }
