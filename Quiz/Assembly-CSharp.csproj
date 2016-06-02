@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\Menus\OpenCloseSettings.cs" />
      <Compile Include="Assets\Scripts\Order\OrderGameController.cs" />
      <Compile Include="Assets\Scripts\Quiz\CastCanvasSwitch.cs" />
+     <Compile Include="Assets\Scripts\Quiz\DropDownHandler.cs" />
      <Compile Include="Assets\Scripts\Quiz\EditText.cs" />
      <Compile Include="Assets\Scripts\Quiz\ProgressBarOnCanvas.cs" />
      <Compile Include="Assets\Scripts\Quiz\QuizController.cs" />
@@ -74,6 +75,7 @@
      <Compile Include="Assets\Scripts\Quiz\Timer.cs" />
      <Compile Include="Assets\Scripts\Quiz\UpdateButton.cs" />
      <Compile Include="Assets\Scripts\Quiz\UpdateMiddleText.cs" />
+     <Compile Include="Assets\SendFeedBack.cs" />
      <None Include="Assets\Plugins\Android\appcompat\res\color\switch_thumb_material_light.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\drawable\abc_item_background_holo_light.xml" />
      <None Include="Assets\Plugins\Android\appcompat\res\layout\abc_alert_dialog_button_bar_material.xml" />
