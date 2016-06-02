@@ -53,6 +53,7 @@ public class DropDownHandler : MonoBehaviour {
         foreach (Button option in optionList)
         {
             option.interactable = true;
+            option.GetComponent<RectTransform>().SetAsLastSibling();
             option.GetComponent<RectTransform>().GetChild(0).GetComponent<Text>().color = Color.black;
         }
     }
@@ -62,6 +63,7 @@ public class DropDownHandler : MonoBehaviour {
         foreach (Button option in optionList)
         {
             option.interactable = false;
+            option.GetComponent<RectTransform>().SetAsFirstSibling();
             option.GetComponent<RectTransform>().GetChild(0).GetComponent<Text>().color = Color.clear;
         }
     }
