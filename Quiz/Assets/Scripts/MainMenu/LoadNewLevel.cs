@@ -11,6 +11,7 @@ public class LoadNewLevel : MonoBehaviour {
 	public int minWords;
     public int maxLength;
 	public Text text;
+    public Text bottemText;
 	
 	public void LoadLevel(int index) {
         int cnt = 0;
@@ -39,6 +40,7 @@ public class LoadNewLevel : MonoBehaviour {
 
     private void showTooFewWords(string message)
     {
+        bottemText.enabled = false;
         Color c = text.color;
         c.a = 10;
         text.color = c;
@@ -61,5 +63,6 @@ public class LoadNewLevel : MonoBehaviour {
 			c.a -= 0.04F;
 			text.color = c;
 		}
+        bottemText.enabled = true;
     }
 }
