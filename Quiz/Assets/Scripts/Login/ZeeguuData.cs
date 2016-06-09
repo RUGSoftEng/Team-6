@@ -250,6 +250,7 @@ public class ZeeguuData : MonoBehaviour {
         Debug.Log(frequencyList.lang);
         //Go to main menu
         if(frequencyList.lang != null && frequencyList.lang != "") {
+            Screen.orientation = ScreenOrientation.Landscape;
             SceneManager.LoadScene(1);
         } else {
             loginFail();
