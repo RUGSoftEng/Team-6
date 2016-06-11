@@ -14,6 +14,8 @@ public class SendFeedBack : MonoBehaviour {
 
         WordData wd = qc.GetCurrentWord();
 
+        qc.CorrectAnswer();
+
         string message = GetComponent<RectTransform>().GetChild(0).GetComponent<Text>().text;
 
         //zd.SendStringAtWord(wd.GetID(), message);
