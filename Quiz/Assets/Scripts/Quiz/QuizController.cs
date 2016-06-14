@@ -179,8 +179,7 @@ public class QuizController : AbstractController {
 
     public override void CreateEndscreen()
     {
-        // Is this the correct place?
-        // if (!usingHardcodedSet) SendTimingData();
+        if (!usingHardcodedSet) SendTimingData();
 
         DrawEndCanvas dec = GetComponent<DrawEndCanvas>();
         dec.EndScreen();
