@@ -7,31 +7,25 @@ public class DrawEndCanvas : MonoBehaviour {
     public Camera chromeCastCamera;
     public Canvas phoneCanvas;
     public Canvas chromeCanvas;
-    public Canvas endCanvas;
+    public Canvas phoneEndCanvas;
+    public Canvas chromeEndCanvas;
 
     public void Start()
     {
-        endCanvas.enabled = false;
+        phoneEndCanvas.enabled = false;
+        chromeEndCanvas.enabled = false;
     }
 
     public void EndScreen()
     {
-        Canvas phone = Instantiate(endCanvas);
-        Canvas cast = Instantiate(endCanvas);
-        Debug.Log("testing:"+phone.GetComponentInChildren<SwitchText>().strList.Count);
-        int iStr = Random.Range(0, phone.GetComponentInChildren<SwitchText>().strList.Count);
-
-        phone.enabled = true;
+        phoneEndCanvas.enabled = true;
         phoneCanvas.enabled = false;
-        phone.worldCamera = phoneCamera;
+        phoneEndCanvas.worldCamera = phoneCamera;
 
-        cast.enabled = true;
+        chromeEndCanvas.enabled = true;
         chromeCanvas.enabled = false;
-        cast.worldCamera = chromeCastCamera;
-        GraphicRaycaster gR = cast.GetComponent<GraphicRaycaster>();
+        chromeEndCanvas.worldCamera = chromeCastCamera;
+        GraphicRaycaster gR = chromeEndCanvas.GetComponent<GraphicRaycaster>();
         gR.enabled = false;
-
-        phone.GetComponentInChildren<SwitchText>().NotRandom(iStr);
-        cast.GetComponentInChildren<SwitchText>().NotRandom(iStr);
     }
 }

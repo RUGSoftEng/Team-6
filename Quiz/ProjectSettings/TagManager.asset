@@ -12,6 +12,7 @@ TagManager:
   - diffSwitch
   - ReloadMessage
   - ReloadButton
+  - Controller
   layers:
   - Default
   - TransparentFX

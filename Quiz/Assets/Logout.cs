@@ -15,6 +15,7 @@ public class Logout : MonoBehaviour {
         }
 
         ZeeguuData.destroySession();
+        Screen.orientation = ScreenOrientation.Portrait;
         SceneManager.LoadScene(0);
     }
 }

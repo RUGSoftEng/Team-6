@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class SwitchText : MonoBehaviour {
 
-    private int i=-1;
+    private int i = -1;
     public List<string> strList;
+    public Text chromeCastText;
     
 	void Start () {
-        /*Debug.Log("set string to random");
-        this.GetComponent<Text>().text = strList[Random.Range(0, strList.Count)];*/
         SetRandom();
 	}
 
@@ -19,6 +18,10 @@ public class SwitchText : MonoBehaviour {
         Debug.Log("set string to: " + i);
         this.i = i;
         this.GetComponent<Text>().text = strList[i];
+        if (chromeCastText != null)
+        {
+            chromeCastText.GetComponent<Text>().text = strList[i];
+        }
     }
 
     public void SetRandom ()
@@ -30,10 +33,5 @@ public class SwitchText : MonoBehaviour {
             x = Random.Range(0, strList.Count);
         } while (x == this.i);
         NotRandom (x);
-    }
-
-    void Update()
-    {
-        this.GetComponent<Text>().text = strList[i];
     }
 }

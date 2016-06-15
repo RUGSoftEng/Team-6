@@ -104,7 +104,7 @@ public abstract class AbstractController : MonoBehaviour {
     /* this method should always be called if a game is quit */
     public void Exit()
     {
-        Screen.orientation = ScreenOrientation.Portrait;
+        //Screen.orientation = ScreenOrientation.Portrait;
         this.GetComponent<LoadNewLevel>().LoadLevel(1);
     }
 

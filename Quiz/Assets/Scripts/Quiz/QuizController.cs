@@ -91,7 +91,7 @@ public class QuizController : AbstractController {
 	 * This method decides what happens when the button with the correct answer is clicked
 	 * It removes the current word from the todolist and disables the buttons for a small while.
 	 */
-    private void CorrectAnswer()
+    public void CorrectAnswer()
     {
         Answer();
         currentWord.Solved();
@@ -179,8 +179,7 @@ public class QuizController : AbstractController {
 
     public override void CreateEndscreen()
     {
-        // Is this the correct place?
-        // if (!usingHardcodedSet) SendTimingData();
+        if (!usingHardcodedSet) SendTimingData();
 
         DrawEndCanvas dec = GetComponent<DrawEndCanvas>();
         dec.EndScreen();

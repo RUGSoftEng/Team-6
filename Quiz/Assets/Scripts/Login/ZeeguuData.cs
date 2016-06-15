@@ -250,6 +250,7 @@ public class ZeeguuData : MonoBehaviour {
         Debug.Log(frequencyList.lang);
         //Go to main menu
         if(frequencyList.lang != null && frequencyList.lang != "") {
+            Screen.orientation = ScreenOrientation.Landscape;
             SceneManager.LoadScene(1);
         } else {
             loginFail();
@@ -385,7 +386,7 @@ public class ZeeguuData : MonoBehaviour {
 
         WWW resultsRequest = new WWW(serverURL + "/report_exercise_outcome/"
             + outcome           // Correct, Retry, Wrong, Typo, Too easy
-            + "/ZeeKoe/"        // source (as defined in backend)
+            + "/ZeeKoe-Choice/" // source (as defined in backend)
             + speed + '/'       // speed in milliseconds
             + bookmark_id
             + "?session=" + sessionID, resultsForm);
